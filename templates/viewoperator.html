@@ -1,0 +1,349 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}
+    Phones
+{% endblock %}
+{% block content %}
+	<section class="mid-section plan_vendor_sec">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-sm-12 floatleft">
+					<div class="select_phone_filterdiv">
+						<div class="product_listng_buy_top_div">
+				   			 	<div>
+						  			<div>
+							  		 <h4 class="slct_phn_hdr">SA-Mobily-P-Raqi</h4>
+							  		</div>
+									 <div>
+									 	<ul class="plan_vndr_icon company-clients-logos">
+												<li><img class="img-responsive" alt="verizon" src="{% static 'images/verizon-icon-lg.png'%}"></li>
+										</ul>
+									 </div>
+				  				</div>
+				  		</div>
+				  		<div class="row plandetails_mobileSpec_div">
+				  			<div class="col-sm-3">
+				  				<div class="plandetails_mobileSpecwrapper">
+											<div class="img-box">
+												<img src="{% static 'images/mob-02.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+											</div>
+											<div class="thumb-content">
+												<h4 class="text-capitalize">Huawei Mate 20 Pro</h4>
+												<a href="#" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">See specifications</a>
+											</div>						
+								</div>
+				  			</div>
+				  			<div class="col-sm-6">
+				  				<div class="row plandetails_mobileSpec_donuts">
+				  					<div class="col-sm-4">
+										 <div>
+										 	<h5 class="text-center">Data </h5>
+										 	 <div class="data_speed_div" id="mobileSpec_donuts"></div>
+										 </div>
+										<div class="plans_feature_div_desc">
+			                                 <p><span>8GB</span> Full<br> Speed Data</p>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										 <div >
+										 	<h5 class="text-center">Minutes </h5>
+										 	 <div class="data_speed_div" id="mobileSpec_donuts1"></div>
+										 </div>
+										<!-- <img class="img-responsive" src="images/donut-icon.png"> -->
+										<div class="plans_feature_div_desc">
+											 <p><span>500</span>Minutes<br> Voice call</p>
+										</div>
+									</div>
+									<div class="col-sm-4">
+										 <div >
+										 	<h5 class="text-center">Messages  </h5>
+										 	 <div class="data_speed_div" id="mobileSpec_donuts2"></div>
+										 </div>
+										<!-- <img class="img-responsive" src="images/donut-icon.png"> -->
+										<div class="plans_feature_div_desc">
+											 <p>Unlimited<br> Messages</p>
+										</div>
+									</div>
+				  				</div>
+				  			</div>
+				  			<div class="col-sm-3 pl-0">
+				  					<div class="plandetails_mobileSpec_paymntDiv">
+				  					<div class="col-sm-12">
+				  						<h5>$6.67/mo</h5>
+										<p>(Pay $20 for 3 Months)</p>
+				  					</div>
+				  					<div class="col-sm-12 ">
+				  						<p>One Time Payment</p>
+				  						<h5>$6.67/mo</h5>
+				  					</div>
+				  				</div>
+				  			</div>
+				  		</div>
+				  		
+				  		
+				  	</div>
+					<div class="planVndr_products_list">
+						<div class="mobile_availability_hdrDiv">
+							<h3>Lorem Ipsum</h3>
+						</div>
+						<div class="mobile_availability_div">
+							<div class="mobile_availability_img">
+								<div class="img-box">
+									<img src="{% static 'images/mob-04.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+								</div>
+							</div>
+							<div class="mobile_availabilitydesc_div">
+								<div class="mobile_availabilitydesc_name">
+									<p>Huawei Mate 20 Pro</p>
+								</div>
+								<div class="mobile_availabilitydesc_dtls">
+									<div class="mobile_availabilitydesc_dtls1">	
+										<p class="floatleft">Device Price: <span>Rs. 1716</span></p>
+										<a href="#" class="floatright">Availability: In Stock</a>
+									</div>
+									<div class="mobile_availabilitydesc_dtls2">
+										<p>Gift price</p>
+										<a href="" class="buy_btn_withPrice">USD. 1012</a><span class="off_desc">(40% off)</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="planVndr_products_slider">
+						<div class="mobile_availability_hdrDiv">
+							<h3>Entertainment optional free device</h3>
+						</div>
+						<div class="top_products_slides  planVndr_products_list_slider">
+							<div class="planVndr_products_list_slides_div">
+								<div class="planVndr_products_list_slidesImg">
+									<img src="{% static 'images/mobiles_grp1.png'%}" class="img-responsive" alt="Slider1 Image">
+								</div>
+								<div class="planVndr_products_list_slidesImgDtl">
+									<p>Huawei Mate 20 Pro</p>
+									<h6>Rs. 1716</h6>
+								</div>
+							</div>
+							<div class="planVndr_products_list_slides_div">
+								<div class="planVndr_products_list_slidesImg">
+									<img src="{% static 'images/mobiles_grp2.png'%}" class="img-responsive" alt="Slider1 Image">
+								</div>
+								<div class="planVndr_products_list_slidesImgDtl">
+									<p>Huawei Mate 20 Pro</p>
+									<h6>Rs. 1716</h6>
+								</div>
+							</div>
+							<div class="planVndr_products_list_slides_div">
+								<div class="planVndr_products_list_slidesImg">
+									<img src="{% static 'images/play_station.png'%}" class="img-responsive" alt="Slider1 Image">
+								</div>
+								<div class="planVndr_products_list_slidesImgDtl">
+									<p>Huawei Mate 20 Pro</p>
+									<h6>Rs. 1716</h6>
+								</div>
+							</div>
+							<div class="planVndr_products_list_slides_div">
+								<div class="planVndr_products_list_slidesImg">
+									<img src="{% static 'images/mobiles_grp1.png'%}" class="img-responsive" alt="Slider1 Image">
+								</div>
+								<div class="planVndr_products_list_slidesImgDtl">
+									<p>Huawei Mate 20 Pro</p>
+									<h6>Rs. 1716</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="plan_details_tb_div">
+						<h2>Plan Details</h2>
+						<div >
+							<table class="table-bordered">
+							<tbody>
+								<tr class="row">
+									<th class="col-sm-4">Country</th>
+									<td class="col-sm-8">Saudi</td>
+								</tr>
+								<tr class="row">
+									<th class="col-sm-4">Operator</th>
+									<td class="col-sm-8">Mobily</td>
+								</tr>
+								<tr class="row">
+									<th class="col-sm-4">Name</th>
+									<td class="col-sm-8">Postpaid 300</td>
+								</tr>
+								<tr class="row">
+									<th class="col-sm-4">Status</th>
+									<td class="col-sm-8">Active</td>
+								</tr>
+								<tr class="row">
+									<th class="col-sm-4">Available for</th>
+									<td class="col-sm-8">All</td>
+								</tr>
+								<tr class="row">
+									<th class="col-sm-4">Website description</th>
+									<td class="col-sm-8">NEW prepaid bundles offer you local minutes to be used 
+										among all national networks, internet browsing data, 
+										as well as Social Media data for all your favorite apps 
+										including Facebook, Twitter, Instagram, WhatsApp, 
+										Snapchat & YouTube!</td>
+								</tr>
+								<tr class="row">
+									<th class="col-sm-4">Pay Type</th>
+									<td class="col-sm-8">Prepaid</td>
+								</tr>
+								<tr class="row">
+									<th class="col-sm-4">Line type</th>
+									<td class="col-sm-8">Voice</td>
+								</tr>
+								<tr class="row">
+									<th class="col-sm-4">Free internet </th>
+									<td class="col-sm-8">10</td>
+								</tr>
+								<tr class="row">
+									<th class="col-sm-4">Social includes</th>
+									<td class="col-sm-8">Twitter, Snapchat, WhatsApp, Facebook, Instagram, YouTube</td>
+								</tr>
+								<tr class="row">
+									<th class="col-sm-4">benefits</th>
+									<td class="col-sm-8">Remaining benefits inquiry for subscribers, send 4 to 1411</td>
+								</tr>
+								<tr class="row">
+									<th class="col-sm-4">Subscription method 1</th>
+									<td class="col-sm-8">Send 30 to 1100</td>
+								</tr>
+							</tbody>
+						</table>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-12 floatright">
+					 <div class="adverstisement_div">
+
+					</div>
+
+					<div class="adverstisement_div">
+
+					</div>
+					<div class="adverstisement_div">
+
+					</div>
+					<div class="adverstisement_div">
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}
+{% block extra_script %}
+	  <div class="modal fade custom_seeSpecModal" id="seeSpecModal" role="dialog">
+	    <div class="modal-dialog">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content modal-lg">
+	        <div class="modal-header">
+	          <h4 class="modal-title">iPhone XS Max 64GB</h4>
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	        <div class="modal-body">
+	          <div class="pills_section">
+	          	<div class="pill_tab_sec">
+	          		 <ul class="nav nav-pills nav-stacked" role="tablist">
+					    <li role="presentation" class="active"><a href="#display" aria-controls="display" role="tab" data-toggle="tab"><span class="flaticon-smartphone-call"></span>Display</a></li>
+					    <li role="presentation"><a href="#camera" aria-controls="camera" role="tab" data-toggle="tab"><span class="flaticon-frame-landscape"></span>Camera</a></li>
+					    <li role="presentation"><a href="#media" aria-controls="media" role="tab" data-toggle="tab"><span class="flaticon-music-player"></span>Media</a></li>
+					    <li role="presentation"><a href="#physical" aria-controls="physical" role="tab" data-toggle="tab"><span class="flaticon-smartphone-call"></span>Physical</a></li>
+					    <li role="presentation"><a href="#general" aria-controls="general" role="tab" data-toggle="tab"><span class="flaticon-gear"></span>General</a></li>
+					    <li role="presentation"><a href="#connectivity" aria-controls="connectivity" role="tab" data-toggle="tab"><span class="flaticon-wifi-connection-signal-symbol"></span>Connectivity</a></li>
+					     <li role="presentation"><a href="#memory" aria-controls="memory" role="tab" data-toggle="tab"><span class="flaticon-memory-card"></span>Memory</a></li>
+					    <li role="presentation"><a href="#msging" aria-controls="msging" role="tab" data-toggle="tab"><span class="flaticon-contact"></span>Messaging</a></li>
+					  </ul>
+	          	</div>
+	          	<div>
+	          		<div class="tab-content">
+					    <div role="tabpanel" class="tab-pane active" id="display">
+
+					    		<div class="table-responsive">          
+								  <table class="table table-striped table-bordered">
+								 <tbody>
+								 	  <tr>
+								        <th>Music Player</th>
+								         <td>Yes</td>
+								      </tr>
+								      <tr>
+								        <th>Video Player</th>
+								        <td>Yes</td>
+								      </tr>
+								      <tr>
+								        <th>Video Calls</th>
+								        <td>Yes</td>
+								      </tr>
+								      <tr>
+								        <th>FM Radio</th>
+								        <td>No</td>
+								      </tr>
+								      <tr>
+								        <th>Audio Formats</th>
+								        <td>AAC-LC, HE-AAA,HE-AAAC,v2,Protected AAC,MP3,LinearPCM,Apple Lossless,FLAC</td>
+								      </tr>
+								      <tr>
+								        <th>Video Formats</th>
+								        <td>HEVC,H.264,MPEG-4 Part 2,and JPEG</td>
+								      </tr>
+								      
+								    </tbody>
+								  </table>
+								 </div>
+
+					    </div>
+					    <div role="tabpanel" class="tab-pane" id="camera">Camera</div>
+					    <div role="tabpanel" class="tab-pane" id="media">...</div>
+					    <div role="tabpanel" class="tab-pane" id="physical">...</div>
+					    <div role="tabpanel" class="tab-pane" id="general">home</div>
+					    <div role="tabpanel" class="tab-pane" id="connectivity">Camera</div>
+					    <div role="tabpanel" class="tab-pane" id="memory">...</div>
+					    <div role="tabpanel" class="tab-pane" id="msging">...</div>
+					  </div>
+	          	</div>
+	          </div>
+	        </div>
+	      </div>
+	      
+	    </div>
+	  </div>
+  <!-- Specification Modal begins -->
+
+<script >
+ 
+$(document).ready(function(){
+				$("#mobileSpec_donuts").circliful({
+		            animation: 1,
+		            animationStep: 5,
+		            foregroundBorderWidth: 25,
+		            backgroundBorderWidth: 25, replacePercentageByText:'',
+		            percent: 100,
+		            textColor: '#666',
+		            multiPercentage: 1,
+		        });
+		        $("#mobileSpec_donuts1").circliful({
+		            animation: 1,
+		            animationStep: 5,
+		            foregroundBorderWidth: 25,
+		            backgroundBorderWidth: 25, replacePercentageByText:'',
+		            percent: 100,
+		            foregroundColor: "#38bfba",
+		            multiPercentage: 1,
+		        });
+		        $("#mobileSpec_donuts2").circliful({
+		            animation: 1,
+		            animationStep: 5,
+		            foregroundBorderWidth: 25,
+		            backgroundBorderWidth: 25, replacePercentageByText:'',
+		            percent: 100,
+		            foregroundColor: '#fc5920',
+		            multiPercentage: 1,
+		        });
+			});
+				
+</script>
+{% endblock %}

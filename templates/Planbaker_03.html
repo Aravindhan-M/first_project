@@ -1,0 +1,355 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}
+    Phones
+{% endblock %}
+{% block content %}
+	<section class="filterBlock_section">
+		<div class="container filterBlock_container">
+			<div class="row">
+				<div class="col-sm-6 floatleft">
+					<h2 class="main-hdng"> <span class="choose_best_plans_for"> Cell Phone Plans in </span>
+					<span class="mobilephonr_trans"> Saudi Arabia</span> </h2>
+				</div>
+				<div class="col-sm-6 floatright">
+					<ul class="company-clients-logos">
+						<li><img class="img-responsive" alt="verizon" src="{% static 'images/verizon-icon-lg.png'%}"></li>
+						<li><img class="img-responsive" alt="verizon" src="{% static 'images/AT&T-large.png'%}"></li>
+						<li><img class="img-responsive" alt="verizon" src="{% static 'images/T-mobile-large-.png'%}"></li>
+						<li><img class="img-responsive" alt="verizon" src="{% static 'images/sprint-large-.png'%}"></li>
+						<li><img class="img-responsive" alt="provider1" src="{% static 'images/airtel-logo-red-png.png'%}"></li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-3 ">
+					<div class="row select_phone_sec">
+						<div class="select_phone_div">
+							<div class="img-box">
+							  <img src="{% static 'images/mob-04.png'%}" class="img-responsive img-fluid" alt="slider Image 1"  style="max-width:100%;">
+							</div>
+						</div>
+						<div >
+								<p>Select Phone</p>
+								<h5>No Phone Selected</h5>
+								<div class="dropdown netwrk-dropdwn">
+										  <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										    Options/Add a line
+										    <span class="caret"></span>
+										  </button>
+										  <ul class="dropdown-menu" >
+										    <li><a href="#">Action</a></li>
+										    <li><a href="#">Another action</a></li>
+										    <li><a href="#">Something else here</a></li>
+										    <li><a href="#">Separated link</a></li>
+										  </ul>
+								</div>
+				        </div>
+					</div>
+				</div>
+				<div class="col-sm-7 horizontal-slider">
+								<div class="slidecontainer">
+									<p id="data_text"><span class="data_trans">Data </span><span id="dataRangeval"></span><span>MB </span><a href="#"></a></p>
+									<div>
+								  	<input type="range" min="100" max="1000" value="500" class="slider" id="dataRange">		
+								  	</div>					 
+								</div>
+								<div class="slidecontainer">
+								  <p><span class="minute_trans">Minutes</span> <span id="minutesRangeval"></span><a href="#"></a></p>
+								  <input type="range" min="100" max="1000" value="500" class="slider" id="minutesRange">								  
+								</div>
+								<div class="slidecontainer">
+								  <p><span class="msg_trans">Messages</span> <span id="msgRangeval"></span><a href="#"></a></p>
+								  <input type="range" min="100" max="1000" value="500" class="slider" id="msgRange">
+								</div>
+				</div>
+				<div class="col-sm-2 all_filter_div">
+					<p>All Filters</p>
+					<button class="btn add_filter_btn"><i class="flaticon-add-plus-button"></i></button>
+				</div>
+			</div>
+			<div class="row filter_button_sec">
+				<div class="col-sm-6 fliter_btns_div">
+					<button class="main_btn text-capitalize">all <span>(741)</span></button>
+					<button class="main_btn text-capitalize">postpaid <span>(41)</span></button>
+					<button class="main_btn text-capitalize">prepaid <span>(71)</span></button>
+				</div>
+				<div class="col-sm-6 fliter_actions_btn_div">
+					<div class="dropdown">
+										  <button class="btn dropdown-toggle main_btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+										    Sort By
+										    <span class="caret"></span>
+										  </button>
+										  <ul class="dropdown-menu" >
+										    <li><a href="#">Action</a></li>
+										    <li><a href="#">Another action</a></li>
+										    <li><a href="#">Something else here</a></li>
+										    <li><a href="#">Separated link</a></li>
+										  </ul>
+					</div>
+					<button class="main_btn text-capitalize share_btn"><i class="flaticon-share"></i></button>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="load_plans">
+		<div class="container load_plans_container">
+			<div class="row">
+			<div class="load_plans_inner_div">
+				
+					<div class="col-sm-4">
+						<div class="plan_logo">
+							<img class="img-responsive" src="{% static 'images/AT&T-large.png'%}" style="max-width: 100%;" />
+						</div>
+						<div class="plans_feature_desc_div">
+							<div class="phones_avail_div">
+								<p>50</p>
+								<p>Phones <br> available</p>
+							</div>
+							<div class="phones_avail_div_desc">
+								<a href="{% url 'viewoperators'%}"><h3>Lorem Ipsum<span>Lorem Ipsum</span></h3></a></h3>
+								<ul>
+									<li>Standard video streaming at up to 480p </li>
+                                    <li>Global Roaming included (2G speeds)</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8 plans_feature_div">
+						<div>
+							 <div class="col-sm-8">
+							 	 <div class="data_speed_div" id="test-circle"></div>
+							 </div>
+							<!-- <img class="img-responsive" src="images/donut-icon.png"> -->
+							<div class="plans_feature_div_desc">
+								<h3>Unlimited</h3>
+                                 <p>Full Speed Data</p>
+							</div>
+						</div>
+						<div>
+							<div class="speed_indi"><img class="img-responsive" src="{% static 'images/piramid-icon.png'%}"></div>
+							
+							<div class="plans_feature_div_desc">
+								<h3>3GB</h3>
+                                 <p>Full Speed Data</p>
+							</div>
+						</div>
+						<div>
+							<button class="btn featured_btn">Featured</button>
+							<div class="plans_feature_div_desc">
+								<h3>$15/mo</h3>
+                                 <p>(Pay $45 for 3 Months)</p>
+							</div>
+						</div>
+						<div class="go_to_nearest_branch">
+							<a href="#">Go to  the <br>Nearest Branch</a>
+						</div>
+					</div>
+				</div>
+				<div class="load_plans_inner_div">
+				
+					<div class="col-sm-4">
+						<div class="plan_logo">
+							<img class="img-responsive" src="{% static 'images/AT&T-large.png'%}" style="max-width: 100%;" />
+						</div>
+						<div class="plans_feature_desc_div">
+							<div class="phones_avail_div">
+								<p>50</p>
+								<p>Phones <br> available</p>
+							</div>
+							<div class="phones_avail_div_desc">
+								<a href="{% url 'viewoperators'%}"><h3>Lorem Ipsum<span>Lorem Ipsum</span></h3></a></h3>
+								<ul>
+									<li>Standard video streaming at up to 480p </li>
+                                    <li>Global Roaming included (2G speeds)</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8 plans_feature_div">
+						<div>
+							 <div class="col-sm-8">
+							 	 <div class="data_speed_div" id="test-circle2"></div>
+							 </div>
+							<!-- <img class="img-responsive" src="images/donut-icon.png"> -->
+							<div class="plans_feature_div_desc">
+								<h3>Unlimited</h3>
+                                 <p>Full Speed Data</p>
+							</div>
+						</div>
+						<div>
+							<div class="speed_indi"><img class="img-responsive" src="{% static 'images/piramid-icon.png'%}"></div>
+							
+							<div class="plans_feature_div_desc">
+								<h3>3GB</h3>
+                                 <p>Full Speed Data</p>
+							</div>
+						</div>
+						<div>
+							<button class="btn featured_btn">Featured</button>
+							<div class="plans_feature_div_desc">
+								<h3>$15/mo</h3>
+                                 <p>(Pay $45 for 3 Months)</p>
+							</div>
+						</div>
+						<div class="go_to_nearest_branch">
+							<a href="https://souq.com/" target="_blank" class="load_more_btn btn">Buy Online</a>
+						</div>
+					</div>
+				</div>
+				<div class="load_plans_inner_div">
+				
+					<div class="col-sm-4">
+						<div class="plan_logo">
+							<img class="img-responsive" src="{% static 'images/AT&T-large.png'%}" style="max-width: 100%;" />
+						</div>
+						<div class="plans_feature_desc_div">
+							<div class="phones_avail_div">
+								<p>50</p>
+								<p>Phones <br> available</p>
+							</div>
+							<div class="phones_avail_div_desc">
+								<a href="{% url 'viewoperators'%}"><h3>Lorem Ipsum<span>Lorem Ipsum</span></h3></a></h3>
+								<ul>
+									<li>Standard video streaming at up to 480p </li>
+                                    <li>Global Roaming included (2G speeds)</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8 plans_feature_div">
+						<div>
+							 <div class="col-sm-8">
+							 	 <div class="data_speed_div" id="test-circle3"></div>
+							 </div>
+							<!-- <img class="img-responsive" src="images/donut-icon.png"> -->
+							<div class="plans_feature_div_desc">
+								<h3>Unlimited</h3>
+                                 <p>Full Speed Data</p>
+							</div>
+						</div>
+						<div>
+							<div class="speed_indi"><img class="img-responsive" src="{% static 'images/piramid-icon.png'%}"></div>
+							
+							<div class="plans_feature_div_desc">
+								<h3>3GB</h3>
+                                 <p>Full Speed Data</p>
+							</div>
+						</div>
+						<div>
+							<button class="btn featured_btn">Featured</button>
+							<div class="plans_feature_div_desc">
+								<h3>$15/mo</h3>
+                                 <p>(Pay $45 for 3 Months)</p>
+							</div>
+						</div>
+						<div class="go_to_nearest_branch">
+							<a href="#">Go to  the <br>Nearest Branch</a>
+						</div>
+					</div>
+				</div>
+				<div class="load_plans_inner_div">
+				
+					<div class="col-sm-4">
+						<div class="plan_logo">
+							<img class="img-responsive" src="{% static 'images/AT&T-large.png'%}" style="max-width: 100%;" />
+						</div>
+						<div class="plans_feature_desc_div">
+							<div class="phones_avail_div">
+								<p>50</p>
+								<p>Phones <br> available</p>
+							</div>
+							<div class="phones_avail_div_desc">
+								<a href="{% url 'viewoperators'%}"><h3>Lorem Ipsum<span>Lorem Ipsum</span></h3></a></h3>
+								<ul>
+									<li>Standard video streaming at up to 480p </li>
+                                    <li>Global Roaming included (2G speeds)</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8 plans_feature_div">
+						<div>
+							 <div class="col-sm-8">
+							 	 <div class="data_speed_div" id="test-circle4"></div>
+							 </div>
+							<!-- <img class="img-responsive" src="images/donut-icon.png"> -->
+							<div class="plans_feature_div_desc">
+								<h3>Unlimited</h3>
+                                 <p>Full Speed Data</p>
+							</div>
+						</div>
+						<div>
+							<div class="speed_indi"><img class="img-responsive" src="{% static 'images/piramid-icon.png'%}"></div>
+							
+							<div class="plans_feature_div_desc">
+								<h3>3GB</h3>
+                                 <p>Full Speed Data</p>
+							</div>
+						</div>
+						<div>
+							<button class="btn featured_btn">Featured</button>
+							<div class="plans_feature_div_desc">
+								<h3>$15/mo</h3>
+                                 <p>(Pay $45 for 3 Months)</p>
+							</div>
+						</div>
+						<div class="go_to_nearest_branch">
+							<a href="https://souq.com/" target="_blank" class="load_more_btn btn">Buy Online</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+	</section>
+	<div class="load_more_div">
+		<div class="container">
+			<div class="load_more_btn_div">
+				<button class="load_more_btn btn">Load More<span class="load_more_icon"><img class="img-responsive" alt="Load More" src="{% static 'images/load_more_icon.png'%}"></span></button>
+			</div>
+		</div>
+	</div>
+
+	{% endblock %}
+{% block extra_script %}
+<script >
+	// Slider script
+			// Data slider
+			var dataRange_slider = document.getElementById("dataRange");
+			var dataRangeval_output = document.getElementById("dataRangeval");
+			dataRangeval_output.innerHTML = dataRange_slider.value;
+			dataRange_slider.oninput = function() {
+			  dataRangeval_output.innerHTML = this.value;
+			}
+			// Minutes Slider
+			var minutesRange_slider = document.getElementById("minutesRange");
+			var minutesRangeval_output = document.getElementById("minutesRangeval");
+			minutesRangeval_output.innerHTML = minutesRange_slider.value;
+			minutesRange_slider.oninput = function() {
+			  minutesRangeval_output.innerHTML = this.value;
+			}
+			// Messages slider
+			var msgRange_slider = document.getElementById("msgRange");
+			var msgRangeval_output = document.getElementById("msgRangeval");
+			msgRangeval_output.innerHTML = msgRange_slider.value;
+			msgRange_slider.oninput = function() {
+			  msgRangeval_output.innerHTML = this.value;
+			}
+			$(document).ready(function(){
+				$("#test-circle,#test-circle2,#test-circle3,#test-circle4").circliful({
+		            animation: 1,
+		            animationStep: 5,
+		            foregroundBorderWidth: 15,
+		            backgroundBorderWidth: 15, replacePercentageByText:'',
+		            percent: 100,
+		            textSize: 28,
+		            textStyle: 'font-size: 12px;',
+		            textColor: '#666',
+		            multiPercentage: 1,
+		        });
+			});
+			
+			
+</script>
+{% endblock %}

@@ -1,0 +1,44 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<h2>Sign up</h2>{%if success%}<h1>{{success}}</h1>{%endif%}
+ <form name = "form" method="post" action="{% url 'registration' %}">
+   {% csrf_token %}
+   {% for field in form %}
+     <div>
+       {{ field.label_tag }}<br>
+       {{ field }}
+       {% for error in field.errors %}
+         <p style="color: red">{{ error }}</p>
+       {% endfor %}
+     </div>
+   {% endfor %}
+
+   <a href="#" id="otp">send otp</a><br>
+   <input type="submit" value="signup"/>
+   <button type="button">Send OTP</button>
+</form>
+
+<script>
+
+  $('#otp').click(function(e){
+
+  e.preventDefault()
+
+
+  $.ajax({
+        url: '/registration/sendotp/',
+        success: function (data) {
+        console.log(data.data)
+
+
+        },
+        error:function(data){
+        console.log(data)
+        }
+      });
+
+
+  });
+
+
+
+</script>

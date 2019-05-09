@@ -1,0 +1,61 @@
+{% load static %}
+<style>
+#id_expression{
+width : 80%;
+}
+
+img{
+height:14px;
+width : 14px
+}
+</style>
+
+
+  <fieldset>
+    <legend>Number:</legend>
+   <input id="times" type="number" value=1> 	<br>
+   <div class="times">
+    <button > Add Number</button>
+  </div><br>
+
+  </fieldset>
+
+<fieldset>
+    <legend>Operator:</legend>
+<input type="radio" name="operator" value="+"> + <br>
+  <input type="radio" name="operator" value="-"> - <br>
+  <input type="radio" name="operator" value="*"> * <br>
+  <input type="radio" name="operator" value="/"> / <br>
+  <input type="radio" name="operator" value="("> (<br>
+  <input type="radio" name="operator" value=")"> ) <br>
+  <div class="operator">
+    <button  > Add Operator </button>
+  </div><br>
+  </fieldset>
+
+  <fieldset>
+    <legend>Field:</legend>
+<input type="radio" name="field" value="fieldone"> field1 <br>
+  <input type="radio" name="field" value="fieldtwo"> field2<br>
+  <input type="radio" name="field" value="fieldthree"> field3 <br>
+  <input type="radio" name="field" value="fieldfour"> field4<br>
+  <div class="field">
+    <button  > Add Field </button>
+  </div><br>
+  </fieldset>
+
+  <fieldset>
+    <legend>Expression:</legend>
+  <div id ="container">
+<div id="result"></div><br>
+Final Expression : {% include "django/forms/widgets/input.html" %}
+</div><br>
+
+</fieldset>
+<button id = "create_exp">Create Expression</button><br><br>
+<script>
+  var delete_pic = "{% static 'images/delete.png'%}"
+
+</script>
+
+<script src="{% static 'js/plan/calculation_method_js.js'%}"></script>

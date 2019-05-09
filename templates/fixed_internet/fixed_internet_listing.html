@@ -1,0 +1,229 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load media_url %}
+{% load plan_tags %}
+{% block title %}
+    Fixed Plans
+{% endblock %}
+{% block content %}
+	<section class="filterBlock_section">
+		<div class="container filterBlock_container">
+			<div class="row">
+				<div class="col-sm-6 floatleft">
+					<h2 class="main-hdng"> <span class="choose_best_plans_for"> Cell Phone Plans in </span>
+					<span class="mobilephonr_trans"> {{country.country_full_name}}</span> </h2>
+				</div>
+				<div class="col-sm-6 floatright">
+					<ul class="company-clients-logos">
+
+                        {% operator_images "fixed" %}
+                    </ul>
+				</div>
+			</div>
+			<form method="GET" class="plan_home_form_id" action="{% url 'fixed_internet_operators' %}">
+			<div class="row">
+
+				<div class="col-sm-3 ">
+					<div class="row select_phone_sec">
+						<div class="select_phone_div">
+							<div class="img-box">
+
+								<a>
+								<img src="{% if form_class.phone_media.value%}{{form_class.phone_media.value}}{%else%}{% static 'images/icon-mobile.png'%}{%endif%}" class="img-responsive img-fluid" alt="slider Image 1"  style="max-width:100%;">
+								</a>
+
+{#                                <a href="#" class="see_selectmobile_link" data-toggle="modal" >#}
+{#											<img class="img-responsive" alt="Mobile Icon" src="{% static 'images/icon-mobile.png'%}"#}
+{#											onmouseover="this.src='{% static 'images/internewh.png'%}'"#}
+{#    									onmouseout="this.src='{% static 'images/icon-mobile.png'%}'"></a>#}
+{##}
+{#							</div>#}
+{#							<div class="remove-phone-div img-block">#}
+{#										 <a onclick="removephone()"> Remove</a>#}
+
+									</div>
+						</div>
+						<div >
+
+
+							{{form_class.order_by}}
+
+
+
+
+
+								<!--<div class="dropdown netwrk-dropdwn">-->
+										  <!--<button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">-->
+										    <!--Options/Add a line-->
+										    <!--<span class="caret"></span>-->
+										  <!--</button>-->
+										  <!--<ul class="dropdown-menu" >-->
+										    <!--<li><a href="#">Action</a></li>-->
+										    <!--<li><a href="#">Another action</a></li>-->
+										    <!--<li><a href="#">Something else here</a></li>-->
+										    <!--<li><a href="#">Separated link</a></li>-->
+										  <!--</ul>-->
+
+								<!--</div>-->
+{#							<div>Only SIM: {{form_class.only_sim}}</div>{{ form_class.order_by.display_val}}#}
+				        </div>
+					</div>
+				</div>
+				<div class="col-sm-9 horizontal-slider">
+								<div class="slidecontainer">
+									<p id="data_text"><span class="data_trans">Data </span>
+										{{form_class.data}}
+										<!--<span id="dataRangeval"></span><span>GB </span><a href="#"></a></p>-->
+									<!--<div>-->
+								  	<!--<input type="range" min="100" max="1000" value="500" class="slider" id="dataRange">-->
+								  	<!--</div>-->
+								</div>
+								<div class="slidecontainer">
+								  <p><span class="minute_trans">pricing</span>
+									  {{form_class.price_range}}
+									  <!--<span id="minutesRangeval"></span><a href="#"></a></p>-->
+								  <!--<input type="range" min="100" max="1000" value="500" class="slider" id="minutesRange">-->
+								</div>
+{#								<div class="slidecontainer">#}
+{#								  <p><span class="msg_trans">Messages</span>#}
+{#									  {{form_class.messages}}#}
+{#									  <!--<span id="msgRangeval"></span><a href="#"></a></p>-->#}
+{#								  <!--<input type="range" min="100" max="1000" value="500" class="slider" id="msgRange">-->#}
+{#								</div>#}
+				</div>
+				<!--<div class="col-sm-2 all_filter_div">-->
+					<!--<p>Apply Filters</p>-->
+					<!--<button class="btn add_filter_btn"><i class="flaticon-add-plus-button"></i></button>-->
+				<!--</div>-->
+
+			</div>
+				</form>
+{#			<div class="row filter_button_sec">#}
+{#				<div class="col-sm-6 fliter_btns_div">#}
+{#					{% get_plan_count as all_count%}#}
+{#					{% get_prepaid_count as pre_count%}#}
+{#					{% get_postpaid_count as post_count%}#}
+{#					<button class="main_btn text-capitalize">all <span>({{all_count}})</span></button>#}
+{#					<button class="main_btn text-capitalize">postpaid <span>({{pre_count}})</span></button>#}
+{#					<button class="main_btn text-capitalize">prepaid <span>({{post_count}})</span></button>#}
+{#				</div>#}
+{#				<div class="col-sm-6 fliter_actions_btn_div">#}
+{#					<div class="dropdown">#}
+{##}
+{#										  <button class="btn dropdown-toggle main_btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">#}
+{#										    {{ form_class.order_by.value|display }}#}
+{#										    <span class="caret"></span>#}
+{#										  </button>#}
+{#										  <ul class="dropdown-menu" >#}
+{##}
+{#										    <li><a onclick="sendsort('fee')">Lowest Price</a></li>#}
+{#										    <li><a onclick="sendsort('-fee')">Highest Price</a></li>#}
+{#										    <li><a onclick="sendsort('-message__donut_message_val')">Maximum Messages</a></li>#}
+{#										    <li><a onclick="sendsort('-data__donut_data_val')">Maximum Data</a></li>#}
+{#											<li><a onclick="sendsort('-call__donut_call_val')">Maximum Minutes</a></li>#}
+{##}
+{#										  </ul>#}
+{#					</div>#}
+{#					<button class="main_btn text-capitalize share_btn"><i class="flaticon-share"></i></button>#}
+{#				</div>#}
+{#			</div>#}
+		</div>
+	</section>
+	<section class="load_plans">
+		<div class="container load_plans_container">
+			<div class="row">
+
+{% include page_template%}
+			</div>
+		</div>
+	</section>
+<!--	<div class="load_more_div">-->
+<!--		<div class="container">-->
+<!--			<div class="load_more_btn_div">-->
+<!--				<button disabled class="load_more_btn btn">Load More<span class="load_more_icon"><img class="img-responsive" alt="Load More" src="{% static 'images/load_more_icon.png'%}"></span></button>-->
+<!--			</div>-->
+<!--		</div>-->
+<!--	</div>-->
+
+	{% endblock %}
+{% block extra_script %}
+{% include "mobile_internet_spec_modal.html" %}
+<script src="/static/el-pagination/js/el-pagination.js"></script>
+    <script>$.endlessPaginate({
+
+            paginateOnScrollMargin: 20,
+
+        });</script>
+<script >
+	// Slider script
+function sendsort(field){
+$('#sorting_id').val(field);
+searchForm = $(".plan_home_form_id");
+searchForm.submit();
+
+}
+
+function removephone(){
+$('#selected_phone_name_id').val("")
+$('#selected_phone_media_id').val("")
+$('#selected_phone_slug_id').val("")
+
+$('.remove-phone-div').css("display","none");
+var el = $('.see_selectmobile_link img');
+el.attr("src","{% static 'images/mobile.png'%}");
+el.attr("onmouseover","this.src=\'{% static 'images/mobilenewh.png'%}\'");
+el.attr("onmouseout","this.src=\'{% static 'images/mobile.png'%}\'");
+searchForm = $(".plan_home_form_id");
+searchForm.submit()
+
+}
+
+
+
+			$(document).ready(function(){
+			var name_val = $('#selected_phone_name_id').val()
+			if(name_val){
+			$('.remove-phone-div').css("display","inline-block");
+			}
+
+
+searchForm = $(".plan_home_form_id");
+searchInput = searchForm.find("input");
+
+
+var typingTimer;
+var typingInterval = 1500;
+
+searchInput.change(function(event){
+
+
+
+
+clearTimeout(typingTimer);
+typingTimer = setTimeout(submitform(searchForm),typingInterval)
+
+
+
+
+
+})
+
+
+function submitform(form){
+form.submit()
+
+}
+
+
+
+
+
+
+
+
+			});
+
+
+</script>
+{% endblock %}

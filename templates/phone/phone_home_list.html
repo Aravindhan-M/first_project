@@ -1,0 +1,39 @@
+{% load el_pagination_tags %}
+{% load i18n %}
+{% load static %}
+{% load media_url %}
+{% paginate 40 phones %}
+{% for phone in phones %}
+            <div class="col-sm-12 product-list-box">
+                    <div class="product-inrbox">
+
+                  <div class="prdct-thmb">
+                      <div class="item-photo">
+                          <a href="#"><img src="{{phone|media_url}}" alt="" class="img-responsive" style="max-width:100%;" ></a>
+                      </div>
+                  </div>
+
+                  <div class="prdct_details_div">
+                  	<div>
+	                  <h3><a href="{{phone.product_url}}" target = "_blank">{{phone.name}}</a></h3>
+	                  <p>* * {{phone.size}}-inch {{phone.display_type}}* {{phone.internal}} GB Storage, </p>
+	                   <p>{{phone.external}}* {{phone.primary_camera}} Back Camera,  </p>
+	                    <p>{{phone.secondary_camera}} Front Camera... more</p>
+	                </div>
+
+              	  </div>
+
+              	  <div class="text-center">
+                  	<button class="btn prdct_price_btn ">{{phone.price|floatformat:2}} SAR</button>
+                  	<a href="{{phone.product_url}}" target = "_blank" class="prdct_price_link"> Buy it from  Shop</a>
+              		</div>
+
+                </div>
+            </div>
+
+
+
+            <!-- PRODUCT LIST REPEATER ENDS-->
+{% endfor %}
+
+{% show_more "<div class='load_more_div'> <div class='load_more_btn_div'><button class='load_more_btn btn'>Load More</button></div></div>" %}

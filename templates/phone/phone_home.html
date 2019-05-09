@@ -1,0 +1,224 @@
+    {% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load media_url %}
+{% block title %}
+    Phones
+{% endblock %}
+{% block content %}
+<section class="product_listng_buy">
+  <div class="container">
+      <form action="{% url 'search'%}">
+   		<div class="product_listng_buy_top_div">
+   			 	<div class="row">
+
+  			<div class="col-sm-3 floatleft">
+	  		 <h4 class="slct_phn_hdr">Select Phone</h4>
+	  		</div>
+	  		<div class="col-sm-5">
+	  			<div class="search-container">
+
+			      <input type="text" placeholder="Search for products , more......." name="q" value="{{request.GET.q}}">
+			      <button type="submit"><i class="flaticon-search"></i></button>
+
+				</div>
+			 </div>
+			 <div class="col-sm-4 floatleft">
+			 	<ul class="company-clients-logos">
+						<li><img class="img-responsive" alt="verizon" src="{% static 'images/verizon-icon.png'%}"></li>
+						<li><img class="img-responsive" alt="verizon" src="{% static 'images/AT&T.png'%}"></li>
+						<li><img class="img-responsive" alt="verizon" src="{% static 'images/T-mobile.png'%}"></li>
+						<li><img class="img-responsive" alt="verizon" src="{% static 'images/sprint.png'%}"></li>
+					</ul>
+			 </div>
+  		</div>
+  	</div>
+    <div class="row">
+     <a id='show-filter' href='javascript:void(0)' class="visible-xs catfilter"><i class="flaticon-adjust"></i></a>
+      <div class="col-sm-4 col-md-3 filter-warp floatleft" id="filterdiv">
+        <div class="left-sidebar inner_div_sidebar">
+         <div class="listing_dtl_hdr_div">
+         	<p>Browse by category <span class="flaticon-down-arrow"></span></p>
+         </div>
+         <div class="filter-repeater">
+         	<h3>Categories</h3>
+         	<h4>Mobiles &amp; Tablets</h4>
+
+         	<ul>
+
+				  {% for cat in categories|slice:":4" %}
+				<li>
+                <label class="chckbox-container">{{cat}}  <input type="checkbox" value="{{cat}}" ><span class="checkmark"></span></label>
+              </li>
+				 {%endfor%}
+
+         	</ul>
+
+         </div>
+            {{form_class.store}}
+<!--          <div class="filter-repeater">-->
+<!--          	<h3>Stores</h3>-->
+<!--          	<div data-simplebar class="category-scroll-box">-->
+<!--            <ul>-->
+<!--                {% for store in stores|slice:":4" %}-->
+<!--              <li>-->
+<!--                <label class="chckbox-container">{{store}} ({%if store == 'Lulu'%}{{lucount}}{%endif%}{%if store == 'Souq'%}{{socount}}{%endif%})&#x200E;<input type="checkbox"  value="{{store}}" ><span class="checkmark"></span></label>-->
+<!--              </li>-->
+<!--               {%endfor%}-->
+<!--            </ul>-->
+<!--            <div id="store-show-section" style="display: none">-->
+<!--            	<ul>-->
+<!--                     {% for store in stores|slice:"5:" %}-->
+<!--	              <li>-->
+<!--	              	<label class="chckbox-container">{{store}} ({{count}})&#x200E;<input type="checkbox"  value="{{store}}" checked="checked"><span class="checkmark"></span></label>-->
+<!--	              </li>-->
+<!--                    {%endfor%}-->
+
+
+<!--            </ul>-->
+<!--            </div>-->
+
+<!--        	</div>-->
+<!--        	 <a href="javascript:void(0)" class="fltr-shwmre flter-ico-change" id="store-show">Show more <span class="plus-ico"><i class="flaticon-down-arrow"></i></span></a>-->
+<!--          </div>-->
+         <div class="filter-repeater">
+         {{form_class.price}}
+          </div>
+            {{form_class.color}}
+<!--          <div class="filter-repeater">-->
+<!--          	<h3>Color</h3>-->
+<!--          	<div data-simplebar class="category-scroll-box">-->
+<!--            <ul>-->
+<!--                &lt;!&ndash;<form action="{% url 'search'%}">&ndash;&gt;-->
+<!--                {% for color in colors|slice:":4" %}-->
+<!--              <li>-->
+<!--                <label class="chckbox-container">{{color}}  <input   type="checkbox"  value="{{color}}" name="color"><span class="checkmark"></span></label>-->
+<!--              </li>-->
+<!--                    {%endfor%}-->
+<!--                &lt;!&ndash;</form>&ndash;&gt;-->
+<!--            </ul>-->
+<!--            <div id="color-show-section" style="display: none">-->
+<!--            	 <ul>-->
+<!--                     {% for color in colors|slice:"5:" %}-->
+<!--              <li>-->
+<!--                <label class="chckbox-container">{{color}} <input type="checkbox" value="{{color}}" name="color"><span class="checkmark" ></span></label>-->
+<!--              </li>-->
+<!--                {%endfor%}-->
+
+<!--            </ul>-->
+<!--            </div>-->
+
+<!--        	</div>-->
+<!--        	 <a href="javascript:void(0)" class="fltr-shwmre flter-ico-change" id="color-show">Show more <span class="plus-ico"><i class="flaticon-down-arrow"></i></span></a>-->
+<!--          </div>-->
+
+            {{form_class.memory}}
+<!--          <div class="filter-repeater">-->
+<!--          	<h3>Internal Memory</h3>-->
+<!--          	<div data-simplebar class="category-scroll-box">-->
+<!--            <ul>-->
+<!--              {% for internal in internals|slice:":4" %}-->
+<!--	                   	  <li>-->
+<!--			                <label class="chckbox-container">{{internal}}<input type="checkbox" ><span class="checkmark"></span></label>-->
+<!--			              </li>-->
+<!--                    {%endfor%}-->
+
+<!--            </ul>-->
+<!--            <div id="memory-show-section" style="display: none">-->
+<!--	            <ul>-->
+<!--                    {% for internal in internals|slice:"5:" %}-->
+<!--	                   	  <li>-->
+<!--			                <label class="chckbox-container">{{internal}}<input type="checkbox" ><span class="checkmark"></span></label>-->
+<!--			              </li>-->
+<!--                    {%endfor%}-->
+<!--	            </ul>-->
+<!--            </div>-->
+
+<!--        	</div>-->
+<!--        	 <a href="javascript:void(0)" class="fltr-shwmre flter-ico-change" id="memory-show">Show more <span class="plus-ico"><i class="flaticon-down-arrow"></i></span></a>-->
+<!--          </div>-->
+        </div>
+      </div>
+      <div class="col-sm-8 col-md-9 inner_div_sidebar floatright prdct_list_div">
+
+        <div class="listngs-wrap">
+
+          <div class="row search-sort-top">
+            <div class="col-sm-12 col-md-6">
+
+            		 <p class="showing_desc">Showing best prices for <span class="catgr_slctd_name">Mobiles & Tablets</span> in {{country.country_full_name}}
+
+            </div>
+            <div class="col-sm-12 col-md-6 text-right sort_by_div">
+              {{form_class.sort_by}}
+            </div>
+          </div>
+
+          <div class="row">
+            <!-- PRODUCT LIST REPEATER STARTS -->
+{% include page_template%}
+          </div>
+
+
+        </div>
+
+<!--        <div class="load_more_div">-->
+<!--			<div class="load_more_btn_div">-->
+<!--				<a href="?page={{ page_obj.next_page_number }}" class="load_more_btn btn">Load More <span class="load_more_icon"><img class="img-responsive" alt="Load More" src="{% static 'images/load_more_icon.png'%}"></span></a>-->
+<!--			</div>-->
+<!--	</div>-->
+<!--          -->
+      </div>
+    </div>
+          </form>
+  </div>
+
+</section>
+
+{% endblock %}
+{% block extra_script %}
+    <script src="/static/el-pagination/js/el-pagination.js"></script>
+<script>$.endlessPaginate({
+   paginateOnScrollMargin: 20,
+
+   });
+</script>
+<script>
+<!--var query=[]-->
+<!--$('input[name=color]').click(function() {-->
+
+<!--    if($(this).is(':checked')) {-->
+<!--    query.push($(this).val())-->
+<!--        console.log(query)-->
+<!--    } else {-->
+<!--        query = query.filter(query => query !== $(this).val())-->
+<!--        console.log(query)-->
+<!--    }-->
+<!--    performAjax(JSON.stringify(query))-->
+
+<!--    console.log((query))-->
+<!--});-->
+
+
+
+
+<!--function performAjax(data){-->
+<!--$.ajax-->
+<!--({-->
+<!--  type: "GET",-->
+<!--  url: '{% url "search" %}',-->
+<!--  data: {-->
+<!--  q:data-->
+<!--  },-->
+<!--  success: function(data)-->
+<!--  {-->
+
+<!--  }-->
+<!--});-->
+
+<!--}-->
+</script>
+{% endblock %}
+
+
+

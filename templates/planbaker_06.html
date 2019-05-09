@@ -1,0 +1,429 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}
+{% load plan_tags %}
+    Plans
+{% endblock %}
+{% block content %}
+	<section class="mid-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-sm-12 floatleft">
+					<h2 class="main-hdng"> <span class="choose_best_plans_for">{% trans "Choose the Best Plans for"%}</span>
+					<span class="mobilephonr_trans">{% trans "Mobile Internet"%}</span> </h2>
+					<ul class="company-clients-logos">
+
+                        {% operator_images "internet" %}
+					</ul>
+                    <form method="GET" action="{% url 'mobile_internet_operators' %}">
+					<div class="networks client_network">
+						<div class="row flex_eqH">
+							<div class="col-md-4 networks-div netwrk_flex_div">
+								<h2 class="main-hdng text-capitalize">{% trans "Select Internet Device"%}</h2>
+								{{form_class.phone_name}}
+                            {{form_class.phone_media}}
+                            {{form_class.phone_slug}}
+
+                                <div class="select-phone nw_space_even">
+									<div class="select-phone-div  img-block">
+										<a href="#" class="see_selectmobile_link" data-toggle="modal" >
+											<img class="img-responsive" alt="Mobile Icon" src="{% static 'images/icon-mobile.png'%}"
+											onmouseover="this.src='{% static 'images/internewh.png'%}'"
+    									onmouseout="this.src='{% static 'images/icon-mobile.png'%}'"></a>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 networks-div filter netwrk_flex_div monthly_usage_div">
+								<h2 class="main-hdng text-capitalize">{% trans "Monthly Usage"%} : <a href="#" data-toggle="modal" data-target="#dataUsageCalcModal"><img src="{% static 'images/i-icon.png'%}"></a></h2>
+								<div class="nw_space_even">
+{#									<div class="slidecontainer">#}
+{#										<p id="data_text"><span class="data_trans data_def">{% trans "Data"%}: </span><span id="mobileDataRangeval" class="data_def_val"></span>MB </p>#}
+{#									  	{{form_class.data}}#}
+{#									</div>#}
+
+                                    <div class="slidecontainer">
+									<p id="data_text"><span class="data_trans">{% trans "Data"%}: </span>
+										{{form_class.data}}
+										<!--<span id="dataRangeval"></span>GB </p>-->
+
+								  	<!--<input type="range" min="0" max="100" value="0" class="slider" id="dataRange">-->
+
+								</div>
+
+								</div>
+							</div>
+							<div class="col-md-4 networks-div netwrk_flex_div">
+								<h2 class="main-hdng text-capitalize">{% trans "Network"%}</h2>
+								<div class="nw_space_even">
+{#										<div class="dropdown netwrk-dropdwn">#}
+{#										  <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">#}
+{#										    English#}
+{#										    <span class="caret"></span>#}
+{#										  </button>#}
+{#										  <ul class="dropdown-menu" >#}
+{#										    <li><a href="#">Action</a></li>#}
+{#										    <li><a href="#">Another action</a></li>#}
+{#										    <li><a href="#">Something else here</a></li>#}
+{#										    <li><a href="#">Separated link</a></li>#}
+{#										  </ul>#}
+{#										</div>#}
+
+                                         {{form_class.selected_network}}
+
+										{% operator "internet" %}
+										<div class="plan_availabe">
+                                            {% get_mobile_plan_count as count%}
+											<p class="plan_availabe_text"><span class="plan_availabe_text_span" style="font-size: 36px;font-weight: 600;">{{ count }}</span><span class="text-capitalize plan_availabe_trnslte">{% trans "Plans Available"%}</span></p>
+										</div>
+										<div class="search_op_div">
+											<button type="submit" class="btn search_op_btn text-capitalize">{% trans "Search All Operators"%}</button>
+										</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+                    </form>
+					<div class="plans_div">
+						<h2 class="main-hdng">Lorem Ipsum </h2>
+						<p class="sub-hdr-line">Lorem Ipsum is simply dummy text of the printing </p>
+						<div class="row plans_inner_div flex_eqH">
+							<div class="col-sm-3">
+								<div class="plan_icon img-block"><img src="{% static 'images/star.png'%}" class="img-responsive" alt="star">
+								</div>						
+								<div class="tag">
+									<a href="#">Lorem Ipsum</a>
+								</div>
+								<p class="plan_desc">
+									Lorem Ipsum is simply 
+									dummy text of the printing
+								</p>
+							</div>
+							<div class="col-sm-3">
+								<div class="plan_icon img-block"><img src="{% static 'images/icon-01.png'%}" class="img-responsive" alt="star"></div>
+								<div class="tag">
+									<a href="#">Lorem Ipsum</a>
+								</div>
+								<p class="plan_desc">
+									Lorem Ipsum is simply 
+									dummy text of the printing
+								</p>
+							</div>
+							<div class="col-sm-3">
+								<div class="plan_icon img-block"><img src="{% static 'images/icon-02.png'%}" class="img-responsive" alt="star"></div>
+								<div class="tag">
+									<a href="#">Lorem Ipsum</a>
+								</div>
+								<p class="plan_desc">
+									Lorem Ipsum is simply 
+									dummy text of the printing
+								</p>
+							</div>
+							<div class="col-sm-3">
+								<div class="plan_icon img-block"><img src="{% static 'images/icon-01.png'%}" class="img-responsive" alt="star"></div>
+								<div class="tag">
+									<a href="#">Lorem Ipsum</a>
+								</div>
+								<p class="plan_desc">
+									Lorem Ipsum is simply 
+									dummy text of the printing
+								</p>
+							</div>
+							
+						</div>
+					</div>
+					<div class="top_products">
+						<h2 class="main-hdng text-center text-capitalize">{% trans "Top Smartphones"%} </h2>
+							<div class="top_products_slides top_products_slides1 dsply_flx">															
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="{% static 'images/mob-01.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+										</div>
+										<div class="thumb-content">
+											<h4 class="text-capitalize">Google pixel 3</h4>
+											<!-- <div class="star-rating">
+												<ul class="list-inline">
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div> -->
+											<a href="#" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">{% trans "See specifications"%}</a>
+											<a href="{% url 'operators'%}" class="available_in_12_plans">{% trans "Available in 12 plans"%}</a>
+											<a href="{% url 'search'%}" class="buymobilephoneonly">{% trans "Buy mobile Phone"%}</a>
+										</div>
+									</div>
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="{% static 'images/mob-02.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+										</div>
+										<div class="thumb-content">
+											<h4 class="text-capitalize">iPhone XR</h4>
+											<!-- <div class="star-rating">
+												<ul class="list-inline">
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div> -->
+											<a href="#" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">{% trans "See specifications"%}</a>
+											<a href="{% url 'mobile_internet_operators'%}" class="available_in_12_plans">{% trans "Available in 12 plans"%}</a>
+											<a href="{% url 'search'%}" class="buymobilephoneonly">{% trans "Buy mobile Phone"%}</a>
+										</div>
+									</div>
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="{% static 'images/mob-03.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+										</div>
+										<div class="thumb-content">
+											<h4 class="text-capitalize">OnePlus 6t</h4>
+											<!-- <div class="star-rating">
+												<ul class="list-inline">
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div> -->
+										<a href="#" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">{% trans "See specifications"%}</a>
+											<a href="{% url 'operators'%}" class="available_in_12_plans">{% trans "Available in 12 plans"%}</a>
+											<a href="{% url 'search'%}" class="buymobilephoneonly">{% trans "Buy mobile Phone"%}</a>
+										</div>
+									</div>
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="{% static 'images/mob-04.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+										</div>
+										<div class="thumb-content">
+											<h4 class="text-capitalize">Huawei Mate 20 Pro</h4>
+											<!-- <div class="star-rating">
+												<ul class="list-inline">
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div> -->
+										<a href="#" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">{% trans "See specifications"%}</a>
+											<a href="{% url 'operators'%}" class="available_in_12_plans">{% trans "Available in 12 plans"%}</a>
+											<a href="{% url 'search'%}" class="buymobilephoneonly">{% trans "Buy mobile Phone"%}</a>
+										</div>
+									</div>
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="{% static 'images/mob.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+										</div>
+										<div class="thumb-content">
+											<h4 class="text-capitalize">Google pixel 3</h4>
+											<!-- <div class="star-rating">
+												<ul class="list-inline">
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div> -->
+											<a href="#" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">{% trans "See specifications"%}</a>
+											<a href="{% url 'operators'%}" class="available_in_12_plans">{% trans "Available in 12 plans"%}</a>
+											<a href="{% url 'search'%}" class="buymobilephoneonly">{% trans "Buy mobile Phone"%}</a>
+										</div>
+							</div>
+						</div>
+						<div class="top_products_slides top_products_slides2 dsply_flx">
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="{% static 'images/mobile-large.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+										</div>
+										<div class="thumb-content">
+											<h4 class="text-capitalize">Google pixel 3</h4>
+											<!-- <div class="star-rating">
+												<ul class="list-inline">
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div> -->
+											<a href="#" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">{% trans "See specifications"%}</a>
+											<a href="{% url 'operators'%}" class="available_in_12_plans">{% trans "Available in 12 plans"%}</a>
+											<a href="{% url 'search'%}" class="buymobilephoneonly">{% trans "Buy mobile Phone"%}</a>
+										</div>
+									</div>
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="{% static 'images/mob-02.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+										</div>
+										<div class="thumb-content">
+											<h4 class="text-capitalize">iPhone XR</h4>
+											<!-- <div class="star-rating">
+												<ul class="list-inline">
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div> -->
+											<a href="#" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">{% trans "See specifications"%}</a>
+											<a href="{% url 'operators'%}" class="available_in_12_plans">{% trans "Available in 12 plans"%}</a>
+											<a href="{% url 'search'%}" class="buymobilephoneonly">{% trans "Buy mobile Phone"%}</a>
+										</div>
+									</div>
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="{% static 'images/mob-03.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+										</div>
+										<div class="thumb-content">
+											<h4 class="text-capitalize">OnePlus 6t</h4>
+										<!-- 	<div class="star-rating">
+												<ul class="list-inline">
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div> -->
+											<a href="#" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">{% trans "See specifications"%}</a>
+											<a href="{% url 'operators'%}" class="available_in_12_plans">{% trans "Available in 12 plans"%}</a>
+											<a href="{% url 'search'%}" class="buymobilephoneonly">{% trans "Buy mobile Phone"%}</a>
+										</div>
+									</div>
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="{% static 'images/mob-04.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+										</div>
+										<div class="thumb-content">
+											<h4 class="text-capitalize">Huawei Mate 20 Pro</h4>
+											<!-- <div class="star-rating">
+												<ul class="list-inline">
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div> -->
+											<a href="#" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">{% trans "See specifications"%}</a>
+											<a href="{% url 'operators'%}" class="available_in_12_plans">{% trans "Available in 12 plans"%}</a>
+											<a href="{% url 'search'%}" class="buymobilephoneonly">{% trans "Buy mobile Phone"%}</a>
+										</div>
+									</div>
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="{% static 'images/mob.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+										</div>
+										<div class="thumb-content">
+											<h4 class="text-capitalize">Google pixel 3</h4>
+											<!-- <div class="star-rating">
+												<ul class="list-inline">
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star"></i></li>
+													<li class="list-inline-item"><i class="fa fa-star-o"></i></li>
+												</ul>
+											</div> -->
+											<a href="#" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">{% trans "See specifications"%}</a>
+											<a href="{% url 'operators'%}" class="available_in_12_plans">{% trans "Available in 12 plans"%}</a>
+											<a href="{% url 'search'%}" class="buymobilephoneonly">{% trans "Buy mobile Phone"%}</a>
+										</div>						
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-12 floatright">
+
+					<div class="adverstisement_div">
+						<a href="" target="_blank" rel="nofollow" title="" class="zone1">
+							<img width = "100%" height="100%" src="" class="img-responsive img-fluid zone1" />
+						</a>
+					</div>
+					<div class="adverstisement_div">
+						<a href="" target="_blank" rel="nofollow" title="" class="zone2">
+							<img id = "pisb1"  width = "100%" height="100%" src="" class="img-responsive img-fluid zone2" />
+						</a>
+					</div>
+					<div class="adverstisement_div">
+						<a   href="" target="_blank" rel="nofollow" title="" class="zone3">
+							<img   width = "100%" height="100%" src="" class="img-responsive img-fluid zone3" />
+						</a>
+					</div>
+					<div class="adverstisement_div">
+						<a  href="" target="_blank" rel="nofollow" title="" class="zone4">
+							<img width = "100%" height="100%" src="" class="img-responsive img-fluid zone4" />
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
+{% block extra_script %}
+
+{% include "mobile_internet_spec_modal.html" %}
+ {% include "datausagemodal.html"%}
+<script >
+$(".net_cl").click(function(){
+var clicked = $(this);
+var plan_name = clicked.attr("value");
+
+$("#selected_network_id").val(plan_name).trigger('change');
+});
+
+
+$('.plan_form_class').change( function(){
+ $('.plan_availabe_text_span').jmspinner('small');
+var data = $('form').serialize();
+console.log(data);
+$.ajax({
+        type: "GET",
+        url: '{% url "mobile_plan_count" %}',
+        data: data,
+        success: function(data) {
+        $('.plan_availabe_text_span').jmspinner(false);
+        var htmlString = data
+        $('.plan_availabe_text_span').html(htmlString)
+
+
+<!--        $('.plan_availabe_text').contents().get(0).nodeValue = data;-->
+
+
+        },
+        error: function(data) {
+        console.log("data is :")
+        console.log(data)
+        $('.plan_availabe_text').contents().get(0).nodeValue = 0;
+
+        }
+        })
+
+});
+
+$(document).ready(function(){
+ initializeRangeSlider('#mobileDataRange');
+
+});
+	// Slider script
+			// Data slider
+			var mobileDataRange_slider = document.getElementById("mobileDataRange");
+			var mobileDataRangeval_output = document.getElementById("mobileDataRangeval");
+			mobileDataRangeval_output.innerHTML = mobileDataRange_slider.value;
+			mobileDataRange_slider.oninput = function() {
+			  mobileDataRangeval_output.innerHTML = this.value;
+			}
+
+</script>
+ {% endblock %}

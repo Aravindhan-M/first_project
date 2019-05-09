@@ -1,0 +1,80 @@
+{% load media_url %}
+
+
+<div class="pills_section">
+	          	<div class="pill_tab_sec">
+	          		 <ul class="nav nav-pills nav-stacked" role="tablist">
+					    <li role="presentation" class="active"><a href="#display" aria-controls="display" role="tab" data-toggle="tab"><span class="flaticon-smartphone-call"></span>Display</a></li>
+					    <li role="presentation"><a href="#camera" aria-controls="camera" role="tab" data-toggle="tab"><span class="flaticon-frame-landscape"></span>Camera</a></li>
+					    <li role="presentation"><a href="#media" aria-controls="media" role="tab" data-toggle="tab"><span class="flaticon-music-player"></span>Media</a></li>
+					    <li role="presentation"><a href="#physical" aria-controls="physical" role="tab" data-toggle="tab"><span class="flaticon-smartphone-call"></span>Physical</a></li>
+					    <li role="presentation"><a href="#general" aria-controls="general" role="tab" data-toggle="tab"><span class="flaticon-gear"></span>General</a></li>
+					    <li role="presentation"><a href="#connectivity" aria-controls="connectivity" role="tab" data-toggle="tab"><span class="flaticon-wifi-connection-signal-symbol"></span>Connectivity</a></li>
+					     <li role="presentation"><a href="#memory" aria-controls="memory" role="tab" data-toggle="tab"><span class="flaticon-memory-card"></span>Memory</a></li>
+					    <li role="presentation"><a href="#msging" aria-controls="msging" role="tab" data-toggle="tab"><span class="flaticon-contact"></span>Messaging</a></li>
+					  </ul>
+	          	</div>
+	          	<div>
+	          		<div class="tab-content">
+					    <div role="tabpanel" class="tab-pane active" id="display">
+
+					    		<div class="table-responsive">
+								  <table class="table table-striped table-bordered">
+								 <tbody>
+								 	  <tr>
+								        <th>Operating System</th>
+								         <td>{{details.os}}</td>
+								      </tr>
+								      <tr>
+								        <th>Brand</th>
+								        <td>{{details|brand_filter}}</td>
+								      </tr>
+								      <tr>
+								        <th>Price</th>
+								        <td>{{details.price}}</td>
+								      </tr>
+								      <tr>
+								        <th>Internal</th>
+								        <td>{{details.internal}}</td>
+								      </tr>
+								      <tr>
+								        <th>External</th>
+								        <td>{{details.external}}</td>
+								      </tr>
+								      <tr>
+								        <th>Video Formats</th>
+								        <td>HEVC,H.264,MPEG-4 Part 2,and JPEG</td>
+								      </tr>
+
+								    </tbody>
+								  </table>
+								 </div>
+
+					    </div>
+
+                        <div role="tabpanel" class="tab-pane" id="camera">
+
+					    		<div class="table-responsive">
+								  <table class="table table-striped table-bordered">
+								 <tbody>
+								 	  <tr>
+								        <th>Primary Camera</th>
+								         <td>{{details.primary_camera}}</td>
+								      </tr>
+								      <tr>
+								        <th>Secondary Camera</th>
+								        <td>{{details.primary_camera}}</td>
+								      </tr>
+                                       </tbody>
+								  </table>
+								 </div>
+                        </div>
+					    <div role="tabpanel" class="tab-pane" id="media">...</div>
+					    <div role="tabpanel" class="tab-pane" id="physical">...</div>
+					    <div role="tabpanel" class="tab-pane" id="general">home</div>
+					    <div role="tabpanel" class="tab-pane" id="connectivity">Camera</div>
+					    <div role="tabpanel" class="tab-pane" id="memory">...</div>
+					    <div role="tabpanel" class="tab-pane" id="msging">...</div>
+					  </div>
+	          	</div>
+	          </div>

@@ -1,0 +1,9 @@
+
+{% if ad %}
+{{ad}}
+{% for image in ad.images.all %}
+
+<a href="{% url 'ads:ad-click' ad.id %}" target="_blank" rel="nofollow" title="{{ ad.title }}" class="django-ads-ad visible-{{ image.device }}"><img src="{{ image.image.url }}" class="img-responsive" /></a>
+{% endfor %}
+
+{% endif %}

@@ -1,0 +1,107 @@
+<span id="{{ widget.slide_ranger_id }}_val"></span>
+<!--{% if widget.name == 'data' %}<span> GB </span>{%endif%}-->
+{% if widget.name == 'price_range' %}<span> {{ widget.currency }} </span>{%endif%}
+</p>
+
+{% include "django/forms/widgets/input.html" %}
+{% if widget.name == 'price_range' %}
+<script>
+
+
+    var {{ widget.slide_ranger_id }} = document.getElementById("{{ widget.slide_ranger_id }}");
+			var {{ widget.slide_ranger_id }}_val = document.getElementById("{{ widget.slide_ranger_id }}_val");
+			{{ widget.slide_ranger_id }}_val.innerHTML = {{ widget.slide_ranger_id }}.value ;
+			{{ widget.slide_ranger_id }}.oninput = function() {
+			  {{ widget.slide_ranger_id }}_val.innerHTML = this.value * Math.floor({{widget.rate}});
+			}
+
+
+
+			    var val = ($('#{{ widget.slide_ranger_id }}').val() * Math.floor({{widget.rate}}) - $('#{{ widget.slide_ranger_id }}').attr('min')) / ($('#{{ widget.slide_ranger_id }}').attr('max') - $('#{{ widget.slide_ranger_id }}').attr('min'));
+          $('#{{ widget.slide_ranger_id }}').css('background-image',
+                '-webkit-gradient(linear, left top, right top, '
+                + 'color-stop(' + val + ', #3c94e6), '
+                + 'color-stop(' + val + ', #cfe1f1)'
+                + ')'
+                );
+
+  $('#{{ widget.slide_ranger_id }}').on('change mousemove',function () {
+          var val = ($(this).val()  - $(this).attr('min')) / ($(this).attr('max') - $(this).attr('min'));
+
+          $(this).css('background-image',
+                '-webkit-gradient(linear, left top, right top, '
+                + 'color-stop(' + val + ', #3c94e6), '
+                + 'color-stop(' + val + ', #cfe1f1)'
+                + ')'
+                );
+  });
+  $('#{{ widget.slide_ranger_id }}').on('change touchmove',function () {
+          var val = ($(this).val() * Math.floor({{widget.rate}})- $(this).attr('min')) / ($(this).attr('max') - $(this).attr('min'));
+          $(this).css('background-image',
+                '-webkit-gradient(linear, left top, right top, '
+                + 'color-stop(' + val + ', #3c94e6), '
+                + 'color-stop(' + val + ', #cfe1f1)'
+                + ')'
+                );
+  });
+</script>
+{%else%}
+<script>
+
+
+    var {{ widget.slide_ranger_id }} = document.getElementById("{{ widget.slide_ranger_id }}");
+			var {{ widget.slide_ranger_id }}_val = document.getElementById("{{ widget.slide_ranger_id }}_val");
+			if('{{widget.name}}' == 'data'){
+			   {{ widget.slide_ranger_id }}_val.innerHTML = {{ widget.slide_ranger_id }}.value + " GB";
+			   }
+			   else{
+			   {{ widget.slide_ranger_id }}_val.innerHTML = {{ widget.slide_ranger_id }}.value;
+			   }
+
+			{{ widget.slide_ranger_id }}.oninput = function() {
+			if(this.value==500){
+			{{ widget.slide_ranger_id }}_val.innerHTML = "Unlimited"
+			}
+			  else{
+			   if('{{widget.name}}' == 'data'){
+			   {{ widget.slide_ranger_id }}_val.innerHTML = this.value + " GB";
+			   }
+			   else{
+			   {{ widget.slide_ranger_id }}_val.innerHTML = this.value;
+			   }
+
+
+
+			  }
+			}
+
+
+
+			    var val = ($('#{{ widget.slide_ranger_id }}').val() - $('#{{ widget.slide_ranger_id }}').attr('min')) / ($('#{{ widget.slide_ranger_id }}').attr('max') - $('#{{ widget.slide_ranger_id }}').attr('min'));
+          $('#{{ widget.slide_ranger_id }}').css('background-image',
+                '-webkit-gradient(linear, left top, right top, '
+                + 'color-stop(' + val + ', #3c94e6), '
+                + 'color-stop(' + val + ', #cfe1f1)'
+                + ')'
+                );
+
+  $('#{{ widget.slide_ranger_id }}').on('change mousemove',function () {
+          var val = ($(this).val() - $(this).attr('min')) / ($(this).attr('max') - $(this).attr('min'));
+          $(this).css('background-image',
+                '-webkit-gradient(linear, left top, right top, '
+                + 'color-stop(' + val + ', #3c94e6), '
+                + 'color-stop(' + val + ', #cfe1f1)'
+                + ')'
+                );
+  });
+  $('#{{ widget.slide_ranger_id }}').on('change touchmove',function () {
+          var val = ($(this).val() - $(this).attr('min')) / ($(this).attr('max') - $(this).attr('min'));
+          $(this).css('background-image',
+                '-webkit-gradient(linear, left top, right top, '
+                + 'color-stop(' + val + ', #3c94e6), '
+                + 'color-stop(' + val + ', #cfe1f1)'
+                + ')'
+                );
+  });
+</script>
+{%endif%}

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+{% load i18n %}
+
+{% load static %}
+{% load media_url %}
+
+{% get_current_language as LANGUAGE_CODE %}
+
+{% get_available_languages as LANGUAGES %}
+
+<html {%if LANGUAGE_BIDI%} style="direction:rtl;" {%endif%} lang="en-US">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    {% url 'mobileplans' as mobileplans_url %}
+
+    {% url 'mobile' as phone_url %}
+
+    {% url 'mobileinternet' as plan_url%}
+
+    {% url 'fixedinternet' as adsl_url%}
+
+    {% url 'add' as add_url%}
+
+    {% url 'sign_up_in' as register_url%}
+
+    {% include "headerstatic.html" %}
+
+    {% include "footerstatic.html" %}
+
+    <style>
+
+ .home_section{background-image: url({{country.country_banner|operator_logo}});background-repeat: no-repeat;background-size: 100%;height: 695px;background-position: center bottom;position: relative;}
+ @media screen and (max-width:767px)
+ {
+ .home_section{ display: flex; justify-content: center; align-items: center;height: 300px;background-size: cover;}
+ }
+ @media only screen and (min-width:768px) and (max-width:991px){
+ home_section{height: 300px;background-size: cover;}
+ }
+ @media only screen and (min-width:768px) and (max-width:991px) and (orientation:landscape){
+ .home_section{height: 300px;background-size: cover;}
+ }
+ @media only screen and (min-width: 992px) and (max-width:1200px) {
+ .home_section{height: 300px;background-size: cover;}
+ }
+ @media only screen and (min-width: 1201px) and (max-width:1830px) {
+   .home_section{height: 400px;background-size: cover;}
+ }
+
+ footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height:6.5rem;
+              /* Footer height */
+}
+body{
+position: relative;
+  min-height: 100vh;
+  padding-bottom: 6.5rem;
+
+}
+    </style>
+
+</head>
+
+<body>
+{% csrf_token %}
+<!-- HEADER SECTION STARTS -->
+
+<header>
+
+    <div class="container">
+
+        <nav class="navbar custom-navbar">
+
+            <div class="logo_and_action_div">
+
+                <!-- Brand and toggle get grouped for better mobile display -->
+
+                <div class="navbar-header">
+
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+
+                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+
+                        <span class="sr-only">Toggle navigation</span>
+
+                        <span class="icon-bar"></span>
+
+                        <span class="icon-bar"></span>
+
+                        <span class="icon-bar"></span>
+
+                    </button>
+
+                    <a class="logo-div" href="{% url 'home'%}"><img src="{% static 'images/plan-baker-logo.png'%}"
+
+                                                                    class="img-responsive" alt="Logo"></a>
+
+                </div>
+
+                <ul class="user_hdr_action_div">
+
+
+                    <li class="login_or_reg">{% if user.is_authenticated %}<a href="{% url 'logout'%}">{% trans "Logout"%}</a>
+                        {%else%}<a href="{% url 'login'%}">{% trans "Login"%}</a>{%endif%}
+                        <a href="{% url 'registration'%}">{% trans "Register"%}</a>
+
+                    </li>
+
+                    <li>
+
+                        <div class="dropdown custom_hdr_dropdwn">
+
+                            <button class="btn  dropdown-toggle currncy_dropdwn_btn" type="button"
+
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                                    {{request.session.currency}}
+
+                                <span class="caret"></span>
+
+                            </button>
+
+                            <ul class="dropdown-menu">
+                                {% for available_currency in country.currency%}
+
+                                 <li ><a href="#" class="session_currency" value={{available_currency}}>{{available_currency}}</a></li>
+
+                                {%endfor%}
+
+                            </ul>
+
+                        </div>
+
+                    </li>
+
+                    <li>
+
+                        <!--<div id="selectLanguageDropdown" class="localizationTool"></div>-->
+
+                        <div class="dropdown custom_hdr_dropdwn" >
+
+                            <button class="btn btn-sm  btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                {{LOCALE_LANG}}<span class="caret"></span>
+
+                            </button>
+
+                            <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+{% for available_lang in country.allowed_laguages%}
+
+
+
+                                <li><a href="/{{available_lang}}{{request.get_full_path|slice:'3:'}}">{{ available_lang|get_local_name}}</a></li>
+
+                               {% endfor %}
+
+
+                            </ul>
+
+
+
+                        </div>
+
+                    </li>
+
+
+                    <!-- <li>
+
+                        <div class="dropdown custom_hdr_dropdwn" >
+
+                          <button class="btn lang_dropdwn_btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+
+                            Language
+
+                            <span class="caret"></span>
+
+                          </button>
+
+                          <ul class="dropdown-menu language_dropdwn">
+
+                            <li><a href="#">English</a></li>
+
+                            <li><a href="#">Arabic</a></li>
+
+                          </ul>
+
+                        </div>
+
+                    </li> -->
+                    <!--<li><a data-val="BH"><i class="flagstrap-icon flagstrap-bh" style="margin-right: 10px;"></i>Bahrain</a></li>-->
+
+                    <!--<li>-->
+
+                        <!--<div id="demo" class="custom_hdr_dropdwn country_dropdown"-->
+
+                             <!--data-input-name="country"-->
+
+                             <!--data-selected-country="SA"-->
+
+                             <!--data-scrollable="true"-->
+
+                             <!--data-scrollable-height="250px">-->
+
+                        <!--</div>-->
+                    <!--</li>-->
+                     <li>
+
+                        <!--<div id="selectLanguageDropdown" class="localizationTool"></div>-->
+
+                        <div class="dropdown custom_hdr_dropdwn" >
+
+                            <button class="btn btn-sm  btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{country.name}}
+
+                                <span class="caret"></span>
+
+                            </button>
+                            <form method="GET" class="sess">
+                            <input type="hidden" class="session_value" value="{{request.session.country}}">
+                                </form>
+
+                            <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton">
+
+                                {% for country in obj%}
+
+
+
+
+
+
+                                <li><a href="#" type ="country" class="session_set" value={{country.country_code}}><img  src={{country.country_flag|operator_logo}} class="img-responsive" style="width:30px;float:left;margin-left:-10px"
+
+                                    alt="Logo"><span style="padding:10px">{{country.name}}</span></a></li>
+                                {%endfor%}
+
+
+                            </ul>
+
+                        </div>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+
+            <div class="collapse navbar-collapse custom-collapse" id="bs-example-navbar-collapse-1">
+
+                <ul class="nav navbar-nav">
+
+                    <li><a class="baselink {% if mobileplans_url == request.path %}active{% endif %}"
+
+                           href="{{mobileplans_url}}">{% trans "Mobile plans"%}</a></li>
+
+                    <li><a class="baselink {% if phone_url == request.path %}active{% endif %}" href="{{phone_url}}">{% trans "Mobile Phones"%}</a></li>
+
+                    <li><a class="baselink {% if plan_url == request.path %}active{% endif %}" href="{{plan_url}}">{% trans "Mobile Internet"%}</a></li>
+
+                    <li><a class="baselink {% if adsl_url == request.path %}active{% endif %}" href="{{adsl_url}}">{% trans "Fixed Internet"%}</a></li>
+
+                    <li><a class="baselink {% if add_url == request.path %}active{% endif %}" href="{{add_url}}">{% trans "Additional Services"%}</a></li>
+
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
+
+        </nav>
+
+    </div>
+
+</header>
+<script>
+
+$(".session_currency").click(function(){
+console.log($(this).attr('value'))
+ var names = {
+        session_data:$(this).attr('value'),
+        };
+     var url = '/set_currency/';
+     ajax_session(url,names)
+
+
+
+
+    })
+
+    $(".session_set").click(function(){
+
+    var names = {
+        session_data:$(this).attr('value'),
+        };
+     var url = '/set_session/';
+     ajax_session(url,names)
+    })
+
+
+    function ajax_session(url,names){
+      $.ajax({
+
+        url : url,
+        type : 'GET',
+        data : names,
+        success:function(data){
+
+        location.reload();
+        }
+    })
+    }
+</script>
+
+<!-- HEADER SECTION ENDS -->
+
+{% block content %}
+
+<!--modal starts here -->
+
+<div id="myModal" class="modal fade" role="dialog">
+
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+        <h4 class="modal-title">Plan Baker Survey</h4>
+
+      </div>
+
+      <div class="modal-body">
+
+        <center>
+
+            <div class="embed-responsive embed-responsive-4by3">
+
+<iframe class="embed-responsive-item" id="form_modal" src="" width="500" height="500" frameborder="0"
+
+marginheight="0" marginwidth="0">Loading...</iframe>
+
+            </div>
+
+    </center>
+
+      </div>
+
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+  <!--modal ends here -->
+
+{% endblock %}
+
+<!-- FOOTER SECTION STARTS -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-sm-5">
+
+                <a class="logo-div" href="#"><img src="{% static 'images/plan-baker-logo.png'%}" class="img-responsive"
+
+                                                  alt="Logo"></a>
+
+            </div>
+
+            <div class="col-sm-7">
+
+                <div class="copyright"><p>{% trans "Copyright"%} © 2019 PlanBaker Inc.</p></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>
+
+<!-- FOOTER SECTION ENDS -->
+
+{% include "social.html" %}
+
+<!-- share icon fixed at bottom -->
+
+{% block extra_script %}
+
+    <script>
+
+
+
+
+function myFunction() {
+
+ $.ajax({
+
+        url : 'survey/',
+
+        method : 'GET',
+
+        processData: false,
+
+        contentType: false,
+
+        success:function(data) {
+
+            localStorage.setItem('startTime', '');
+
+            if (data.status) {
+
+                $("#form_modal").attr("src",data.survey_url)
+
+                $("#myModal").modal('show');
+
+            }
+
+        }
+
+    });
+
+}
+
+var oldStartTime = localStorage.getItem('startTime');
+
+var startTime = oldStartTime ? new Date(oldStartTime) : new Date();
+
+localStorage.setItem('startTime', startTime);
+
+// you can now use startTime to determine the remaining duration for setTimeout:
+
+var elapsed = new Date() - startTime;
+
+var duration = 18000 - elapsed;
+
+console.log("duration", duration);
+
+setTimeout(myFunction, duration);
+
+</script>
+
+{% endblock %}
+
+</body>
+
+</html>

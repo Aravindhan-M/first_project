@@ -1,0 +1,167 @@
+{% load i18n %}
+{% load static %}
+<div class="modal fade custom_dataUsageCalcModal" id="dataUsageCalcModal" role="dialog">
+	    <div class="modal-dialog modal-lg">
+
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	        	  <button type="button" class="btn btn-default close1" data-dismiss="modal" aria-label="Close"><i class="fa fa-times fa-lg" aria-hidden="true"></i></button>
+	        	  <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+	          <h4 class="modal-title">Internet Data Calculator</h4>
+	        </div>
+	        <div class="modal-body">
+	        	<div class="modal-body_hdr">
+	        		<h4 >Estimate your monthly data usage</h4>
+	        	</div>
+	         <div class="row eqH">
+	         	<div class="col-sm-8 floatleft">
+	         		<div class="estimate_slider_maindiv">
+	         			<div class="estimate_slider_desc_div">
+	         				<p>Use the sliders below to estimate how much usage, on average, your monthly Internet
+								activities take. Or click a data amount on the bar on the right to see a preset data package.</p>
+	         			</div>
+	         			<div class="estimate_sliders">
+	         				<div class="estimate_slidecontainer">
+	         					<div class="estimate_sliders_icons">
+	         						<img src="{% static 'images/mail.png'%}" class="img-responsive" alt="email icon">
+	         					</div>
+	         					<div class="estimate_slider_ranger">
+									<p><span class="estimate_slider_ranger_desc">Emails sent and received*</span><span id="emailsentRangeval"></span>  Emails</p>
+								  	<input type="range" min="0" max="40000" value="0"   class="slider" id="emailsentRange">
+								</div>
+							</div>
+							<div class="estimate_slidecontainer">
+	         					<div class="estimate_sliders_icons">
+	         						<img src="{% static 'images/music.png'%}" class="img-responsive" alt="music icon">
+	         					</div>
+	         					<div class="estimate_slider_ranger">
+									<p><span class="estimate_slider_ranger_desc">Hours of streaming music</span><span id="musicRangeval"></span>  Hours</p>
+								  	<input type="range" min="0" max="8500" value="0" class="slider" id="musicRange">
+								</div>
+							</div>
+							<div class="estimate_slidecontainer">
+	         					<div class="estimate_sliders_icons">
+	         						<img src="{% static 'images/web.png'%}" class="img-responsive" alt="web icon">
+	         					</div>
+	         					<div class="estimate_slider_ranger">
+									<p><span class="estimate_slider_ranger_desc">Hours of surfing the web</span><span id="websurfRangeval"></span>  Hours</p>
+								  	<input type="range" min="0" max="2000" value="0" class="slider" id="websurfRange">
+								</div>
+							</div>
+							<div class="estimate_slidecontainer">
+	         					<div class="estimate_sliders_icons">
+	         						<img src="{% static 'images/social-media.png'%}" class="img-responsive" alt="social-media icon">
+	         					</div>
+	         					<div class="estimate_slider_ranger">
+									<p><span class="estimate_slider_ranger_desc">Social media posts with photos</span><span id="socialpost_Rangeval"></span>  Posts</p>
+								  	<input type="range" min="0" max="5600" value="0" class="slider" id="socialpost_Range">
+								</div>
+							</div>
+							<div class="estimate_slidecontainer">
+	         					<div class="estimate_sliders_icons">
+	         						<img src="{% static 'images/sd.png'%}" class="img-responsive" alt="social-media icon">
+	         					</div>
+	         					<div class="estimate_slider_ranger">
+									<p><span class="estimate_slider_ranger_desc">Hours of streaming standard-definition video</span><span id="sdVideo_Rangeval"></span>  Hours</p>
+								  	<input type="range" min="0" max="365" value="0" class="slider" id="sdVideo_Range">
+								</div>
+							</div>
+							<div class="estimate_slidecontainer">
+	         					<div class="estimate_sliders_icons">
+	         						<img src="{% static 'images/hd.png'%}" class="img-responsive" alt="social-media icon">
+	         					</div>
+	         					<div class="estimate_slider_ranger">
+									<p><span class="estimate_slider_ranger_desc">Hours of streaming high-definition video</span><span id="hdVideo_Rangeval"></span>  Hours</p>
+								  	<input type="range" min="0" max="350" value="0" class="slider" id="hdVideo_Range">
+								</div>
+							</div>
+							<div class="estimate_slidecontainer">
+	         					<div class="estimate_sliders_icons">
+	         						<img src="{% static 'images/4k.png'%}" class="img-responsive" alt="social-media icon">
+	         					</div>
+	         					<div class="estimate_slider_ranger">
+									<p><span class="estimate_slider_ranger_desc">Hours of streaming 4K video</span><span id="_4kVideo_Rangeval"></span>  Hours</p>
+								  	<input type="range" min="0" max="350" value="0" class="slider" id="_4kVideo_Range">
+								</div>
+							</div>
+							<div class="estimate_slidecontainer">
+	         					<div class="estimate_sliders_icons">
+	         						<img src="{% static 'images/game.png'%}" class="img-responsive" alt="social-media icon">
+	         					</div>
+	         					<div class="estimate_slider_ranger">
+									<p><span class="estimate_slider_ranger_desc">Time spent online gaming</span><span id="gaming_Rangeval"></span>  Hours</p>
+								  	<input type="range" min="0" max="1650" value="0" class="slider" id="gaming_Range">
+								</div>
+							</div>
+	         			</div>
+	         			<div class="estimate_slider_reset_div">
+		         			<div class="estimate_slider_reset_div_desc">
+		         				<p>*Represents 75% of emails with no attachments and 25%
+									of emails with attachments.</p>
+		         			</div>
+		         			<div>
+		         				<button class="reset_datacalc_btn">Reset data calculator</button>
+		         			</div>
+		         		</div>
+	         		</div>
+
+	         	</div>
+	         	<div class="col-sm-4 floatright data_calc_div">
+	         		<!-- <div class="data_calc_innerdiv">
+	         			<div class="data_calc_hdr">
+	         				<p>Your Estimated Monthly Data Usage</p>
+	         			</div>
+	         			<div class="data_calc_graph"></div>
+	         			<div class="dcalc_usage_flag">
+									<div class="dcalc_usage_flag_text"><span id="totalUsageCount">0.00</span>GB&nbsp;</div>
+						</div>
+
+	         		</div> -->
+
+							<div id="data_calc_innerdiv">
+								<div class="data_calc_hdr">
+									<p>Your Estimated Monthly Data Usage</p>
+								</div>
+								<div class="dcalc_bar">
+									<img src="{% static 'images/bar1.png'%}" class="img-responsive dcalc_bari">
+								</div>
+
+								<div class="dcalc_graph_device_image dcalc_graph_device_image_gaming_device"></div>
+								<div class="dcalc_device_graph_label_container" style="max-height: 387px;">
+									<div class="dcalc_device_graph_label"></div>
+								</div>
+								<div class="dcalc_graph_marker_container">
+									<div class="dcalc_increment_marker dcalc_increment_marker_darker dcalc_increment_marker_clickable" style="opacity: 1; display: none; bottom: -4px;">
+										<div class="dcalc_increment_marker_label">000<span class="dcalc_increment_marker_unit">MB</span></div>
+									</div>
+									<div class="dcalc_increment_marker dcalc_increment_marker_darker dcalc_increment_marker_clickable" style="opacity: 1; bottom: 2.9px;">
+										<div class="dcalc_increment_marker_tick" style="opacity: 0;"></div>
+
+									</div>
+
+									<div class="dcalc_increment_marker dcalc_increment_marker_clickable" style="opacity: 1; bottom: 55px;">
+										<div class="dcalc_increment_marker_label"><span class="dcalc_increment_marker_value">150</span><span class="dcalc_increment_marker_unit">GB</span></div>
+									</div>
+									<div class="dcalc_increment_marker dcalc_increment_marker_clickable" style="opacity: 1; bottom: 424px;">
+										<div class="dcalc_increment_marker_label"><span class="dcalc_increment_marker_value">1</span><span class="dcalc_increment_marker_unit">TB</span></div>
+									</div>
+									<!-- <div class="dcalc_increment_marker dcalc_increment_marker_clickable" style="opacity: 1; bottom: 530px;">
+										<div class="dcalc_increment_marker_tick" style="opacity: 1;"></div>
+										<div class="dcalc_increment_marker_label"><span class="dcalc_increment_marker_value">1.25</span><span class="dcalc_increment_marker_unit">TB</span></div>
+									</div> -->
+								</div>
+
+								<div class="dcalc_usage_flag">
+									<div class="dcalc_usage_flag_text"><span id="totalUsageCount">0</span>GB&nbsp;</div>
+								</div>
+
+							</div>
+
+	         	</div>
+	         </div>
+	        </div>
+		  </div>
+		</div>
+</div>
+<script src="{% static 'js/data-usage-calculation.js'%}"></script>

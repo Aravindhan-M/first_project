@@ -1,0 +1,22 @@
+{% include "django/forms/widgets/input.html" %}
+<label class="sort_by">Sort by :{{val}}</label>
+              <div class="selct-dropbox">
+                <select class="selectpicker">
+                    <option value="">--select--</option>
+                    <option value="price" {% if val == 'price'%}selected{%endif%}>Price low to high</option>
+                    <option value="-price" {% if val == '-price'%}selected{%endif%}>Price high to low</option>
+                </select>
+              </div>
+<script>
+    $(".selectpicker").change(function(){
+
+
+ var value = $(this).val();
+ $("#id_sort_by").val(value);
+  $("form").submit();
+
+
+    });
+
+
+</script>

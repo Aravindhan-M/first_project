@@ -1,0 +1,587 @@
+{% load i18n %}
+{% load static %}
+
+  <!-- SELECT MOBILE MODAL STARTS -->
+	 <div class="modal fade slctMobileModal" id="slctMobileModal" role="dialog">
+	    <div class="modal-dialog modal-lg">
+
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	        	  <button type="button" class="btn btn-default close1" data-dismiss="modal" aria-label="Close"><i class="fa fa-times fa-lg" aria-hidden="true"></i></button>
+	          <h4 class="modal-title"> Filter & Choose</h4>
+	          <div class="modal-body_hdr">
+	        		<h4 >146 matching phones on plans</h4>
+	        	</div>
+	        </div>
+	        <div class="filter_by_maindiv">
+	        		 		<div class="filter_by_div">
+				              <label class="sort_by"><i class="flaticon-search"></i>Search</label>
+				              <div>
+				               <input type="search" placeholder="Enter Keywords" class="form-control">
+				              </div>
+
+				            </div>
+				  			<div class="filter_by_div">
+				              <label class="sort_by">Camera</label>
+				              <div class="custom-select" >
+							  <select>
+							    <option value="0"> - - - - Any - - - - </option>
+							    <option value="1">Audi</option>
+							    <option value="2">BMW</option>
+							    <option value="3">Citroen</option>
+							    <option value="4">Ford</option>
+							    <option value="5">Honda</option>
+							    <option value="6">Jaguar</option>
+							    <option value="7">Land Rover</option>
+							    <option value="8">Mercedes</option>
+							    <option value="9">Mini</option>
+							    <option value="10">Nissan</option>
+							    <option value="11">Toyota</option>
+							    <option value="12">Volvo</option>
+							  </select>
+							</div>
+				            </div>
+				           <div class="filter_by_div">
+				              <label class="sort_by">Price</label>
+				             <!--  <div class="selct-dropbox">
+				                <select class="selectpicker">
+				                	<option>---Any---</option>
+				                    <option>Price low to high</option>
+				                    <option>Price high to low</option>
+				                </select>
+				              </div> -->
+				              <div class="custom-select">
+							  <select>
+							    <option value="0"> - - - - Any - - - - </option>
+							    <option value="1">Audi</option>
+							    <option value="2">BMW</option>
+							    <option value="3">Citroen</option>
+							    <option value="4">Ford</option>
+							    <option value="5">Honda</option>
+							    <option value="6">Jaguar</option>
+							    <option value="7">Land Rover</option>
+							    <option value="8">Mercedes</option>
+							    <option value="9">Mini</option>
+							    <option value="10">Nissan</option>
+							    <option value="11">Toyota</option>
+							    <option value="12">Volvo</option>
+							  </select>
+							</div>
+				            </div>
+				            <div class="filter_by_div">
+				              <label class="sort_by">Brand</label>
+				             <!--  <div class="selct-dropbox">
+				                <select class="selectpicker">
+				                	<option>---Any---</option>
+				                    <option>Price low to high</option>
+				                    <option>Price high to low</option>
+				                </select>
+				              </div> -->
+				              <div class="custom-select">
+							  <select>
+							    <option value="0"> - - - - Any - - - - </option>
+							    <option value="1">Audi</option>
+							    <option value="2">BMW</option>
+							    <option value="3">Citroen</option>
+							    <option value="4">Ford</option>
+							    <option value="5">Honda</option>
+							    <option value="6">Jaguar</option>
+							    <option value="7">Land Rover</option>
+							    <option value="8">Mercedes</option>
+							    <option value="9">Mini</option>
+							    <option value="10">Nissan</option>
+							    <option value="11">Toyota</option>
+							    <option value="12">Volvo</option>
+							  </select>
+							</div>
+				            </div >
+				            <div class="filter_by_div">
+				              <label class="sort_by">Order by</label>
+				              <div class="custom-select">
+							  <select>
+							    <option value="0"> - - - - Any - - - - </option>
+							    <option value="1" selected>Most Popular</option>
+							    <option value="2">BMW</option>
+							    <option value="3">Citroen</option>
+							    <option value="4">Ford</option>
+							    <option value="5">Honda</option>
+							    <option value="6">Jaguar</option>
+							    <option value="7">Land Rover</option>
+							    <option value="8">Mercedes</option>
+							    <option value="9">Mini</option>
+							    <option value="10">Nissan</option>
+							    <option value="11">Toyota</option>
+							    <option value="12">Volvo</option>
+							  </select>
+							</div>
+				            </div>
+				  		</div>
+	        <div class="modal-body scrollPrdct_mdl" id="ajax-list-phone">
+
+
+<!--	         			<div class="filtered_products_list slctmodal_mob_list ">-->
+
+<!--							<div id="form-modal-body" class="top_products_slides top_products_slides_append row">-->
+
+
+
+<!--						</div>-->
+
+
+
+<!--					</div>-->
+	        </div>
+	      </div>
+
+	    </div>
+	  </div>
+
+<script>
+
+$('#id_only_sim').click(function(){
+
+if($('#id_only_sim').prop('checked')){
+$('.see_selectmobile_link').css("pointer-events","none").css("cursor","default");
+
+}
+else{
+$('.see_selectmobile_link').removeAttr("style");
+}
+});
+
+
+$('.see_selectmobile_link').click(function() {
+    performAjax();
+});
+
+$(document).on('hide.bs.modal', '#slctMobileModal', function() {
+
+    var name_val = $('#selected_phone_name_id').val()
+    var media_val = $('#selected_phone_media_id').val()
+    var slug_val = $('#selected_phone_slug_id').val()
+
+    if (media_val) {
+        var el = $('.see_selectmobile_link img');
+        el.attr("src", media_val);
+        el.removeAttr("onmouseover");
+        el.removeAttr("onmouseout");
+        searchForm = $(".plan_home_form_id");
+        submitform(searchForm);
+    }
+
+
+    function submitform(form) {
+
+
+        form.submit()
+    }
+
+
+});
+
+$('.close1').click(function() {
+    console.log("closing modal")
+    $(".top_products_slides_append").empty()
+})
+
+function sendinfo(name, image, slug) {
+
+    console.log("first")
+
+    $('#selected_phone_name_id').val(original_name(name))
+    $('#selected_phone_media_id').val(image)
+    $('#selected_phone_slug_id').val(slug).trigger('change')
+    $('#slctMobileModal').modal('hide');
+    $('.remove-phone-div').css("display", "inline-block");
+    $('#id_only_sim').prop("disabled", true);
+
+    $(".top_products_slides_append").empty()
+
+
+
+}
+
+function sendpage(page) {
+    $(".scrollPrdct_mdl").getNiceScroll().remove();
+    $(".scrollPrdct_mdl").getNiceScroll().resize();
+    performAjax(page);
+}
+
+function truncate(str) {
+    s = str.split(" ").splice(0, 6).join(" ");
+    return s += "..."
+}
+
+function original_name(str) {
+    return str.split("-").join(" ");
+
+}
+
+function format_name(str) {
+    return str.split(" ").join("-");
+
+}
+
+function performAjax(data){
+
+
+var url_mask = "{% url 'plan_ajax_list' %}";
+console.log(url_mask)
+$('#ajax-list-phone').load(url_mask, function () {
+                    $('#slctMobileModal').modal('toggle');
+
+                    //formAjaxSubmit('#form-modal-body form', '#form-modal');
+                });
+}
+
+<!--function performAjax(data) {-->
+<!--    $('#slctMobileModal').modal('show');-->
+<!--    console.log(data)-->
+
+<!--    $.ajax({-->
+<!--        type: "GET",-->
+<!--        url: '{% url "plan_ajax" %}',-->
+<!--        data: {-->
+<!--            'page': data,-->
+<!--        },-->
+<!--        success: function(data) {-->
+<!--            var parsed = JSON.parse(data)-->
+
+<!--            $.each(parsed.phones, function(index, value) {-->
+
+<!--                var name = truncate(value.name)-->
+<!--                var formatted_name = format_name(value.name)-->
+<!--                htmlString =-->
+<!--                    `-->
+<!--  <div class="col-md-2 col-xs-6 col-sm-4">-->
+<!--										<div class="thumb-wrapper">-->
+<!--											<div class="img-box">-->
+<!--											<a onclick=sendinfo('${formatted_name}','${value.image}','${value.slug}')><img src="${value.image}" class="img-responsive img-fluid" alt="slider Image 1"></a>-->
+<!--											</div>-->
+<!--											<div class="thumb-content">-->
+<!--												<div style="height: 55px;padding:5px"><h5 class="text-capitalize" style="font-size: 10px;font-weight: bold;">${name}</h5></div>-->
+<!--												<div><a href="#" class="available_in_12_plans">Available in ${value.plancount} plans</a></div>-->
+<!--											</div>-->
+
+<!--										</div>-->
+
+<!--									</div>-->
+
+
+
+<!--  `-->
+
+<!--                $(".top_products_slides_append").append(htmlString)-->
+<!--            });-->
+<!--        },-->
+<!--        error: function(error) {-->
+<!--            console.log(error)-->
+<!--        }-->
+<!--    });-->
+
+<!--}-->
+</script>
+
+	<!-- SELECT MOBILE MODAL ENDS -->
+
+
+ <!-- SELECT internet device MODAL STARTS -->
+	 <div class="modal fade slctMobileModal" id="internetDevice" role="dialog">
+	    <div class="modal-dialog modal-lg">
+
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	        	   <button type="button" class="btn btn-default close1" data-dismiss="modal" aria-label="Close"><i class="fa fa-times fa-lg" aria-hidden="true"></i></button>
+	          <h4 class="modal-title"> Filter & Choose</h4>
+	          <div class="modal-body_hdr">
+	        		<h4 >146 matching phones on plans</h4>
+	        	</div>
+	        </div>
+	        <div class="filter_by_maindiv">
+	        		 		<div class="filter_by_div">
+				              <label class="sort_by"><i class="flaticon-search"></i>Search</label>
+				              <div>
+				               <input type="search" placeholder="Enter Keywords" class="form-control">
+				              </div>
+
+				            </div>
+				  			<div class="filter_by_div">
+				              <label class="sort_by">Camera</label>
+				              <div class="custom-select" >
+							  <select>
+							    <option value="0"> - - - - Any - - - - </option>
+							    <option value="1">Audi</option>
+							    <option value="2">BMW</option>
+							    <option value="3">Citroen</option>
+							    <option value="4">Ford</option>
+							    <option value="5">Honda</option>
+							    <option value="6">Jaguar</option>
+							    <option value="7">Land Rover</option>
+							    <option value="8">Mercedes</option>
+							    <option value="9">Mini</option>
+							    <option value="10">Nissan</option>
+							    <option value="11">Toyota</option>
+							    <option value="12">Volvo</option>
+							  </select>
+							</div>
+				            </div>
+				           <div class="filter_by_div">
+				              <label class="sort_by">Price</label>
+				             <!--  <div class="selct-dropbox">
+				                <select class="selectpicker">
+				                	<option>---Any---</option>
+				                    <option>Price low to high</option>
+				                    <option>Price high to low</option>
+				                </select>
+				              </div> -->
+				              <div class="custom-select">
+							  <select>
+							    <option value="0"> - - - - Any - - - - </option>
+							    <option value="1">Audi</option>
+							    <option value="2">BMW</option>
+							    <option value="3">Citroen</option>
+							    <option value="4">Ford</option>
+							    <option value="5">Honda</option>
+							    <option value="6">Jaguar</option>
+							    <option value="7">Land Rover</option>
+							    <option value="8">Mercedes</option>
+							    <option value="9">Mini</option>
+							    <option value="10">Nissan</option>
+							    <option value="11">Toyota</option>
+							    <option value="12">Volvo</option>
+							  </select>
+							</div>
+				            </div>
+				            <div class="filter_by_div">
+				              <label class="sort_by">Brand</label>
+				             <!--  <div class="selct-dropbox">
+				                <select class="selectpicker">
+				                	<option>---Any---</option>
+				                    <option>Price low to high</option>
+				                    <option>Price high to low</option>
+				                </select>
+				              </div> -->
+				              <div class="custom-select">
+							  <select>
+							    <option value="0"> - - - - Any - - - - </option>
+							    <option value="1">Audi</option>
+							    <option value="2">BMW</option>
+							    <option value="3">Citroen</option>
+							    <option value="4">Ford</option>
+							    <option value="5">Honda</option>
+							    <option value="6">Jaguar</option>
+							    <option value="7">Land Rover</option>
+							    <option value="8">Mercedes</option>
+							    <option value="9">Mini</option>
+							    <option value="10">Nissan</option>
+							    <option value="11">Toyota</option>
+							    <option value="12">Volvo</option>
+							  </select>
+							</div>
+				            </div >
+				            <div class="filter_by_div">
+				              <label class="sort_by">Order by</label>
+				              <div class="custom-select">
+							  <select>
+							    <option value="0"> - - - - Any - - - - </option>
+							    <option value="1" selected>Most Popular</option>
+							    <option value="2">BMW</option>
+							    <option value="3">Citroen</option>
+							    <option value="4">Ford</option>
+							    <option value="5">Honda</option>
+							    <option value="6">Jaguar</option>
+							    <option value="7">Land Rover</option>
+							    <option value="8">Mercedes</option>
+							    <option value="9">Mini</option>
+							    <option value="10">Nissan</option>
+							    <option value="11">Toyota</option>
+							    <option value="12">Volvo</option>
+							  </select>
+							</div>
+				            </div>
+				  		</div>
+	        <div class="modal-body scrollPrdct_mdl">
+
+
+	         			<div class="filtered_products_list slctmodal_mob_list ">
+
+							<div class="top_products_slides  row">
+									<div class="col-md-2 col-xs-6 col-sm-4">
+										<div class="thumb-wrapper">
+											<div class="img-box">
+												<img src="{% static 'images/ipad1.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+											</div>
+											<div class="thumb-content">
+												<h4 class="text-capitalize">Google pixel 3</h4>
+												<a href="{% url 'operators'%}" class="available_in_12_plans">Available in 12 plans</a>
+
+											</div>
+										</div>
+									</div>
+									<div class="col-md-2 col-xs-6 col-sm-4">
+										<div class="thumb-wrapper">
+											<div class="img-box">
+												<img src="{% static 'images/hpad.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+											</div>
+											<div class="thumb-content">
+												<h4 class="text-capitalize">Google pixel 3</h4>
+												<a href="{% url 'operators'%}" class="available_in_12_plans">Available in 12 plans</a>
+
+											</div>
+										</div>
+									</div>
+									<div class="col-md-2 col-xs-6 col-sm-4">
+										<div class="thumb-wrapper">
+											<div class="img-box">
+												<img src="{% static 'images/ipad3.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+											</div>
+											<div class="thumb-content">
+												<h4 class="text-capitalize">Google pixel 3</h4>
+												<a href="{% url 'operators'%}" class="available_in_12_plans">Available in 12 plans</a>
+
+											</div>
+										</div>
+									</div>
+									<div class="col-md-2 col-xs-6 col-sm-4">
+										<div class="thumb-wrapper">
+											<div class="img-box">
+												<img src="{% static 'images/ipad1.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+											</div>
+											<div class="thumb-content">
+												<h4 class="text-capitalize">Google pixel 3</h4>
+												<a href="{% url 'operators'%}" class="available_in_12_plans">Available in 12 plans</a>
+
+											</div>
+										</div>
+									</div>
+									<div class="col-md-2 col-xs-6 col-sm-4">
+										<div class="thumb-wrapper">
+											<div class="img-box">
+												<img src="{% static 'images/hpad.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+											</div>
+											<div class="thumb-content">
+												<h4 class="text-capitalize">Google pixel 3</h4>
+												<a href="{% url 'operators'%}" class="available_in_12_plans">Available in 12 plans</a>
+
+											</div>
+										</div>
+									</div>
+									<div class="col-md-2 col-xs-6 col-sm-4">
+										<div class="thumb-wrapper">
+											<div class="img-box">
+												<img src="{% static 'images/ipad3.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+											</div>
+											<div class="thumb-content">
+												<h4 class="text-capitalize">Google pixel 3</h4>
+												<a href="{% url 'operators'%}" class="available_in_12_plans">Available in 12 plans</a>
+
+											</div>
+										</div>
+									</div>
+									<div class="col-md-2 col-xs-6 col-sm-4">
+										<div class="thumb-wrapper">
+											<div class="img-box">
+												<img src="{% static 'images/ipad1.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+											</div>
+											<div class="thumb-content">
+												<h4 class="text-capitalize">Google pixel 3</h4>
+												<a href="{% url 'operators'%}" class="available_in_12_plans">Available in 12 plans</a>
+
+											</div>
+										</div>
+									</div>
+									<div class="col-md-2 col-xs-6 col-sm-4">
+										<div class="thumb-wrapper">
+											<div class="img-box">
+												<img src="{% static 'images/hpad.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+											</div>
+											<div class="thumb-content">
+												<h4 class="text-capitalize">Google pixel 3</h4>
+												<a href="{% url 'operators'%}" class="available_in_12_plans">Available in 12 plans</a>
+
+											</div>
+										</div>
+									</div>
+									<div class="col-md-2 col-xs-6 col-sm-4">
+										<div class="thumb-wrapper">
+											<div class="img-box">
+												<img src="{% static 'images/ipad3.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+											</div>
+											<div class="thumb-content">
+												<h4 class="text-capitalize">Google pixel 3</h4>
+												<a href="{% url 'operators'%}" class="available_in_12_plans">Available in 12 plans</a>
+
+											</div>
+										</div>
+									</div>
+									<div class="col-md-2 col-xs-6 col-sm-4">
+										<div class="thumb-wrapper">
+											<div class="img-box">
+												<img src="{% static 'images/ipad1.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+											</div>
+											<div class="thumb-content">
+												<h4 class="text-capitalize">Google pixel 3</h4>
+												<a href="{% url 'operators'%}" class="available_in_12_plans">Available in 12 plans</a>
+
+											</div>
+										</div>
+									</div>
+									<div class="col-md-2 col-xs-6 col-sm-4">
+										<div class="thumb-wrapper">
+											<div class="img-box">
+												<img src="{% static 'images/hpad.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+											</div>
+											<div class="thumb-content">
+												<h4 class="text-capitalize">Google pixel 3</h4>
+												<a href="{% url 'operators'%}" class="available_in_12_plans">Available in 12 plans</a>
+
+											</div>
+										</div>
+									</div>
+									<div class="col-md-2 col-xs-6 col-sm-4">
+										<div class="thumb-wrapper">
+											<div class="img-box">
+												<img src="{% static 'images/ipad3.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+											</div>
+											<div class="thumb-content">
+												<h4 class="text-capitalize">Google pixel 3</h4>
+												<a href="{% url 'operators'%}" class="available_in_12_plans">Available in 12 plans</a>
+
+											</div>
+										</div>
+									</div>
+									<div class="col-md-2 col-xs-6 col-sm-4">
+										<div class="thumb-wrapper">
+											<div class="img-box">
+												<img src="{% static 'images/ipad1.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+											</div>
+											<div class="thumb-content">
+												<h4 class="text-capitalize">Google pixel 3</h4>
+												<a href="{% url 'operators'%}" class="available_in_12_plans">Available in 12 plans</a>
+
+											</div>
+										</div>
+									</div>
+									<div class="col-md-2 col-xs-6 col-sm-4">
+										<div class="thumb-wrapper">
+											<div class="img-box">
+												<img src="{% static 'images/hpad.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+											</div>
+											<div class="thumb-content">
+												<h4 class="text-capitalize">Google pixel 4</h4>
+												<a href="{% url 'operators'%}" class="available_in_12_plans">Available in 12 plans</a>
+
+											</div>
+										</div>
+									</div>
+						</div>
+					</div>
+	        </div>
+	      </div>
+
+	    </div>
+	  </div>
+
+	<!-- SELECT MOBILE MODAL ENDS -->

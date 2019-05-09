@@ -1,0 +1,159 @@
+{% load el_pagination_tags %}
+{% load i18n %}
+{% load static %}
+{% load media_url %}
+{% load plan_tags %}
+{% paginate 40 plans %}
+<div class="row">
+
+                {% for plan in plans%}
+			<div class="load_plans_inner_div">
+
+					<div class="col-sm-4">
+						<div class="plan_logo">
+							<img class="img-responsive" src="{{plan.operator_id.image|operator_logo}}" style="max-width: 100%;" />
+						</div>
+						<div class="plans_feature_desc_div">
+							{% if not form_class.only_sim.value %}
+							<div class="phones_avail_div">
+								{%if form_class.phone_media.value %}
+								<img src="{{form_class.phone_media.value}}" class="img-responsive" alt="slider Image 1" style="width: 35px;height:50px;">
+								{%else%}
+								<p>{{plan.device_installment_plan.count}}</p>
+								<p>Phone <br> available</p>
+								{%endif%}
+							</div>
+							{% endif %}
+							<!--<div class="phones_avail_div">-->
+								<!---->
+							<!--</div>-->
+							<div class="phones_avail_div_desc">
+								<a target="_blank" href="{{plan.get_absolute_url}}?data={{max_data_donut.data__donut_data_val__max}}&call={{max_call_donut.call__donut_call_val__max}}&message={{max_message_donut.message__donut_message_val__max}}"><h3>{{plan.name}}</h3></a></h3>
+								<ul style="text-align:left;">
+									{%if plan.website_description%}
+									{{plan.website_description}}
+									{%endif%}
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8 plans_feature_div">
+						<div>
+							 <div class="col-sm-8">
+
+
+
+
+
+							 	 <div data-toggle="tooltip" title="{{plan.data.donut_data_val |  percentof:max_data_donut.data__donut_data_val__max}}%" class="data_speed_div test-circle" id="{{plan.slug}}1" data-percent=" {{plan.data.donut_data_val |  percentof:max_data_donut.data__donut_data_val__max}}"></div>
+							 </div>
+
+							<div class="plans_feature_div_desc">
+								<h3>{{plan.data.donut_data_val|data_converter}}</h3>
+<!--								<h3>{{plan.data.donut_data_val}}</h3>-->
+
+							</div>
+						</div>
+						<div>
+							<div class="col-sm-8">
+							 	 <div data-toggle="tooltip" title="{{plan.call.donut_call_val |  percentof:max_call_donut.call__donut_call_val__max}}%" class="data_speed_div test-circle2" id="{{plan.slug}}2" data-percent="{{plan.call.donut_call_val |  percentof:max_call_donut.call__donut_call_val__max}}"></div>
+							 </div>
+
+							<div class="plans_feature_div_desc" style="height:38px;">
+								<h3 style="position:relative;transform:translateY(-75%);">{{plan.call.donut_call_val}} Minutes</h3>
+
+							</div>
+						</div>
+						<div>
+							<!--<button class="btn featured_btn">Featured</button>-->
+							<div class="plans_feature_div_desc">
+								{% if form_class.only_sim.value %}
+								<h3>{%exchange_rate plan.mf_value_only_sim%} {{request.session.currency}}</h3>
+								{% else %}
+								<h3>{%exchange_rate plan.mf_value%} {{request.session.currency}}</h3>
+								{% endif %}
+								<p>Monthly Payment Value</p>
+								{%if plan.fee_notes %} <p>{{plan.fee_notes}}</p>{%endif%}
+
+							</div>
+							<div class="plans_feature_div_desc">
+								{% if form_class.only_sim.value %}
+								<h3>{%exchange_rate plan.otp_value_only_sim%} {{request.session.currency}}</h3>
+								{% else %}
+								<h3>{%exchange_rate plan.otp_value%} {{request.session.currency}}</h3>
+								{% endif %}
+                                   <p>One Time Payment value</p>
+
+							</div>
+
+
+						</div>
+                        {%if plan.e_commerce_status %}
+						<div class="go_to_nearest_branch">
+							<a href="{{plan.plan_url_english}}" target="_blank" class="load_more_btn btn">Buy Online</a>
+						</div>
+
+                        {%else%}
+						<div class="go_to_nearest_branch">
+							<a target="_blank" href="{{plan.plan_url_english_near}}">Go to the <br>Nearest Branch</a>
+						</div>
+
+                        {% endif %}
+					</div>
+				</div>
+    <script>
+    $("#{{plan.slug}}1").circliful({
+        animation: 1,
+        animationStep: 5,
+        foregroundBorderWidth: 25,
+		backgroundBorderWidth: 25,
+        replacePercentageByText: '',
+        textSize: 28,
+        textStyle: 'font-size: 12px;',
+        textColor: '#666',
+        color: '#3180B8',
+        multiPercentage: 1,
+    });
+
+
+
+
+    $("#{{plan.slug}}2").circliful({
+        animation: 1,
+        animationStep: 5,
+        foregroundBorderWidth: 25,
+		backgroundBorderWidth: 25,
+        replacePercentageByText: '',
+        foregroundColor: '#fc5920',
+        textSize: 28,
+        textStyle: 'font-size: 12px;',
+        textColor: '#666',
+        multiPercentage: 1,
+    });
+</script>
+				{% empty %}
+				<div class="load_plans_inner_div">
+						 <h3>No Result for this Query,Please try different filters !!</h3>
+
+					</div>
+
+
+                {%endfor%}
+
+
+
+			</div>
+
+
+<!--<div class="load_more_div">-->
+<!--	<div class="container">-->
+<!--		<div class="load_more_btn_div">-->
+{% show_more "<div class='load_more_div'><div class='container'><div class='load_more_btn_div'><button class='load_more_btn btn'>Load More</button></div></div></div>" %}
+<!--		</div>-->
+<!--	</div>-->
+<!--</div>-->
+<!--<script>-->
+<!--	 $(".endless_more").addClass("load_more_btn btn");-->
+
+<!--</script>-->

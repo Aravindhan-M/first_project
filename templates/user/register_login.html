@@ -1,0 +1,242 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}
+    Phones
+{% endblock %}
+{% block content %}
+	<section class="mid-section login_reg_section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-sm-12 floatleft">
+					 <div class="login_reg_tab">
+			          	<div class="login_reg_tab_pill">
+			          		 <ul class="nav nav-tabs" role="tablist">
+							    <li role="presentation" class="active"><a href="#registerTab" aria-controls="registerTab" role="tab" data-toggle="tab">Register new account</a></li>
+							    <li role="presentation"><a href="#loginTab" aria-controls="loginTab" role="tab" data-toggle="tab">Log in</a></li>
+							  </ul>
+			          	</div>
+			          	<div class="login_reg_tab_content">
+			          		<div class="tab-content">
+							    <div role="tabpanel" class="tab-pane active" id="registerTab">
+
+							    		<form name="registration_form" action="{% url 'registration' %}" method="post">
+											{{forms.signup.action}}
+											{% csrf_token %}
+							    			<p class="frm_hdr_desc">User account</p>
+											{% if success%}
+											<p style="color: green">{{success}}</p>
+											{%endif%}
+							    			<label>Username</label>
+							    			<div class="form-group">
+							    				 {{forms.signup.name}}
+							    				<p class="frgt_pswd_desc">Spaces are allowed; punctuation is not allowed except for periods, hyphens, apostrophes, and underscores.</p>
+												{% for error in forms.signup.name.errors %}
+         <p style="color: red">{{ error }}</p>
+       {% endfor %}
+							    			</div>
+							    			<label>Gender</label>
+							    			<div class="form-group">
+							    				<div class="custom-select" >
+												  {{forms.signup.gender}}
+													{% for error in forms.signup.gender.errors %}
+         <p style="color: red">{{ error }}</p>
+       {% endfor %}
+												</div>
+							    			</div>
+							    			<label>Date of birth</label>
+							    			<div class="form-group">
+							    				{{forms.signup.date_of_birth}}
+												{% for error in forms.signup.date_of_birth.errors %}
+         <p style="color: red">{{ error }}</p>
+       {% endfor %}
+							    			</div>
+							    			<label>E-mail address </label>
+							    			<div class="form-group">
+							    				{{forms.signup.email}}
+							    				<p class="frgt_pswd_desc">A valid e-mail address. All e-mails from the system will be sent to this address. The e-mail address is not made public and will only be used 
+if you wish to receive a new password or wish to receive certain news or notifications by e-mail.</p>
+												{% for error in forms.signup.email.errors %}
+         <p style="color: red">{{ error }}</p>
+       {% endfor %}
+							    			</div>
+							    			<label>Password</label>
+							    			<div class="form-group">
+							    				{{forms.signup.password1}}
+							    				<p class="frgt_pswd_desc"> Password must contain at least 6 characters</p>
+												{% for error in forms.signup.password1.errors %}
+         <p style="color: red">{{ error }}</p>
+       {% endfor %}
+							    			</div>
+											<label>Confirm Password</label>
+							    			<div class="form-group">
+							    				{{forms.signup.password2}}
+							    				<p class="frgt_pswd_desc"> Re Enter password again</p>
+													{% for error in forms.signup.password2.errors %}
+         <p style="color: red">{{ error }}</p>
+       {% endfor %}
+							    			</div>
+							    			<label>Mobile  Operator</label>
+							    			<div class="form-group">
+							    				<div class="custom-select" >
+
+												  {{forms.signup.mobile_operator}}
+
+												</div>
+												{% for error in forms.signup.mobile_operator.errors %}
+         <p style="color: red">{{ error }}</p>
+       {% endfor %}
+
+							    			</div>
+							    				<label>Mobile number</label>
+							    			<div class="form-group">
+							    				{{form.country_code}}{{forms.signup.mobile_number}}
+												{% for error in forms.signup.mobile_number.errors %}
+         <p style="color: red">{{ error }}</p>
+       {% endfor %}
+
+							    			</div>
+							    			<label>Enter OTP</label>
+							    			<div class="form-group">
+							    				{{forms.signup.otp}}
+							    				<p class="frgt_pswd_desc snd_otp">Resend OTP</p>
+												{% for error in forms.signup.otp.errors %}
+         <p style="color: red">{{ error }}</p>
+       {% endfor %}
+							    			</div>
+
+							    			<div class="racapacha_div">
+												<script src='https://www.google.com/recaptcha/api.js'></script>
+											<div class="g-recaptcha" data-sitekey="6Ldhm6IUAAAAAABH_YnFIdCm5WsiLV1j-3KfKf59"></div>
+
+							    			</div>
+
+
+                                            {% for error in forms.signup.non_field_errors %}
+                                            <p style="color: red">{{ error }}</p>
+                                            {% endfor %}
+							    			<input type="submit" value="Register new account" class="reg_logn_btn"></input>
+
+
+							    		</form>
+									 <script src='https://www.google.com/recaptcha/api.js'></script>
+
+							    </div>
+							    <div role="tabpanel" class="tab-pane" id="loginTab">
+							    	<form name="login_form" action="{% url 'login' %}" method="post">
+										{% csrf_token %}
+										{{forms.login.action}}
+							    			<label>Mobile number </label>
+							    			<div class="form-group">
+							    				{{forms.login.mobile_number}}
+							    			</div>
+							    			<label>Password</label>
+							    			<div class="form-group">
+							    				{{forms.login.password}}
+							    				<p class="frgt_pswd_desc"> Password must contain at least 6 characters</p>
+							    			</div>
+										<div class="racapacha_div">
+												<script src='https://www.google.com/recaptcha/api.js'></script>
+											<div class="g-recaptcha" data-sitekey="6Ldhm6IUAAAAAABH_YnFIdCm5WsiLV1j-3KfKf59"></div>
+										</div>
+<!--							    			<div class="racapacha_div">-->
+<!--							    				<img src="{% static 'images/i-am-not-robot.png'%}" class="img-responsive" alt="recpatcha image">-->
+<!--							    			</div>-->
+										<input type="submit" value="Login" class="reg_logn_btn">
+                                            {{ forms.login.non_field_errors }}
+
+							    		</form>
+							    </div>
+							    
+							  </div>
+			          	</div>
+			          </div>
+				  		<div class="provider-section">
+						<h2 class="main-hdng text-center text-capitalize">Providers</h2>
+						<div class="provider_slider">	
+									<div class="provider_slider_slides">
+						
+									<img class="img-responsive" alt="provider1" src="{% static 'images/verizon-icon-lg.png'%}">
+								
+							</div>
+							
+							<div class="provider_slider_slides">
+								
+									<img class="img-responsive" alt="provider1" src="{% static 'images/AT&T-large.png'%}">
+						
+							</div>
+							<div class="provider_slider_slides">
+								
+									<img class="img-responsive" alt="provider1" src="{% static 'images/sprint-large-.png'%}">
+							
+							</div>
+							<div class="provider_slider_slides">
+								
+									<img class="img-responsive" alt="provider1" src="{% static 'images/T-mobile-large-.png'%}">
+								
+							</div>
+							<div class="provider_slider_slides">
+								
+									<img class="img-responsive" alt="provider1" src="{% static 'images/Huges-net.png'%}">
+								
+							</div>
+							<div class="provider_slider_slides">
+								
+									<img class="img-responsive" alt="provider1" src="{% static 'images/google.png'%}">
+								
+							</div>
+							<!-- <div class="provider_slider_slides">
+								
+									<img class="img-responsive" alt="provider1" src="images/verizon-icon-lg.png">
+								
+							</div>
+							<div class="provider_slider_slides">
+								
+									<img class="img-responsive" alt="provider1" src="images/sprint-large-.png">
+								
+							</div> -->																																																								
+						</div>
+				</div>	
+					
+				</div>
+				<div class="col-md-4 col-sm-12 floatright">
+					 <div class="adverstisement_div">
+						 <a href="" target="_blank" rel="nofollow" title="" class="zone1">
+							<img width = "100%" height="100%" src="" class="img-responsive img-fluid zone1" />
+						</a>
+					</div>
+
+					<div class="adverstisement_div">
+						<a href="" target="_blank" rel="nofollow" title="" class="zone2">
+							<img width = "100%" height="100%" src="" class="img-responsive img-fluid zone2" />
+						</a>
+
+					</div>
+					<div class="adverstisement_div">
+						<a href="" target="_blank" rel="nofollow" title="" class="zone3">
+							<img width = "100%" height="100%" src="" class="img-responsive img-fluid zone3" />
+						</a>
+
+					</div>
+					<div class="adverstisement_div">
+						<a href="" target="_blank" rel="nofollow" title="" class="zone4">
+							<img width = "100%" height="100%" src="" class="img-responsive img-fluid zone4" />
+						</a>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+<script>
+
+if(window.location.pathname.includes('login')){
+$('.nav-tabs a[href="#loginTab"]').tab('show')
+}
+
+
+
+
+
+</script>
+{% endblock %}

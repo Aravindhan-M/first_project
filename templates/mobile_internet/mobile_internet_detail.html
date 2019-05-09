@@ -1,0 +1,386 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load media_url %}
+{% load plan_tags %}
+{% block title %}
+    Phones
+{% endblock %}
+{% block content %}
+<style>
+	th{
+	position:relative;
+	width : 50%
+	}
+	td{
+	position:relative;
+	width : 50%
+	}
+</style>
+
+	<section class="mid-section plan_vendor_sec">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-sm-12 floatleft">
+					<div class="select_phone_filterdiv">
+						<div class="product_listng_buy_top_div">
+				   			 	<div>
+						  			<div>
+							  		 <h4 class="slct_phn_hdr">{{pl_phone.name}}</h4>
+							  		</div>
+									 <div>
+									 	<ul class="plan_vndr_icon company-clients-logos">
+												<li><img class="img-responsive" alt="verizon" src="{{object.operator_id.image|operator_logo}}"></li>
+										</ul>
+									 </div>
+				  				</div>
+				  		</div>
+						{%if pl_phone%}
+
+				  		<div class="row plandetails_mobileSpec_div">
+				  			<div class="col-sm-3">
+				  				<div class="plandetails_mobileSpecwrapper">
+											<div class="img-box">
+												<img src="{{device_image|operator_logo}}" class="img-responsive img-fluid" alt="slider Image 1">
+											</div>
+											<div class="thumb-content">
+												<h4 class="text-capitalize">{{pl_phone.name}}</h4>
+												<!--<a href="" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">See specifications</a>-->
+												<a onclick="sendslug('{{pl_dev_id.id}}')">See specifications</a>
+											</div>
+								</div>
+				  			</div>
+				  			<div class="col-sm-6">
+				  				<div class="row plandetails_mobileSpec_donuts">
+				  					<div class="col-sm-4">
+										 <div>
+										 	<h5 class="text-center">Data </h5>
+											 <div class="data_speed_div" id="mobileSpec_donuts" data-percent=" {{object.data.donut_data_val |  percentof:max_data_donut.data__donut_data_val__max}}" ></div>
+										 	 <div ></div>
+										 </div>
+										<div class="plans_feature_div_desc">
+			                                 <p><span>{{object.data.donut_data_val|data_converter}}</span> <br>Full Speed Data</p>
+										</div>
+									</div>
+
+				  				</div>
+				  			</div>
+				  			<div class="col-sm-3 pl-0">
+				  					<div class="plandetails_mobileSpec_paymntDiv">
+				  					<div class="col-sm-12">
+				  						<h5>{{object.mf_value}}</h5>
+										<p>(Pay $20 for 3 Months)</p>
+				  					</div>
+				  					<div class="col-sm-12 ">
+				  						<p>One Time Payment</p>
+				  						<h5>{{object.otp_value}}/mo</h5>
+				  					</div>
+
+
+											{%if object.e_commerce_status%}
+
+										<a href="{{object.plan_url_english}}" class="btn btn-primary">Buy Online</a>
+											{%else%}
+											<a class="btn btn-primary btn-sm">Go To the Nearest Store</a>
+											{%endif%}
+
+
+
+				  				</div>
+				  			</div>
+				  		</div>
+				  		{%endif%}
+
+				  	</div>
+					<!--<div class="planVndr_products_list">-->
+						<!--<div class="mobile_availability_hdrDiv">-->
+							<!--<h3>Lorem Ipsum</h3>-->
+						<!--</div>-->
+						<!--<div class="mobile_availability_div">-->
+							<!--<div class="mobile_availability_img">-->
+								<!--<div class="img-box">-->
+									<!--<img src="{% static 'images/mob-04.png'%}" class="img-responsive img-fluid" alt="slider Image 1">-->
+								<!--</div>-->
+							<!--</div>-->
+							<!--<div class="mobile_availabilitydesc_div">-->
+								<!--<div class="mobile_availabilitydesc_name">-->
+									<!--<p>Huawei Mate 20 Pro</p>-->
+								<!--</div>-->
+								<!--<div class="mobile_availabilitydesc_dtls">-->
+									<!--<div class="mobile_availabilitydesc_dtls1">-->
+										<!--<p class="floatleft">Device Price: <span>Rs. 1716</span></p>-->
+										<!--<a href="" class="floatright">Availability: In Stock</a>-->
+									<!--</div>-->
+									<!--<div class="mobile_availabilitydesc_dtls2">-->
+										<!--<p>Gift price</p>-->
+										<!--<a href="" class="buy_btn_withPrice">USD. 1012</a><span class="off_desc">(40% off)</span>-->
+									<!--</div>-->
+								<!--</div>-->
+							<!--</div>-->
+						<!--</div>-->
+					<!--</div>-->
+
+					<div class="plan_details_tb_div">
+						<h2>Plan Details</h2>
+						<div>
+							<table class="table-bordered"  style="position:relative;width:100%;">
+							<tbody>
+								<tr class="row">
+									<th  >Operator</th>
+									<td  >{{object.operator_id}}</td>
+								</tr>
+								<tr class="row">
+									<th  >Name</th>
+									<td  >{{object.name}}</td>
+								</tr>
+								{%if object.is_active%}
+								<tr class="row">
+									<th  >Status</th>
+									<td  >Available</td>
+								</tr>
+								{%endif%}
+								{%if object.website_description%}
+
+								<tr class="row">
+									<th  >Website description</th>
+									<td  >{{object.website_description}}</td>
+								</tr>
+								{%endif%}
+								{%if object.pay_type%}
+								<tr class="row">
+									<th  >Pay Type</th>
+									<td  >{{object.pay_type}}</td>
+								</tr>
+								{%endif%}
+								{%if object.line_type%}
+								<tr class="row">
+									<th  >Line type</th>
+									<td  >{{object.line_type}}</td>
+								</tr>
+								{%endif%}
+								{%if object.commitment_months%}
+								<tr class="row">
+									<th  >Commitment <Months></Months></th>
+									<td  >{{object.commitment_months}}</td>
+								</tr>
+								{%endif%}
+								{%if object.validity_days%}
+								<tr class="row">
+									<th  >Validity Days</th>
+									<td >{{object.validity_days}}</td>
+								</tr>
+								{%endif%}
+								{%if object.fee%}
+								<tr class="row">
+									<th  >Fee </th>
+									<td  >{{object.fee}} {{request.session.currency}}</td>
+								</tr>
+								{%endif%}
+								{%if object.one_time_setup_fee%}
+								<tr class="row">
+									<th  >One time set up fee</th>
+									<td  >{{object.one_time_setup_fee}} {{request.session.currency}}</td>
+								</tr>
+								{%endif%}
+								{%if object.fee_notes%}
+								<tr class="row">
+									<th  >Fee Notes</th>
+									<td  >{{object.fee_notes}}</td>
+								</tr>
+								{%endif%}
+								{%if object.initial_credit%}
+								<tr class="row">
+									<th  >Initial Credit</th>
+									<td  >{{object.initial_credit}}</td>
+								</tr>
+								{%endif%}
+								{%if object.special_conditions%}
+								<tr class="row">
+									<th  >Special Conditions</th>
+									<td  >{{object.special_conditions}}</td>
+								</tr>
+								{%endif%}
+								{%if object.subscription_fee%}
+								<tr class="row">
+									<th  >Subscription Fee</th>
+									<td  >{{object.subscription_fee}} {{request.session.currency}}</td>
+								</tr>
+								{%endif%}
+								{%if object.monthly_fee%}
+								<tr class="row">
+									<th>Monthly Fee</th>
+									<td>{{object.monthly_fee}} {{request.session.currency}}</td>
+								</tr>
+								{%endif%}
+								{%if object.upfront_payment_per_year%}
+								<tr class="row">
+									<th>Upfront Payment per Year</th>
+									<td>{{object.upfront_payment_per_year}} {{request.session.currency}}</td>
+								</tr>
+								{%endif%}
+								{%if object.renewable_fee%}
+								<tr class="row">
+									<th>Renewable Fee</th>
+									<td>{{renewable_fee}} {{request.session.currency}}</td>
+								</tr>
+								{%endif%}
+								{%if object.validity%}
+								<tr class="row">
+									<th>Validity</th>
+									<td>{{monthly_fee}} {{request.session.currency}}</td>
+								</tr>
+								{%endif%}
+								{%if object.vanity_number%}
+								<tr class="row">
+									<th>Vanity Number</th>
+									<td>{{vanity_number}}</td>
+								</tr>
+								{%endif%}
+
+							{% for key , value in object.data.available_data.items%}
+							<tr class="row">
+									<th>{{key}}</th>
+									<td>{{value}}</td>
+								</tr>
+							{%endfor%}
+
+
+
+
+
+
+							{% for key , value in object.additional_benefit.available_data.items%}
+							<tr class="row">
+									<th>{{key}}</th>
+									<td>{{value}}</td>
+								</tr>
+							{%endfor%}
+							{% for key , value in object.subscription_method.available_data.items%}
+							<tr class="row">
+									<th>{{key}}</th>
+									<td>{{value}}</td>
+								</tr>
+							{%endfor%}
+							{% for val in object.plan_add_attr.all%}
+							<tr class="row">
+									<th>{{val.attr_name}}</th>
+									<td>{{val.attr_value}}</td>
+								</tr>
+							{%endfor%}
+
+								<tr class="row" style="text-align:center;">
+									{%if object.e_commerce_status%}
+									<td ><a target="_blank" href="{{object.plan_url_english}}" class="btn btn-primary">Buy Online</a></td>
+									{%else%}
+									<td  ><a target="_blank" class="btn btn-primary btn-sm">Go To the Nearest Store</a></td>
+									{%endif%}
+								</tr>
+							</tbody>
+						</table>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-12 floatright">
+					 <div class="adverstisement_div">
+						<a href="" target="_blank" rel="nofollow" title="" class="zone1">
+							<img width = "100%" height="100%" src="" class="img-responsive img-fluid zone1" />
+						</a>
+					</div>
+					<div class="adverstisement_div">
+						<a href="" target="_blank" rel="nofollow" title="" class="zone2">
+							<img width = "100%" height="100%" src="" class="img-responsive img-fluid zone2" />
+						</a>
+					</div>
+					<div class="adverstisement_div">
+						<a   href="" target="_blank" rel="nofollow" title="" class="zone3">
+							<img   width = "100%" height="100%" src="" class="img-responsive img-fluid zone3" />
+						</a>
+					</div>
+					<div class="adverstisement_div">
+						<a  href="" target="_blank" rel="nofollow" title="" class="zone4">
+							<img width = "100%" height="100%" src="" class="img-responsive img-fluid zone4" />
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}
+{% block extra_script %}
+	  <div class="modal fade custom_seeSpecModal" id="seeSpecModal" role="dialog">
+	    <div class="modal-dialog">
+
+	      <!-- Modal content-->
+	      <div class="modal-content modal-lg">
+	        <div class="modal-header">
+	          <h4 class="modal-title"></h4>
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	        <div class="modal-body" id="loadspecs">
+
+	          	</div>
+	          </div>
+	        </div>
+	      </div>
+
+	    </div>
+	  </div>
+  <!-- Specification Modal begins -->
+
+<script >
+
+function sendslug(param){
+console.log(param)
+var slug =param;
+
+
+var url_mask = "{% url 'devicedetailpk' 12345 %}".replace(/12345/, slug);
+console.log(url_mask)
+$('#loadspecs').load(url_mask, function () {
+                    $('#seeSpecModal').modal('toggle');
+                    <!--$('.modal-title').text(name);-->
+                    //formAjaxSubmit('#form-modal-body form', '#form-modal');
+                });
+}
+
+
+$(document).ready(function(){
+
+
+
+
+
+
+
+				$("#mobileSpec_donuts").circliful({
+		            animation: 1,
+		            animationStep: 5,
+		            foregroundBorderWidth: 25,
+		            backgroundBorderWidth: 25, replacePercentageByText:'',
+		            percent: 100,
+		            textColor: '#666',
+		            multiPercentage: 1,
+		        });
+		        $("#mobileSpec_donuts1").circliful({
+		            animation: 1,
+		            animationStep: 5,
+		            foregroundBorderWidth: 25,
+		            backgroundBorderWidth: 25, replacePercentageByText:'',
+		            percent: 100,
+		            foregroundColor: "#38bfba",
+		            multiPercentage: 1,
+		        });
+		        $("#mobileSpec_donuts2").circliful({
+		            animation: 1,
+		            animationStep: 5,
+		            foregroundBorderWidth: 25,
+		            backgroundBorderWidth: 25, replacePercentageByText:'',
+		            percent: 100,
+		            foregroundColor: '#fc5920',
+		            multiPercentage: 1,
+		        });
+			});
+
+</script>
+{% endblock %}

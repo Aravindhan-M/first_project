@@ -1,0 +1,82 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 31/01/2019 12:52
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff2") format("woff2"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-video-camera:before { content: "\f100"; }
+.flaticon-sim-card:before { content: "\f101"; }
+.flaticon-facebook-logo:before { content: "\f102"; }
+.flaticon-twitter:before { content: "\f103"; }
+.flaticon-instagram-logo:before { content: "\f104"; }
+.flaticon-add-plus-button:before { content: "\f105"; }
+.flaticon-share:before { content: "\f106"; }
+.flaticon-back:before { content: "\f107"; }
+.flaticon-next:before { content: "\f108"; }
+.flaticon-team:before { content: "\f109"; }
+.flaticon-search:before { content: "\f10a"; }
+.flaticon-down-arrow:before { content: "\f10b"; }
+.flaticon-up-arrow:before { content: "\f10c"; }
+.flaticon-adjust:before { content: "\f10d"; }
+.flaticon-smartphone-call:before { content: "\f10e"; }
+.flaticon-frame-landscape:before { content: "\f10f"; }
+.flaticon-music-player:before { content: "\f110"; }
+.flaticon-wifi-connection-signal-symbol:before { content: "\f111"; }
+.flaticon-memory-card:before { content: "\f112"; }
+.flaticon-contact:before { content: "\f113"; }
+.flaticon-gear:before { content: "\f114"; }
+    
+    $font-Flaticon-video-camera: "\f100";
+    $font-Flaticon-sim-card: "\f101";
+    $font-Flaticon-facebook-logo: "\f102";
+    $font-Flaticon-twitter: "\f103";
+    $font-Flaticon-instagram-logo: "\f104";
+    $font-Flaticon-add-plus-button: "\f105";
+    $font-Flaticon-share: "\f106";
+    $font-Flaticon-back: "\f107";
+    $font-Flaticon-next: "\f108";
+    $font-Flaticon-team: "\f109";
+    $font-Flaticon-search: "\f10a";
+    $font-Flaticon-down-arrow: "\f10b";
+    $font-Flaticon-up-arrow: "\f10c";
+    $font-Flaticon-adjust: "\f10d";
+    $font-Flaticon-smartphone-call: "\f10e";
+    $font-Flaticon-frame-landscape: "\f10f";
+    $font-Flaticon-music-player: "\f110";
+    $font-Flaticon-wifi-connection-signal-symbol: "\f111";
+    $font-Flaticon-memory-card: "\f112";
+    $font-Flaticon-contact: "\f113";
+    $font-Flaticon-gear: "\f114";

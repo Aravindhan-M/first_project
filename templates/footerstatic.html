@@ -1,0 +1,27 @@
+{% load i18n %}
+{% load static %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="{% static 'js/jquery.flagstrap.min.js'%}"></script>
+<script src="{% static 'js/jquery.localizationTool.js'%}"></script>
+<script src="{% static 'js/jquery.waypoints.min.js'%}"></script>
+<script src="{% static 'js/infinite.min.js'%}"></script>
+<script src="{% static 'js/slick.min.js'%}"></script>
+<script src="{% static 'js/bootstrap.min.js'%}"></script>
+<script src="{% static 'js/jquery.circliful.min.js'%}"></script>
+<script src="{% static 'js/simplebar.js'%}"></script>
+<script src="{% static 'js/jquery-ui.js'%}"></script>
+<script src="{% static 'js/jquery.ui.slider-rtl.min.js'%}"></script>
+
+<script src="{% static 'js/jquery.nicescroll.min.js'%}"></script>
+<script src="{% static 'js/jquery.ui.touch-punch.min.js'%}"></script>
+<script src="{% static 'js/jm.spinner.js'%}"></script>
+<script id="customScr" src="{% static 'js/custom_scripts.js'%}"></script>
+<script  src="{% static 'js/ajax.js'%}"></script>
+{% get_current_language_bidi as LANGUAGE_BIDI %}
+<script>{%if LANGUAGE_BIDI%}change('arabic');{% else %}change('en_GB');{%endif%}</script>
+
+<!--{% if mobileplans_url == request.path %}<script  src="{% static 'js/ajax.js'%}"></script>{% endif %}-->
+<!--{% if phone_url == request.path %}<script  src="{% static 'js/ajax.js'%}"></script>{% endif %}-->
+<!--{% if plan_url == request.path %}<script  src="{% static 'js/ajax.js'%}"></script>{% endif %}-->
+<!--{% if adsl_url == request.path %}<script  src="{% static 'js/ajax.js'%}"></script>{% endif %}-->
+<!--{% if register_url == request.path %}<script  src="{% static 'js/ajax.js'%}"></script>{% endif %}-->

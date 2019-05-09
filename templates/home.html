@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}
+   PlanBaker
+{% endblock %}
+{% block content %}
+   {{ block.super }}
+<section class="home_section">
+    <div class="container">
+        <!-- <div class="center_content"> -->
+            <h1 class="home_main_hdr"> Choose the best plan in {{country.country_full_name}}</h1>
+            <ul>
+                <li><a href="{% url 'mobileplans'%}" class="btn btn-best-plans">{% trans "Mobile plans"%}</a></li>
+                <li><a href="{% url 'mobile'%}" class="btn btn-best-plans">{% trans "Mobile Phones"%} </a></li>
+                <li><a href="{% url 'mobileinternet'%}" class="btn btn-best-plans">{% trans "Mobile Internet"%}</a></li>
+                <li><a href="{% url 'fixedinternet'%}" class="btn btn-best-plans">{% trans "Fixed Internet"%}</a></li>
+                <li><a href="{% url 'add'%}" class="btn btn-best-plans">{% trans "Additional Services"%}</a></li>
+            </ul>
+        <!-- </div> -->
+    </div>
+</section>
+<section class="provider-section">
+    <div class="container">
+        <h2 class="main-hdng text-center text-capitalize">{% trans "Providers"%}</h2>
+        <div class="provider_slider">
+                    <div class="provider_slider_slides">
+
+                    <img class="img-responsive" alt="provider1" src="{% static 'images/verizon-icon-lg.png'%}">
+
+            </div>
+                <div class="provider_slider_slides">
+
+                    <img class="img-responsive" alt="provider1" src="{% static 'images/airtel-logo-red-png.png'%}">
+
+            </div>
+            <div class="provider_slider_slides">
+
+                    <img class="img-responsive" alt="provider1" src="{% static 'images/AT&T-large.png'%}">
+
+            </div>
+            <div class="provider_slider_slides">
+
+                    <img class="img-responsive" alt="provider1" src="{% static 'images/sprint-large-.png'%}">
+
+            </div>
+            <div class="provider_slider_slides">
+
+                    <img class="img-responsive" alt="provider1" src="{% static 'images/T-mobile-large-.png'%}">
+
+            </div>
+            <div class="provider_slider_slides">
+
+                    <img class="img-responsive" alt="provider1" src="{% static 'images/Huges-net.png'%}">
+
+            </div>
+            <div class="provider_slider_slides">
+
+                    <img class="img-responsive" alt="provider1" src="{% static 'images/google.png'%}">
+
+            </div>
+            <!-- <div class="provider_slider_slides">
+
+                    <img class="img-responsive" alt="provider1" src="images/verizon-icon-lg.png">
+
+            </div>
+            <div class="provider_slider_slides">
+
+                    <img class="img-responsive" alt="provider1" src="images/sprint-large-.png">
+
+            </div> -->
+        </div>
+    </div>
+</section>{% endblock %}{% block extra_script %}
+{{ block.super }}
+{% endblock %}

@@ -1,0 +1,37 @@
+{% load el_pagination_tags %}
+
+{% load media_url %}
+
+{% paginate 40 phone_list %}
+	         			<div class="filtered_products_list slctmodal_mob_list ">
+
+							<div id="form-modal-body" class="top_products_slides top_products_slides_append row">
+
+
+
+
+{% for entry in phone_list %}
+      <div class="col-md-2 col-xs-6 col-sm-4">
+										<div class="thumb-wrapper">
+											<div class="img-box">
+											<a onclick=sendinfo('{{entry.name|split}}','{{entry|media_url}}','{{entry.id}}')><img src="{{entry|media_url}}" class="img-responsive img-fluid" alt="slider Image 1"></a>
+											</div>
+											<div class="thumb-content">
+												<div style="height: 55px;padding:5px"><h5 class="text-capitalize" style="font-size: 10px;font-weight: bold;">{{entry.name}}</h5></div>
+												<div>
+
+                                                    {{entry|plan_count_for_device}}
+                                                </div>
+											</div>
+
+										</div>
+
+									</div>
+
+{% endfor %}
+								</div>
+
+
+ 					</div>
+
+{% show_more %}

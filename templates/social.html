@@ -1,0 +1,13 @@
+{% load i18n %}
+{% load static %}
+
+<div class="fixed_social_share_div">
+		<ul>
+			<li><a  target="_blank" href="http://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri|urlencode}}" title="Share this page on Facebook"><img src="{% static 'images/fb.png'%}"/></a></li>
+			<li><a  target="_blank" href="https://plus.google.com/share?url={{request.build_absolute_uri|urlencode}}" title="Share this page on Google Plus"><img src="{% static 'images/google-plus.png'%}"/></a></li>
+			<li><a  target="_blank" href="#" title="Share this page on Instagram"><img src="{% static 'images/insta.png'%}"/></a></li>
+			<li><a  target="_blank" href="#" title="Share this page on YouTube"><img src="{% static 'images/youtube.png'%}"/></a></li>
+			<li><a  target="_blank" href="http://www.linkedin.com/shareArticle?url={{request.build_absolute_uri|urlencode}}" title="Share this page on linkedin"><img src="{% static 'images/linkedin.png'%}"/></a></li>
+			<li><a  target="_blank" href="http://twitter.com/share?url={{request.build_absolute_uri|urlencode}}" title="Share this page on Twitter"><img src="{% static 'images/twitter.png'%}"/></a></li>
+		</ul>
+	</div>

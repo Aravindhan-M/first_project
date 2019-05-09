@@ -1,0 +1,72 @@
+
+
+<div class="filter-repeater">
+          	<h3>{{name|capfirst}}</h3>
+          	<div data-simplebar class="category-scroll-box">
+            <ul>
+                <!--<form action="{% url 'search'%}">-->
+                {% for q in qs|slice:":4" %}
+              <li>
+                <label class="chckbox-container">{{q.value}}({{q.count}})<input {{checked}} type="checkbox"  value="{{q.value}}" name="{{div_id}}" ><span class="checkmark"></span></label>
+              </li>
+                    {%endfor%}
+                <!--</form>-->
+            </ul>
+            <div id="{{div_id}}" style="display: none">
+            	 <ul>
+                     {% for q in qs|slice:"5:" %}
+              <li>
+                <label class="chckbox-container">{{q.value}}({{q.count}})  <input  type="checkbox" value="{{q.value}}" name="{{div_id}}" ><span class="checkmark" ></span></label>
+              </li>
+                {%endfor%}
+
+            </ul>
+            </div>
+
+        	</div>
+        	 <a href="javascript:void(0)" class="fltr-shwmre flter-ico-change" id="{{a_id}}">Show more <span class="plus-ico"><i class="flaticon-down-arrow"></i></span></a>
+          </div>
+
+
+<script>
+$(document).ready(function(){
+    $('#{{a_id}}').click(function(){
+     $( "#{{div_id}}" ).toggle("fast");
+     $( "#{{a_id}}" ).toggleClass("flter-ico-change");
+     if ($( "#{{a_id}}" ).hasClass("flter-ico-change")) {
+            $( "#{{a_id}}" ).html("Show more <span class='plus-ico'><i class='flaticon-down-arrow'></i></span");
+       } else {
+              $( "#{{a_id}}" ).html("Show less <span class='plus-ico'><i class='flaticon-up-arrow'></i></span>");
+       }
+
+  });
+
+  $("input[name='{{div_id}}']").change(function(){
+  $("form").submit();
+
+  })
+  });
+
+
+
+</script>
+<!--<script>-->
+
+
+<!--	$("#{{drop_down_id}}").click(function(){-->
+
+
+<!--	var value = $(this).find('.select-selected').text();-->
+<!--	if (value == 'All'){-->
+<!--	value = "";-->
+<!--	}-->
+
+<!--	$("#{{input_id}}").val(value).trigger('change')-->
+
+
+
+<!--	});-->
+<!--&lt;!&ndash;	$("#{{drop_down_id}}").find('.select-selected').text('{{value}}')&ndash;&gt;-->
+<!--&lt;!&ndash;	console.log($("#{{drop_down_id}}").find('.select-selected').text("welcome"))&ndash;&gt;-->
+
+<!--</script>-->

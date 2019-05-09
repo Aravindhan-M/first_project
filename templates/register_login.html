@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}
+    Phones
+{% endblock %}
+{% block content %}
+	<section class="mid-section login_reg_section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-sm-12 floatleft">
+					 <div class="login_reg_tab">
+			          	<div class="login_reg_tab_pill">
+			          		 <ul class="nav nav-tabs" role="tablist">
+							    <li role="presentation" class="active"><a href="#registerTab" aria-controls="registerTab" role="tab" data-toggle="tab">Register new account</a></li>
+							    <li role="presentation"><a href="#loginTab" aria-controls="loginTab" role="tab" data-toggle="tab">Log in</a></li>
+							  </ul>
+			          	</div>
+			          	<div class="login_reg_tab_content">
+			          		<div class="tab-content">
+							    <div role="tabpanel" class="tab-pane active" id="registerTab">
+
+							    		<form action="">
+							    			<p class="frm_hdr_desc">User account</p>
+							    			<label>Username</label>
+							    			<div class="form-group">
+							    				<input type="text" class="form-control">
+							    				<p class="frgt_pswd_desc">Spaces are allowed; punctuation is not allowed except for periods, hyphens, apostrophes, and underscores.</p>
+							    			</div>
+							    			<label>Gender</label>
+							    			<div class="form-group">
+							    				<div class="custom-select" >
+												  <select>
+												    <option value="0">Select Gender</option>
+												    <option value="1">FeMale</option>
+												    <option value="1">Male</option>
+												    <option value="2">Others</option>
+												  </select>
+												</div>
+							    			</div>
+							    			<label>Date of birth</label>
+							    			<div class="form-group">
+							    				<input type="date" class="form-control">
+							    			</div>
+							    			<label>E-mail address </label>
+							    			<div class="form-group">
+							    				<input type="text" class="form-control">
+							    				<p class="frgt_pswd_desc">A valid e-mail address. All e-mails from the system will be sent to this address. The e-mail address is not made public and will only be used 
+if you wish to receive a new password or wish to receive certain news or notifications by e-mail.</p>
+							    			</div>
+							    			<label>Password</label>
+							    			<div class="form-group">
+							    				<input type="password" class="form-control">
+							    				<p class="frgt_pswd_desc"> Password must contain at least 6 characters</p>
+							    			</div>
+							    			<label>Mobile  Operator</label>
+							    			<div class="form-group">
+							    				<div class="custom-select" >
+												  <select>
+												    <option value="0">Select Operator</option>
+												    <option value="1">Operator1</option>
+												    <option value="2">Operator2</option>
+												    <option value="3">Others</option>
+												  </select>
+												</div>
+							    			</div>
+							    				<label>Mobile number</label>
+							    			<div class="form-group">
+							    				<input type="text" class="form-control">
+							    				<p class="frgt_pswd_desc snd_otp">Send OTP</p>
+							    			</div>
+							    			<label>Enter OTP</label>
+							    			<div class="form-group">
+							    				<input type="text" class="form-control">
+							    				<p class="frgt_pswd_desc snd_otp">Resend OTP</p>
+							    			</div>
+							    			<div class="racapacha_div">
+							    				<img src="{% static 'images/i-am-not-robot.png'%}" class="img-responsive" alt="recpatcha image">
+							    			</div>
+							    			<button type="button" class="reg_logn_btn">Register new account</button>
+							    		</form>
+
+							    </div>
+							    <div role="tabpanel" class="tab-pane" id="loginTab">
+							    	<form action="">
+							    			<label>Mobile number or E-mail address </label>
+							    			<div class="form-group">
+							    				<input type="text" class="form-control">
+							    			</div>
+							    			<label>Password</label>
+							    			<div class="form-group">
+							    				<input type="password" class="form-control" >
+							    				<p class="frgt_pswd_desc"> Password must contain at least 6 characters</p>
+							    			</div>
+							    			<div class="racapacha_div">
+							    				<img src="{% static 'images/i-am-not-robot.png'%}" class="img-responsive" alt="recpatcha image">
+							    			</div>
+							    			<button type="button" class="reg_logn_btn">Log in</button>
+							    		</form>
+							    </div>
+							    
+							  </div>
+			          	</div>
+			          </div>
+				  		<div class="provider-section">
+						<h2 class="main-hdng text-center text-capitalize">Providers</h2>
+						<div class="provider_slider">	
+									<div class="provider_slider_slides">
+						
+									<img class="img-responsive" alt="provider1" src="{% static 'images/verizon-icon-lg.png'%}">
+								
+							</div>
+							
+							<div class="provider_slider_slides">
+								
+									<img class="img-responsive" alt="provider1" src="{% static 'images/AT&T-large.png'%}">
+						
+							</div>
+							<div class="provider_slider_slides">
+								
+									<img class="img-responsive" alt="provider1" src="{% static 'images/sprint-large-.png'%}">
+							
+							</div>
+							<div class="provider_slider_slides">
+								
+									<img class="img-responsive" alt="provider1" src="{% static 'images/T-mobile-large-.png'%}">
+								
+							</div>
+							<div class="provider_slider_slides">
+								
+									<img class="img-responsive" alt="provider1" src="{% static 'images/Huges-net.png'%}">
+								
+							</div>
+							<div class="provider_slider_slides">
+								
+									<img class="img-responsive" alt="provider1" src="{% static 'images/google.png'%}">
+								
+							</div>
+							<!-- <div class="provider_slider_slides">
+								
+									<img class="img-responsive" alt="provider1" src="images/verizon-icon-lg.png">
+								
+							</div>
+							<div class="provider_slider_slides">
+								
+									<img class="img-responsive" alt="provider1" src="images/sprint-large-.png">
+								
+							</div> -->																																																								
+						</div>
+				</div>	
+					
+				</div>
+				<div class="col-md-4 col-sm-12 floatright">
+					 <div class="adverstisement_div">
+						 <a href="" target="_blank" rel="nofollow" title="" class="zone1">
+							<img width = "100%" height="100%" src="" class="img-responsive img-fluid zone1" />
+						</a>
+					</div>
+
+					<div class="adverstisement_div">
+						<a href="" target="_blank" rel="nofollow" title="" class="zone2">
+							<img width = "100%" height="100%" src="" class="img-responsive img-fluid zone2" />
+						</a>
+
+					</div>
+					<div class="adverstisement_div">
+						<a href="" target="_blank" rel="nofollow" title="" class="zone3">
+							<img width = "100%" height="100%" src="" class="img-responsive img-fluid zone3" />
+						</a>
+
+					</div>
+					<div class="adverstisement_div">
+						<a href="" target="_blank" rel="nofollow" title="" class="zone4">
+							<img width = "100%" height="100%" src="" class="img-responsive img-fluid zone4" />
+						</a>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

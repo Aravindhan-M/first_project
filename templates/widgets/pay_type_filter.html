@@ -1,0 +1,29 @@
+{% include "django/forms/widgets/input.html" %}
+
+
+{% for type,count in widget.pay_type.items%}
+
+<button id = {{type}} class="{% if count == 0 %} btn disabled {% endif %} main_btn text-capitalize">{{type}} <span>({{count}})</span></button>
+
+<script>
+    $('#{{widget.val}}').css("border","1px solid #FA8072")
+
+    $('#{{type}}').on('click',function () {
+
+
+    var type = "{{type}}";
+    if (type == 'All'){
+        type=""
+     }
+    else{
+    type = type.toLowerCase()
+    }
+    $('#{{widget.pay_type_id}}').val(type)
+    $('.plan_home_form_id').submit();
+
+    });
+</script>
+{%endfor%}
+
+<!--<button class="main_btn text-capitalize">postpaid <span>({{pre_count}})</span></button>-->
+<!--<button class="main_btn text-capitalize">prepaid <span>({{post_count}})</span></button>-->

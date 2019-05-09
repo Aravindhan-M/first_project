@@ -1,0 +1,15 @@
+<div class="dropdown netwrk-dropdwn">
+										  <button class="btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
+												  style="width: 100%;overflow: hidden;white-space: nowrap;display: block; text-overflow: ellipsis;" aria-expanded="true">
+										    All
+										    <span class="caret"></span>
+										  </button>
+										  <ul class="dropdown-menu" style="list-style-position: inside;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">
+                                              <li><a class="net_cl"   value="">All</a></li>
+                                              {% for op in context%}
+										    <li style="white-space:initial;hyphens:auto;"><a class="net_cl"   value="{{op.operator_id__operator}}">{{op.operator_id__operator}}</a></li>
+
+                                              {% endfor %}
+										  </ul>
+										</div>
+

@@ -1,0 +1,341 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}
+    ADSL
+{% endblock %}
+{% load fixed_tags %}
+{% load plan_tags %}
+{% block content %}
+	<section class="mid-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-sm-12 floatleft">
+					<h2 class="main-hdng"> <span class="choose_best_plans_for"> {% trans "Choose the Best Plans for"%} </span>
+					<span class="mobilephonr_trans">{% trans "ADSL & Fiber Internet"%}</span> </h2>
+					<ul class="company-clients-logos">
+
+                        {% operator_images "fixed" %}
+					</ul>
+                    <form method="GET" action="{% url 'fixed_internet_operators' %}">
+					<div class="networks client_network">
+						<div class="row flex_eqH">
+<!--							<div class="col-md-4 networks-div netwrk_flex_div">-->
+<!--								<h2 class="main-hdng text-capitalize">{% trans "Select Device"%} </h2>-->
+<!--								<div class="select-phone nw_space_even">-->
+<!--									<div class="select-phone-div adsl_image img-block">-->
+<!--										<a href="#" class="see_selectmobile_link" data-toggle="modal" data-target="#seeselectModal"><img class="img-responsive" alt="Router Icon" src="{% static 'images/icon-router.png'%}"-->
+<!--										onmouseover="this.src='{% static 'images/adslnewh.png'%}'"-->
+<!--    									onmouseout="this.src='{% static 'images/icon-router.png'%}'"-->
+
+<!--										></a>-->
+<!--									</div>-->
+<!--								</div>-->
+<!--							</div>-->
+							<div class="col-md-4 networks-div filter netwrk_flex_div monthly_usage_div" style="margin-left:-40px">
+								<h2 class="main-hdng text-capitalize">{% trans "Monthly Usage"%} <a href="#" data-toggle="modal" data-target="#dataUsageCalcModal"><img src="{% static 'images/i-icon.png'%}"></a></h2>
+								<div class="nw_space_even">
+                                    <div class="slidecontainer">
+                                        <p id="data_text"><span class="data_trans">{% trans "Data"%}: </span>
+                                            {{form_class.data}}
+
+                                    </div>
+
+								</div>
+							</div>
+							<div class="col-md-4 networks-div netwrk_flex_div">
+								<h2 class="main-hdng text-capitalize">{% trans "Network"%}</h2>
+								<div class="nw_space_even">
+									    {{form_class.selected_network}}
+
+										{% operator "fixed" %}
+										<div class="plan_availabe">
+                                            {% get_fixed_count as count %}
+											<p class="plan_availabe_text"><span class="plan_availabe_text_span" style="font-size: 36px;font-weight: 600;">{{ count }}</span><span class="text-capitalize plan_availabe_trnslte">{% trans "Plans Available"%}</span></p>
+										</div>
+										<div class="search_op_div">
+											<button type="submit" class="btn search_op_btn text-capitalize">{% trans "Search All Operators"%}</button>
+										</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                     </form>
+					<div class="plans_div">
+						<h2 class="main-hdng">Lorem Ipsum </h2>
+						<p class="sub-hdr-line">Lorem Ipsum is simply dummy text of the printing </p>
+						<div class="row plans_inner_div flex_eqH">
+							<div class="col-sm-3">
+								<div class="plan_icon img-block"><img src="{% static 'images/star.png'%}" class="img-responsive" alt="star">
+								</div>
+								<div class="tag">
+									<a href="#">Lorem Ipsum</a>
+								</div>
+								<p class="plan_desc">
+									Lorem Ipsum is simply
+									dummy text of the printing
+								</p>
+							</div>
+							<div class="col-sm-3">
+								<div class="plan_icon img-block"><img src="{% static 'images/icon-01.png'%}" class="img-responsive" alt="star"></div>
+								<div class="tag">
+									<a href="#">Lorem Ipsum</a>
+								</div>
+								<p class="plan_desc">
+									Lorem Ipsum is simply
+									dummy text of the printing
+								</p>
+							</div>
+							<div class="col-sm-3">
+								<div class="plan_icon img-block"><img src="{% static 'images/icon-02.png'%}" class="img-responsive" alt="star"></div>
+								<div class="tag">
+									<a href="#">Lorem Ipsum</a>
+								</div>
+								<p class="plan_desc">
+									Lorem Ipsum is simply
+									dummy text of the printing
+								</p>
+							</div>
+							<div class="col-sm-3">
+								<div class="plan_icon img-block"><img src="{% static 'images/icon-01.png'%}" class="img-responsive" alt="star"></div>
+								<div class="tag">
+									<a href="#">Lorem Ipsum</a>
+								</div>
+								<p class="plan_desc">
+									Lorem Ipsum is simply
+									dummy text of the printing
+								</p>
+							</div>
+
+						</div>
+					</div>
+					<div class="top_products">
+						<h2 class="main-hdng text-center text-capitalize">Top Smartphones </h2>
+							<div class="top_products_slides top_products_slides1 dsply_flx">
+								<div>
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="{% static 'images/mob-01.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+										</div>
+										<div class="thumb-content">
+											<h4 class="text-capitalize">Google pixel 3</h4>
+											<a href="#" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">{% trans "See specifications"%}</a>
+											<a href="{% url 'operators'%}" class="available_in_12_plans">{% trans "Available in 12 plans"%}</a>
+											<a href="{% url 'search'%}" class="buymobilephoneonly">{% trans "Buy mobile Phone"%}</a>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="{% static 'images/mob-02.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+										</div>
+										<div class="thumb-content">
+											<h4 class="text-capitalize">iPhone XR</h4>
+											<a href="#" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">{% trans "See specifications"%}</a>
+											<a href="{% url 'operators'%}" class="available_in_12_plans">{% trans "Available in 12 plans"%}</a>
+											<a href="{% url 'search'%}" class="buymobilephoneonly">{% trans "Buy mobile Phone"%}</a>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="{% static 'images/mob-03.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+										</div>
+										<div class="thumb-content">
+											<h4 class="text-capitalize">OnePlus 6t</h4>
+											<a href="#" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">{% trans "See specifications"%}</a>
+											<a href="{% url 'operators'%}" class="available_in_12_plans">{% trans "Available in 12 plans"%}</a>
+											<a href="{% url 'search'%}" class="buymobilephoneonly">{% trans "Buy mobile Phone"%}</a>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="{% static 'images/mob-04.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+										</div>
+										<div class="thumb-content">
+											<h4 class="text-capitalize">Huawei Mate 20 Pro</h4>
+											<a href="#" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">{% trans "See specifications"%}</a>
+											<a href="{% url 'operators'%}" class="available_in_12_plans">{% trans "Available in 12 plans"%}</a>
+											<a href="{% url 'search'%}" class="buymobilephoneonly">{% trans "Buy mobile Phone"%}</a>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="{% static 'images/mob.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+										</div>
+										<div class="thumb-content">
+											<h4 class="text-capitalize">Google pixel 3</h4>
+											<a href="#" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">{% trans "See specifications"%}</a>
+											<a href="{% url 'operators'%}" class="available_in_12_plans">{% trans "Available in 12 plans"%}</a>
+											<a href="{% url 'search'%}" class="buymobilephoneonly">{% trans "Buy mobile Phone"%}</a>
+										</div>
+									</div>
+								</div>
+						</div>
+
+
+					</div>
+					<div>
+						<div class="top_products_slides top_products_slides2 dsply_flx">
+								<div>
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="{% static 'images/mobile-large.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+										</div>
+										<div class="thumb-content">
+											<h4 class="text-capitalize">Google pixel 3</h4>
+											<a href="#" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">{% trans "See specifications"%}</a>
+											<a href="{% url 'operators'%}" class="available_in_12_plans">{% trans "Available in 12 plans"%}</a>
+											<a href="{% url 'search'%}" class="buymobilephoneonly">{% trans "Buy mobile Phone"%}</a>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="{% static 'images/mob-02.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+										</div>
+										<div class="thumb-content">
+											<h4 class="text-capitalize">iPhone XR</h4>
+											<a href="#" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">{% trans "See specifications"%}</a>
+											<a href="{% url 'operators'%}" class="available_in_12_plans">{% trans "Available in 12 plans"%}</a>
+											<a href="{% url 'search'%}" class="buymobilephoneonly">{% trans "Buy mobile Phone"%}</a>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="{% static 'images/mob-03.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+										</div>
+										<div class="thumb-content">
+											<h4 class="text-capitalize">OnePlus 6t</h4>
+											<a href="#" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">{% trans "See specifications"%}</a>
+											<a href="{% url 'operators'%}" class="available_in_12_plans">{% trans "Available in 12 plans"%}</a>
+											<a href="{% url 'search'%}" class="buymobilephoneonly">{% trans "Buy mobile Phone"%}</a>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="{% static 'images/mob-04.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+										</div>
+										<div class="thumb-content">
+											<h4 class="text-capitalize">Huawei Mate 20 Pro</h4>
+											<a href="#" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">{% trans "See specifications"%}</a>
+											<a href="{% url 'operators'%}" class="available_in_12_plans">{% trans "Available in 12 plans"%}</a>
+											<a href="{% url 'search'%}" class="buymobilephoneonly">{% trans "Buy mobile Phone"%}</a>
+										</div>
+									</div>
+								</div>
+								<div>
+									<div class="thumb-wrapper">
+										<div class="img-box">
+											<img src="{% static 'images/mob.png'%}" class="img-responsive img-fluid" alt="slider Image 1">
+										</div>
+										<div class="thumb-content">
+											<h4 class="text-capitalize">Google pixel 3</h4>
+											<a href="#" class="see_specification_link" data-toggle="modal" data-target="#seeSpecModal">{% trans "See specifications"%}</a>
+											<a href="{% url 'operators'%}" class="available_in_12_plans">{% trans "Available in 12 plans"%}</a>
+											<a href="{% url 'search'%}" class="buymobilephoneonly">{% trans "Buy mobile Phone"%}</a>
+										</div>
+									</div>
+								</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-12 floatright">
+
+					 <div class="adverstisement_div">
+						<a  href="" target="_blank" rel="nofollow" title="" class="zone1">
+							<img  width = "100%" height="100%" src="" class="img-responsive img-fluid zone1" />
+						</a>
+					</div>
+					<div class="adverstisement_div">
+						<a  href="" target="_blank" rel="nofollow" title="" class="zone2">
+							<img width = "100%" height="100%" src="" class="img-responsive img-fluid zone2" />
+						</a>
+					</div>
+					<div class="adverstisement_div">
+						<a  href="" target="_blank" rel="nofollow" title="" class="zone3">
+							<img width = "100%" height="100%" src="" class="img-responsive img-fluid zone3" />
+						</a>
+					</div>
+					<div class="adverstisement_div">
+						<a href="" target="_blank" rel="nofollow" title="" class="zone4">
+							<img  width = "100%" height="100%" src="" class="img-responsive img-fluid zone4" />
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	{% endblock %}
+	 {% block extra_script %}
+{{block.super}}
+{% include "datausagemodal.html" %}
+<script >
+
+$(".net_cl").click(function(){
+
+var clicked = $(this);
+var plan_name = clicked.attr("value");
+
+$("#selected_network_id").val(plan_name).trigger('change');
+});
+
+
+$('.plan_form_class').change( function(){
+ $('.plan_availabe_text_span').jmspinner('small');
+var data = $('form').serialize();
+console.log(data);
+$.ajax({
+        type: "GET",
+        url: '{% url "fixed_count" %}',
+        data: data,
+        success: function(data) {
+        $('.plan_availabe_text_span').jmspinner(false);
+        var htmlString = data
+        $('.plan_availabe_text_span').html(htmlString)
+
+
+<!--        $('.plan_availabe_text').contents().get(0).nodeValue = data;-->
+
+
+        },
+        error: function(data) {
+        console.log("data is :")
+        console.log(data)
+        $('.plan_availabe_text').contents().get(0).nodeValue = 0;
+
+        }
+        })
+
+});
+
+
+
+
+
+$(document).ready(function(){
+ initializeRangeSlider('#dataRouterRange');
+
+});
+	// Slider script
+			// Data slider
+			var dataRouterRange_slider = document.getElementById("dataRouterRange");
+			var dataRouterRangeval_output = document.getElementById("dataRouterRangeval");
+			dataRouterRangeval_output.innerHTML = dataRouterRange_slider.value;
+			dataRouterRange_slider.oninput = function() {
+			  dataRouterRangeval_output.innerHTML = this.value;
+			}
+
+</script>
+{% endblock %}

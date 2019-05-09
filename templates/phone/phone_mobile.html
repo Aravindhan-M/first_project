@@ -1,0 +1,311 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% load media_url %}
+{% block title %}
+    Phones
+{% endblock %}
+{% block content %}
+
+	<section class="mid-section iphone_list_section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-sm-12 floatleft">
+					<div class="select_phone_filterdiv">
+						<form class="search-form"  id="phone_mobile_form_id" action="{% url 'mobile' %}">
+						<div class="product_listng_buy_top_div">
+				   			 	<div class="row">
+						  			<div class="col-sm-4">
+							  		 <h4 class="slct_phn_hdr">Select Phone</h4>
+							  		</div>
+									 <div class="col-sm-8">
+									 	<ul class="company-clients-logos">
+												<li><img class="img-responsive" alt="verizon" src="{% static 'images/verizon-icon.png'%}"></li>
+												<li><img class="img-responsive" alt="verizon" src="{% static 'images/AT&T.png'%}"></li>
+												<li><img class="img-responsive" alt="verizon" src="{% static 'images/T-mobile.png'%}"></li>
+												<li><img class="img-responsive" alt="verizon" src="{% static 'images/sprint.png'%}"></li>
+											</ul>
+									 </div>
+				  				</div>
+				  		</div>
+
+				  		<div class="filter_by_maindiv">
+
+				  			<div class="filter_by_div">
+				               <label class="sort_by"><i class="flaticon-search"></i>Search</label>
+				              <div>
+								  {{form_class.search_field}}
+
+<!--				               <input type="search" placeholder="Enter Keywords" class="form-control" name="q" value="{{request.GET.q}}">-->
+
+				              </div>
+				            </div>
+				            <div class="filter_by_div">
+								{{form_class.ram}}
+
+				            </div>
+				            <div class="filter_by_div">
+								{{form_class.price}}
+
+				            </div >
+				             <div class="filter_by_div">
+								 {{form_class.brand}}
+
+				            </div>
+				            <div class="filter_by_div">
+								{{form_class.order_by}}
+
+				            </div>
+
+				  		</div>
+
+				  	</div>
+					<div class="filtered_products_list">
+						<div class="row">
+				            <div class="col-sm-12 col-md-3">
+				            		 <p class="showing_desc">Show Advanced Options</p>
+				            </div>
+				            <div class="col-sm-12 col-md-9 phnes_included_div">
+<!--				              <ul>-->
+<!--					              <li>Phones included</li>-->
+<!--					              <li><label class="chckbox-container">3G <input type="checkbox"  ><span class="checkmark"></span></label></li>-->
+<!--					              <li><label class="chckbox-container">4G LET<input type="checkbox"  ><span class="checkmark"></span></label></li>-->
+<!--				              </ul>-->
+				            </div>
+          				</div>
+							{% include page_template%}
+                        <!--{% if page_obj.has_next %}-->
+
+          <!--{% endif %}-->
+
+					</div>
+					</form>
+
+				</div>
+				<div class="col-md-4 col-sm-12 floatright">
+
+					 <div class="adverstisement_div">
+						<!--<img id = "ad1" src="{% static 'images/ad/352.jpeg'%}" width = "100%" height="100%" class="img-responsive img-fluid" >-->
+						<a href="" target="_blank" rel="nofollow" title="" class="zone1">
+							<img  width = "100%" height="100%" src="" class="img-responsive img-fluid zone1" />
+						</a>
+			 		</div>
+					<div class="adverstisement_div">
+						<!--<img id = "ad1" src="{% static 'images/ad/352.jpeg'%}" width = "100%" height="100%" class="img-responsive img-fluid" >-->
+						<a href="" target="_blank" rel="nofollow" title="" class="zone2">
+							<img width = "100%" height="100%" src="" class="img-responsive img-fluid zone2" />
+						</a>
+			 		</div>
+					<div class="adverstisement_div">
+
+						<a href="" target="_blank" rel="nofollow" title="" class="zone3">
+							<img width = "100%" height="100%" src="" class="img-responsive img-fluid zone3" />
+						</a>
+					</div>
+					<div class="adverstisement_div">
+						<a href="" target="_blank" rel="nofollow" title="" class="zone4">
+							<img width = "100%" height="100%" src="" class="img-responsive img-fluid zone4" />
+						</a>
+
+						<!--<img id = "ad3" src="{% static 'images/ad/352_291_2.jpeg'%}" width = "100%" height="100%" class="img-responsive img-fluid" >-->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+
+<div class="modal fade custom_seeSpecModal" id="seeSpecModal" role="dialog">
+	    <div class="modal-dialog modal-lg">
+
+	      <!-- Modal content-->
+	      <div class="modal-content ">
+	        <div class="modal-header">
+	          <h4 class="modal-title">{{details.slug}}</h4>
+
+	          <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+				<button type="button" class="btn btn-default close1" data-dismiss="modal" aria-label="Close"><i class="fa fa-times fa-lg" aria-hidden="true"></i></button>
+	        </div>
+	        <div class="modal-body scrollPrdct_mdl" id="seespecmodalid">
+
+	        </div>
+	      </div>
+
+	    </div>
+	  </div>
+
+
+
+
+
+	{% endblock %}
+{% block extra_script %}
+<script src="/static/el-pagination/js/el-pagination.js"></script>
+<script>$.endlessPaginate({
+   paginateOnScrollMargin: 20,
+
+   });
+</script>
+{{ block.super }}
+  <!-- Specification Modal begins -->
+
+<script >
+
+
+
+
+
+
+$(document).ready(function(){
+
+searchForm = $("#phone_mobile_form_id");
+searchInput = searchForm.find("[name='search_field']");
+var typingTimer;
+var typingInterval = 1500;
+searchInput.keyup(function(event){
+clearTimeout(typingTimer);
+typingTimer = setTimeout(submitf,typingInterval)
+
+})
+
+searchInput.keydown(function(event){
+clearTimeout(typingTimer);
+
+
+})
+
+$('.phone_form_class').change(function(){
+submitf();
+
+})
+
+function submitf(){
+searchForm.submit();
+
+}
+
+function performSearch(){
+$(".top_products_slides").empty();
+var query = $('form').serialize();
+
+performAjax('1',query);
+
+
+//window.location.href = '/phones/?q=' + query
+//performAjax(1,query)
+}
+
+
+})
+
+
+var slug;
+var name;
+function sendslug(slug,name){
+slug = slug;
+name = name;
+console.log(slug)
+var url_mask = "{% url 'mobile-view' 12345 %}".replace(/12345/, slug);
+console.log(url_mask)
+$('#seespecmodalid').load(url_mask, function () {
+                    $('#seeSpecModal').modal('toggle');
+                    $('.modal-title').text(name);
+                    //formAjaxSubmit('#form-modal-body form', '#form-modal');
+                });
+}
+
+function sendpage(page){
+
+
+performAjax(page);
+
+}
+function sendsearch(num,q){
+
+
+performAjax(num,q);
+
+}
+function truncate(str){
+s = str.split(" ").splice(0,6).join(" ");
+  return s+="..."
+}
+
+function performAjax(data,q){
+
+$.ajax
+({
+  type: "GET",
+  url: '{% url "ajax-view" %}',
+  data :q,
+  success: function(data)
+  {
+var parsed  = JSON.parse(data)
+
+  $.each( parsed.phones, function( index, value ){
+
+var name =truncate(value.name)
+var htmlString =
+`
+<div class="col-md-3 col-xs-12 col-sm-6">
+										<div class="thumb-wrapper">
+											<div class="img-box">
+												<img src="${value.image}" class="img-responsive img-fluid" alt="slider Image 1">
+											</div>
+											<div class="thumb-content" style="height:109px">
+												<h4 class="text-capitalize">${name}</h4>
+
+												<a style="cursor: pointer;"  onclick="sendslug('${value.slug}','${value.name}')" class="see_specification_link" >{% trans "See specifications"%}</a>`
+
+if(value.plancount){
+htmlString+=`<a href="{% url 'operators'%}" class="available_in_12_plans">Available in ${value.plancount} plans</a>`
+}
+htmlString+=`<a href="{% url 'search'%}" class="buymobilephoneonly">{% trans "Buy mobile Phone"%}</a>
+											</div>
+										</div>
+									</div>
+
+
+`
+
+
+
+
+
+   $(".top_products_slides").append(htmlString)
+
+});
+var num = parsed.pagination.next_page_number;
+var has_next = parsed.pagination.has_next;
+console.log(num);
+console.log(has_next);
+
+var param = `sendpage('${num}','')`
+$('#loadmore').attr('onClick', param);
+
+
+
+  },
+  error : function(error)
+  {
+  console.log(error)
+  }
+});
+
+}
+
+//////////search
+
+<!--	// Slider script-->
+<!--			// Data slider-->
+<!--			var mobileDataRange_slider = document.getElementById("mobileDataRange");-->
+<!--			var mobileDataRangeval_output = document.getElementById("mobileDataRangeval");-->
+<!--			mobileDataRangeval_output.innerHTML = mobileDataRange_slider.value;-->
+<!--			mobileDataRange_slider.oninput = function() {-->
+<!--			  mobileDataRangeval_output.innerHTML = this.value;-->
+<!--			}-->
+
+</script>
+{% endblock %}

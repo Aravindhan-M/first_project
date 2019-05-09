@@ -1,0 +1,64 @@
+<h3 class="prce_range_hdr">Price Range <a type="button" onclick='resetSlider();' class="reset_btn">reset</a></h3>
+
+				<div id="slider-range" class="slider-range"></div>
+
+	          		<div class="form_smeline">
+		          		<input type="text"  class="form-control min-value" id="min-value">
+		          		<span>{{request.session.currency}}</span>
+	          	   </div><br>
+	          	   <div class="form_smeline">
+		          		<input type="text"  class="form-control max-value" id="max-value">
+		          		<span>{{request.session.currency}}</span>
+	          	   </div>
+
+	          	<p class="ranger_amount">
+					<label for="{{attr_id}}">Range:</label>
+                    {% include "django/forms/widgets/input.html" %}
+<!--					<input type="text" id="amount" readonly >-->
+				</p>
+				<button class="btn filter_btn">Filter</button>
+
+<script>
+
+ function initializePriceRangeSlider() {
+
+    $("#slider-range").slider({
+      range: true,
+      isRTL: false,
+      min: {{min.price__min}},
+      max: {{max.price__max}},
+      values: [ {{min.price__min}}, {{max.price__max}} ],
+      slide: function( event, ui ) {
+
+
+        $('#min-value').val(''+ ui.values[ 0 ]);
+        $('#max-value').val('' + ui.values[ 1 ]);
+        $( "#amount" ).val( "" + ui.values[ 0 ] + " to " + ui.values[ 1 ] );
+      }
+    });
+
+       $('#min-value').val(''+ {{min_qs}});
+    $('#max-value').val('' +{{max_qs}});
+    $( "#amount" ).val( " " + {{min_qs}} +
+      " to " + {{max_qs}} );
+
+      var $slider = $("#slider-range");
+      $slider.slider("values", 0, {{min_qs}});
+      $slider.slider("values", 1, {{max_qs}});
+
+  }
+
+  function resetSlider() {
+  console.log("resetting")
+    var $slider = $("#slider-range");
+    $slider.slider("values", 0, {{min.price__min}});
+    $slider.slider("values", 1, {{max.price__max}});
+    $('#min-value').val(''+ $( "#slider-range" ).slider( "values", 0 ));
+    $('#max-value').val('' +$( "#slider-range" ).slider( "values", 1 ));
+    $( "#amount" ).val( " " + $( "#slider-range" ).slider( "values", 0 ) +
+        " to " + $( "#slider-range" ).slider( "values", 1 ) );
+  }
+
+
+
+</script>

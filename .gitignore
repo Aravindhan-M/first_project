@@ -1,0 +1,10 @@
+*.pyc
+*.mo
+db.sqlite3
+.env
+media/
+sample.csv
+test.csv
+testing.py
+dbconnect.py
+dbutils.py

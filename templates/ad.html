@@ -1,0 +1,57 @@
+{% load i18n %}
+
+<ul class="nav navbar-nav navbar-right language menu">
+    {% get_current_language as LANGUAGE_CODE %}
+    {% get_available_languages as LANGUAGES %}
+    {% get_current_language_bidi as LANGUAGE_BIDI %}
+
+    {% get_language_info_list for LANGUAGES as languages %}
+    {% for language in languages %}
+{{LANGUAGE_CODE}}<br>
+    {{ request.get_full_path}}
+
+    <!--{{ language.code }}-->
+    <!--{{ language.code }}{{ request.get_full_path|slice:'3:' }}-->
+        <li>
+            <a href="/{{language.code}}{{request.get_full_path|slice:'3:'}}"
+               class="{% if language.code == LANGUAGE_CODE %}selected{% endif %}"
+               lang="{{ language.code }}">
+                {{ language.name_local }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+<!--$(document).ready(-->
+            <!--function() {-->
+                <!--setInterval(function() {-->
+               <!--$.ajax({-->
+        <!--url: '/ads/adreq/',-->
+        <!--data: {-->
+          <!--'zone': 'sidebar'-->
+        <!--},-->
+        <!--dataType: 'json',-->
+        <!--success: function (data) {-->
+        <!--console.log(data)-->
+        <!--$("a").attr("href",data.ad_url);-->
+        <!--$("a").attr("title",data.title);-->
+        <!--$("img").attr("src",data.image_url);-->
+        <!--}-->
+      <!--});-->
+
+                            <!--}, 5000);-->
+                    <!--});-->
+</script>
+
+
+
+    <!--$(document).ready(-->
+     <!--function() {-->
+     <!--setInterval(function() {-->
+    <!--var htmls = `{% include 'adtest.html' %}`-->
+    <!--console.log(htmls)-->
+      <!--$('#test').replaceWith(htmls);-->
+     <!--}, 2000);-->
+    <!--});-->

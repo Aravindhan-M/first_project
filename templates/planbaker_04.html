@@ -1,0 +1,310 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load static %}
+{% block title %}
+    Phones
+{% endblock %}
+{% block content %}
+<section class="product_listng_buy">
+  <div class="container">
+   		<div class="product_listng_buy_top_div">
+   			 	<div class="row">
+
+  			<div class="col-sm-3 floatleft">
+	  		 <h4 class="slct_phn_hdr">Select Phone</h4>
+	  		</div>
+	  		<div class="col-sm-5">
+	  			<div class="search-container">
+			    <form>
+			      <input type="text" placeholder="Search for products , more......." name="search">
+			      <button type="submit"><i class="flaticon-search"></i></button>
+			    </form>
+				</div>
+			 </div>
+			 <div class="col-sm-4 floatleft">
+			 	<ul class="company-clients-logos">
+						<li><img class="img-responsive" alt="verizon" src="{% static 'images/verizon-icon.png'%}"></li>
+						<li><img class="img-responsive" alt="verizon" src="{% static 'images/AT&T.png'%}"></li>
+						<li><img class="img-responsive" alt="verizon" src="{% static 'images/T-mobile.png'%}"></li>
+						<li><img class="img-responsive" alt="verizon" src="{% static 'images/sprint.png'%}"></li>
+					</ul>
+			 </div>
+  		</div>
+  	</div>
+    <div class="row">
+     <a id='show-filter' href='javascript:void(0)' class="visible-xs catfilter"><i class="flaticon-adjust"></i></a>
+      <div class="col-sm-4 col-md-3 filter-warp floatleft" id="filterdiv">
+        <div class="left-sidebar inner_div_sidebar">
+         <div class="listing_dtl_hdr_div">
+         	<p>Browse by category <span class="flaticon-down-arrow"></span></p>
+         </div>
+         <div class="filter-repeater">
+         	<h3>Categories</h3>
+         	<h4>Mobiles &amp; Tablets</h4>
+         	<ul>
+
+				<li>
+                <label class="chckbox-container">Tablets (120)&#x200E;<input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+              </li>
+				<li>
+                <label class="chckbox-container">Mobiles (2045)&#x200E;<input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+              </li>
+				<li>
+                <label class="chckbox-container">Mobile &amp; Tablet&#x200E;<input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+              </li>
+
+         	</ul>
+         </div> 
+          <div class="filter-repeater">
+          	<h3>Stores</h3>
+          	<div data-simplebar class="category-scroll-box">
+            <ul>
+              <li>
+                <label class="chckbox-container">Infinix (47)&#x200E;<input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+              </li>
+              <li>
+                <label class="chckbox-container"> elprices (1)&#x200E;	<input type="checkbox" checked="checked"> <span class="checkmark"></span></label>
+              </li>
+              <li>
+                 <label class="chckbox-container">  Orange (26)	&#x200E; <input type="checkbox" checked="checked"> <span class="checkmark"></span></label>
+              </li>
+              <li>
+                <label class="chckbox-container">  Souq (6336)&#x200E;  <input type="checkbox" checked="checked">  <span class="checkmark"></span></label>
+              </li>
+              <li>
+                <label class="chckbox-container"> Geeqshop (2) &#x200E; <input type="checkbox" checked="checked">  <span class="checkmark"></span></label>
+              </li>            
+            </ul>
+            <div id="store-show-section" style="display: none">
+            	<ul>
+	              <li>
+	              	<label class="chckbox-container">Infinix (47)&#x200E;<input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+	              </li>
+	              <li>
+	                <label class="chckbox-container"> elprices (1)&#x200E; <input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+	              </li>
+	              <li>
+	                 <label class="chckbox-container">  Orange (26)&#x200E;	<input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+	              </li>
+	              <li>
+	                <label class="chckbox-container">  Souq (6336)&#x200E;<input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+	              </li>
+	              <li>
+	                <label class="chckbox-container"> Geeqshop (2)&#x200E;<input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+	              </li>
+              
+            </ul>
+            </div>
+            
+        	</div>
+        	 <a href="javascript:void(0)" class="fltr-shwmre flter-ico-change" id="store-show">Show more <span class="plus-ico"><i class="flaticon-down-arrow"></i></span></a>
+          </div>
+          <div class="filter-repeater">    
+          <h3 class="prce_range_hdr">Price Range <a type="button" onclick='resetSlider();' class="reset_btn">reset</a></h3>    
+
+				<div id="slider-range" class="slider-range"></div>
+	          	<form class="form_prce_range">
+	          		<div class="form_smeline">
+		          		<input type="text"  class="form-control min-value" id="min-value">
+		          		<span>EGP</span>
+	          	   </div>
+	          	   <div class="form_smeline">
+		          		<input type="text"  class="form-control max-value" id="max-value">
+		          		<span>EGP</span>
+	          	   </div>
+	          	</form>
+	          	<p class="ranger_amount">
+					<label for="amount">Range:</label>
+					<input type="text" id="amount" readonly >
+				</p>
+				<button class="btn filter_btn">Filter</button>
+          </div>
+          <div class="filter-repeater">
+          	<h3>Color</h3>
+          	<div data-simplebar class="category-scroll-box">
+            <ul>
+              <li>
+                <label class="chckbox-container">Black <input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+              </li>
+              <li>
+                <label class="chckbox-container"> Gold <input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+              </li>
+              <li>
+                 <label class="chckbox-container">White <input type="checkbox" checked="checked"> <span class="checkmark"></span></label>
+              </li>
+              <li>
+                <label class="chckbox-container"> Grey<input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+              </li>
+              <li>
+                <label class="chckbox-container"> Blue<input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+              </li>
+              
+            </ul>
+            <div id="color-show-section" style="display: none">
+            	 <ul>
+              <li>
+                <label class="chckbox-container">Black <input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+              </li>
+              <li>
+                <label class="chckbox-container"> Gold <input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+              </li>
+              <li>
+                 <label class="chckbox-container">White <input type="checkbox" checked="checked"> <span class="checkmark"></span></label>
+              </li>
+              <li>
+                <label class="chckbox-container"> Grey<input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+              </li>
+              <li>
+                <label class="chckbox-container"> Blue<input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+              </li>           
+            </ul>
+            </div>
+            
+        	</div>
+        	 <a href="javascript:void(0)" class="fltr-shwmre flter-ico-change" id="color-show">Show more <span class="plus-ico"><i class="flaticon-down-arrow"></i></span></a>
+          </div>
+          <div class="filter-repeater">
+          	<h3>Internal Memory</h3>
+          	<div data-simplebar class="category-scroll-box">
+            <ul>
+              <li>
+                <label class="chckbox-container">1 GB <input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+              </li>
+              <li>
+                <label class="chckbox-container"> 4 GB <input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+              </li>
+              <li>
+                 <label class="chckbox-container">8 GB<input type="checkbox" checked="checked"> <span class="checkmark"></span></label>
+              </li>
+              <li>
+                <label class="chckbox-container"> 16 GB <input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+              </li>
+              
+            </ul>
+            <div id="memory-show-section" style="display: none">
+	            <ul>
+	                   	  <li>
+			                <label class="chckbox-container">1 GB <input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+			              </li>
+			              <li>
+			                <label class="chckbox-container"> 4 GB <input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+			              </li>
+			              <li>
+			                 <label class="chckbox-container">8 GB<input type="checkbox" checked="checked"> <span class="checkmark"></span></label>
+			              </li>
+			              <li>
+			                <label class="chckbox-container"> 16 GB <input type="checkbox" checked="checked"><span class="checkmark"></span></label>
+			              </li> 
+	            </ul>
+            </div>
+            
+        	</div>
+        	 <a href="javascript:void(0)" class="fltr-shwmre flter-ico-change" id="memory-show">Show more <span class="plus-ico"><i class="flaticon-down-arrow"></i></span></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-8 col-md-9 inner_div_sidebar floatright prdct_list_div">
+      	
+        <div class="listngs-wrap">
+          
+          <div class="row search-sort-top">
+            <div class="col-sm-12 col-md-6">
+            	
+            		 <p class="showing_desc">Showing best prices for <span class="catgr_slctd_name">Mobiles & Tablets</span> in Egypt</p>
+         	
+            </div>
+            <div class="col-sm-12 col-md-6 text-right sort_by_div">
+              <label class="sort_by">Sort by :</label>
+              <div class="selct-dropbox">
+                <select class="selectpicker">
+                	<option>Most Popular</option>
+                    <option>Price low to high</option>
+                    <option>Price high to low</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <!-- PRODUCT LIST REPEATER STARTS -->
+            <div class="col-sm-12 product-list-box">
+                <div class="product-inrbox">
+                  <div class="prdct-thmb">
+                      <div class="item-photo">
+                          <a href="#"><img src="{% static 'images/mobile-large.png'%}" alt="" class="img-responsive" style="max-width:100%;" ></a>
+                      </div>
+                  </div>
+                  <div class="prdct_details_div">
+                  	<div>
+	                  <h3><a href="#">Oppo A3s - 6.2-inch 16GB Dual SIM Mobile Phone - Red</a></h3>
+	                  <p>* * 6.2-inch IPS Full View Notched Screen * 16 GB Storage, </p>
+	                   <p>MicroSD up to 256 GB * 13 MP + 2 MP Back Camera,  </p>
+	                    <p>8 MP Front Camer... more</p>
+	                </div>
+
+              	  </div>
+              	  <div class="text-center">
+                  	<button class="btn prdct_price_btn ">2,630 EGP</button>
+                  	<a href="#" class="prdct_price_link"> Buy it from  Shop</a>
+              		</div>
+                </div>
+            </div>
+               <div class="col-sm-12 product-list-box">
+                <div class="product-inrbox">
+                  <div class="prdct-thmb">
+                      <div class="item-photo">
+                          <a href="#"><img src="{% static 'images/mobile-large.png'%}" alt="" class="img-responsive" style="max-width:100%;" ></a>
+                      </div>
+                  </div>
+                  <div class="prdct_details_div">
+                  	<div>
+	                  <h3><a href="#">Oppo A3s - 6.2-inch 16GB Dual SIM Mobile Phone - Red</a></h3>
+	                  <p>* * 6.2-inch IPS Full View Notched Screen * 16 GB Storage, </p>
+	                   <p>MicroSD up to 256 GB * 13 MP + 2 MP Back Camera,  </p>
+	                    <p>8 MP Front Camer... more</p>
+	                </div>
+
+              	  </div>
+              	  <div class="text-center">
+                  	<button class="btn prdct_price_btn ">2,630 EGP</button>
+                  	<a href="#" class="prdct_price_link"> Buy it from  Shop</a>
+              		</div>
+                </div>
+            </div>
+               <div class="col-sm-12 product-list-box">
+                <div class="product-inrbox">
+                  <div class="prdct-thmb">
+                      <div class="item-photo">
+                          <a href="#"><img src="{% static 'images/mobile-large.png'%}" alt="" class="img-responsive" style="max-width:100%;" ></a>
+                      </div>
+                  </div>
+                  <div class="prdct_details_div">
+                  	<div>
+	                  <h3><a href="#">Oppo A3s - 6.2-inch 16GB Dual SIM Mobile Phone - Red</a></h3>
+	                  <p>* * 6.2-inch IPS Full View Notched Screen * 16 GB Storage, </p>
+	                   <p>MicroSD up to 256 GB * 13 MP + 2 MP Back Camera,  </p>
+	                    <p>8 MP Front Camer... more</p>
+	                </div>
+
+              	  </div>
+              	  <div class="text-center">
+                  	<button class="btn prdct_price_btn ">2,630 EGP</button>
+                  	<a href="#" class="prdct_price_link"> Buy it from  Shop</a>
+              		</div>
+                </div>
+            </div>
+            <!-- PRODUCT LIST REPEATER ENDS-->
+                                                             
+          </div>
+          
+        </div>
+        <div class="load_more_div">
+			<div class="load_more_btn_div">
+				<button class="load_more_btn btn">Load More <span class="load_more_icon"><img class="img-responsive" alt="Load More" src="{% static 'images/google.png'%}"></span></button>
+			</div>
+	</div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+

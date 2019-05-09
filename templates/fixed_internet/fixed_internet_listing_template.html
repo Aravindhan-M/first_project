@@ -1,0 +1,120 @@
+{% load el_pagination_tags %}
+{% load i18n %}
+{% load static %}
+{% load media_url %}
+{% load plan_tags %}
+{% paginate 20 plans %}
+{% for plan in plans%}
+			<div class="load_plans_inner_div">
+
+					<div class="col-sm-4">
+						<div class="plan_logo">
+							<img class="img-responsive" src="{{plan.operator_id.image|operator_logo}}" style="max-width: 100%;" />
+						</div>
+						<div class="plans_feature_desc_div">
+
+							<div class="phones_avail_div_desc">
+								<a target="_blank" href="{{plan.get_absolute_url}}"><h3>{{plan.name}}</h3></a></h3>
+								<ul style="text-align:left;">
+									{%if plan.short_description%}
+									{{plan.short_description}}
+									{%endif%}
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-8 plans_feature_div">
+						<div>
+							 <div class="col-sm-8">
+
+
+
+ 							 	 <div style="width:66%" data-toggle="tooltip" title="{{plan.upload_speed|percentof:maxi.upload_speed__max}}%" class="data_speed_div test-circle" id="{{plan.slug}}1" data-percent=" {{plan.upload_speed|percentof:maxi.upload_speed__max}}"></div>
+
+							 </div>
+							<!-- <img class="img-responsive" src="images/donut-icon.png"> -->
+							<div class="plans_feature_div_desc">
+ 							<h3>{{plan.upload_speed}} kbps</h3>
+								{% if plan.upload_speed %}
+
+
+                                 <p>Upload speed</p>
+								{% endif %}
+								{{maxi.upload_speed__max}} maxi
+							</div>
+						</div>
+<!--						<div>-->
+<!--							<div class="col-sm-8">-->
+<!--{#							 	 <div class="data_speed_div test-circle2" id="test-circle2" data-percent="{{plan.message.donut_message_val |  percentof:max_message_donut.message__donut_message_val__max}}"></div>#}-->
+<!--							 </div>-->
+
+<!--							<div class="plans_feature_div_desc">-->
+<!--								<h3>{{plan.message.donut_message_val }} Messages</h3>-->
+
+<!--							</div>-->
+<!--						</div>-->
+						<div>
+							<!--<button class="btn featured_btn">Featured</button>-->
+							<div class="plans_feature_div_desc">
+								<div class="col-sm-12">
+				  						<h5>{{plan.monthly_fee}} SAR/mo</h5>
+										<p>Monthly Fee</p>
+									{%if plan.fee_notes%}
+										<p>{{plan.fee_notes}}</p>
+									{%endif%}
+				  					</div>
+
+<!--				  					<div class="col-sm-12 ">-->
+<!--				  						<p>One Time Payment</p>-->
+<!--				  						<h5>{{object.otp_value}} SAR/mo</h5>-->
+<!--				  					</div>-->
+							</div>
+						</div>
+
+						<div class="go_to_nearest_branch">
+
+							{%if plan.status == 'online' %}
+							<a href="{{plan.online_url}}" target="_blank" class="load_more_btn btn">Buy Online</a>
+							 {% elif plan.status == 'branch'%}
+							<a target="_blank" href="{{plan.nearest_branch_url}}">Go to the <br>Nearest Branch</a>
+							{% else  %}
+							<a >No Link available</a>
+							{% endif %}
+						</div>
+
+
+
+
+
+					</div>
+				</div>
+ <script>
+    $("#{{plan.slug}}1").circliful({
+        animation: 1,
+        animationStep: 5,
+        foregroundBorderWidth: 25,
+		backgroundBorderWidth: 25,
+        replacePercentageByText: '',
+        textSize: 28,
+        textStyle: 'font-size: 12px;',
+        textColor: '#666',
+        color: '#3180B8',
+        multiPercentage: 1,
+    });
+
+
+
+
+
+</script>
+				{% empty %}
+				<div class="load_plans_inner_div">
+						 <h3>No Result for this Query,Please try different filters !!</h3>
+
+					</div>
+
+                {%endfor%}
+
+
+{% show_more "<div class='load_more_div'><div class='container'><div class='load_more_btn_div'><button class='load_more_btn btn'>Load More</button></div></div></div>" %}

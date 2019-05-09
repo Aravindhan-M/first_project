@@ -1,0 +1,90 @@
+
+
+{% extends "admin/change_list.html" %}
+{% load admin_filter %}
+
+
+
+{% block content_title %}
+    <h1> Page Admin </h1>
+
+{% endblock %}
+
+
+
+{% block result_list %}
+
+
+<div class=”results”>
+    <table>
+
+    <thead>
+      <tr>
+
+        <th width="10%">
+            title
+        </th>
+        <th width="30%">
+             url
+        </th>
+        <th width="15%">
+            advertiser
+        </th>
+
+        <th width="15%">
+             Publication End date
+        </th>
+        <th width="15%">
+            Category
+        </th>
+        <th width="15%">
+             Weight
+        </th>
+
+      </tr>
+    </thead>
+    </table><br>
+
+    {% for row in headers %}
+        <h2>{{row|caps}}</h2>
+    <!--<h1>no <ad></ad></h1>-->
+            {% for zone in zones|zone_filter:row %}
+
+
+
+                {% for z in zone %}
+
+                    <strong><h4>{{z.zone}}</h4></strong>
+                        <table>
+                        {% data_filter data row z.zone as result %}
+
+
+                            {% for res in result %}
+                            <tr>
+
+                                <td width="10%"><a href = "{{res.get_admin_absolute}}">{{res.title}}</a></td>
+                                <td width="30%">{{res.url|truncatechars:55}}</td>
+                                <td width="15%">{{res.advertiser}}</td>
+                                <td width="15%">{{res.publication_date_end}}</td>
+                                <td width="15%">{{res.category}}</td>
+                                <td width="15%">{{res.weight}}</td>
+                            </tr>
+                        {% endfor %}
+
+                        </table><br>
+
+
+                {% endfor %}
+
+
+            {% endfor %}
+     {% endfor %}
+
+
+
+
+</div>
+{% endblock %}
+
+
+

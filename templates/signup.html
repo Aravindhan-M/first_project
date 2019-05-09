@@ -1,0 +1,48 @@
+<h2>Sign up</h2>
+ <form method="post">
+   {% csrf_token %}
+   {% for field in form %}
+     <div>
+       {{ field.label_tag }}<br>
+       {{ field }}
+       {% for error in field.errors %}
+         <p style="color: red">{{ error }}</p>
+       {% endfor %}
+     </div>
+   {% endfor %}
+   <button type="submit">Sign up</button>
+   <button type="button">Send OTP</button>
+   <!--<button onclick="onTimer()">Clickme</button>-->
+<!--<div id="mycounter"></div>-->
+<!--<script>-->
+<!--i = 60;-->
+<!--function onTimer() {-->
+  <!--document.getElementById('mycounter').innerHTML = i;-->
+  <!--i&#45;&#45;;-->
+  <!--if (i < 0) {-->
+    <!--alert('You lose!');-->
+  <!--}-->
+  <!--else {-->
+    <!--setTimeout(onTimer, 1000);-->
+  <!--}-->
+<!--}-->
+<!--</script>-->
+ </form>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+$("button").click(function(){
+console.log("asdasd")
+  $.post("/verification/",
+  {
+    name: "Donald Duck",
+    city: "Duckburg",
+    csrfmiddlewaretoken: '{{ csrf_token }}'
+  },
+  function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  });
+});
+</script>

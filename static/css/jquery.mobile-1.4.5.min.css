@@ -1,0 +1,160 @@
+/*! jQuery Mobile 1.4.5 | Git HEADhash: 68e55e7 <> 2014-10-31T17:33:30Z | (c) 2010, 2014 jQuery Foundation, Inc. | jquery.org/license */
+
+
+
+
+.ui-slider-track.ui-corner-all {
+    -webkit-border-radius: .3125em;
+    border-radius: .3125em
+}
+
+.ui-corner-all {
+    -webkit-background-clip: padding;
+    background-clip: padding-box
+}
+
+
+@-moz-document url-prefix() {
+}
+
+.ui-btn {
+    font-size: 16px;
+    margin: .5em 0;
+    padding: .7em 1em;
+    display: block;
+    position: relative;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.ui-controlgroup-controls a.ui-shadow:not(:focus),
+.ui-controlgroup-controls button.ui-shadow:not(:focus) {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none
+}
+
+@-moz-document url-prefix() {
+}
+
+input.ui-slider-input {
+    display: block;
+    float: left;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0;
+    padding: 4px;
+    width: 40px;
+    height: 20px;
+    line-height: 20px;
+    border-width: 1px;
+    border-style: solid;
+    outline: 0;
+    text-align: center;
+    vertical-align: text-bottom;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box
+}
+
+.ui-slider-input::-webkit-outer-spin-button,
+.ui-slider-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0
+}
+
+.ui-slider-track {
+    position: relative;
+    overflow: visible;
+    border-width: 1px;
+    border-style: solid;
+    height: 15px;
+    margin: 0 15px 0 68px;
+    top: 6px
+}
+
+.ui-slider-track .ui-slider-bg {
+    height: 100%
+}
+
+.ui-slider-track .ui-btn.ui-slider-handle {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    width: 28px;
+    height: 28px;
+    margin: -15px 0 0 -15px;
+    outline: 0;
+    padding: 0
+}
+
+.ui-slider-track .ui-slider-bg,
+.ui-slider-handle {
+    -webkit-border-radius: inherit;
+    border-radius: inherit
+}
+
+.ui-slider-track .ui-btn.ui-slider-handle {
+    font-size: .9em;
+    line-height: 30px
+}
+
+.ui-rangeslider {
+    margin: .5em 0
+}
+
+.ui-rangeslider:before,
+.ui-rangeslider:after {
+    content: "";
+    display: table
+}
+
+.ui-rangeslider:after {
+    clear: both
+}
+
+.ui-rangeslider .ui-slider-input.ui-rangeslider-last {
+    float: right
+}
+
+.ui-rangeslider .ui-rangeslider-sliders {
+    position: relative;
+    overflow: visible;
+    height: 30px;
+    margin: 0 68px
+}
+
+.ui-rangeslider .ui-rangeslider-sliders .ui-slider-track {
+    position: absolute;
+    top: 6px;
+    right: 0;
+    left: 0;
+    margin: 0
+}
+
+.ui-rangeslider .ui-slider-track:first-child .ui-slider-bg {
+    display: none
+}
+
+.ui-rangeslider .ui-rangeslider-sliders .ui-slider-track:first-child {
+    background-color: transparent;
+    background: 0;
+    border-width: 0;
+    height: 0
+}
+
+html >body .ui-rangeslider .ui-rangeslider-sliders .ui-slider-track:first-child {
+    height: 15px;
+    border-width: 1px
+}
+

@@ -1,0 +1,151 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-28 22:42+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+msgid "Find a plan"
+msgstr "العثور على خطة"
+#: planbaker/settings.py:139 planbaker/settings.py:140
+msgid "Arabic"
+msgstr ""
+
+#: templates/home.html:185
+msgid "Compare tablet plans"
+msgstr "مقارنة خطط الأجهزةاللوحية "
+
+#: user/models.py:22
+msgid "email address"
+msgstr ""
+
+#: user/models.py:23
+msgid "mobile number"
+msgstr ""
+
+#: user/models.py:24
+msgid "first name"
+msgstr ""
+
+#: user/models.py:25
+msgid "last name"
+msgstr ""
+
+#: user/models.py:26
+msgid "date joined"
+msgstr ""
+
+#: user/models.py:27
+msgid "active"
+msgstr ""
+
+#: user/models.py:28
+msgid "staff status"
+msgstr ""
+
+#: user/models.py:38
+msgid "user"
+msgstr ""
+
+#: user/models.py:39
+msgid "users"
+msgstr ""
+
+#Headers
+msgid "Mobile plans"
+msgstr "باقات الهواتف المحمولة"
+
+msgid "Mobile Phones"
+msgstr "الهواتف المحمولة"
+
+msgid "Mobile Internet"
+msgstr "باقات الانترنت"
+
+msgid "Fixed Internet"
+msgstr "انترنت ثابت"
+
+msgid "Additional Services"
+msgstr "الخدمات والمزايا"
+
+msgid "Login"
+msgstr "الدخول"
+
+msgid "Register"
+msgstr "التسجيل"
+
+msgid "Copyright"
+msgstr "حقوق الطبع والنشر"
+
+msgid "Choose the best plan in Saudi Arabia"
+msgstr "اختر أفضل الباقات في المملكة العربية السعودية"
+
+msgid "Providers"
+msgstr "مقدمي الخدمات"
+
+msgid "See specifications"
+msgstr "انظر المواصفات"
+
+msgid "Available in 12 plans"
+msgstr "متوفر فى 12 باقة"
+
+msgid "Buy mobile Phone"
+msgstr "شراء الهاتف المحمول"
+
+msgid "Choose the Best Plans for"
+msgstr "اختيار أفضل الخطط ل"
+
+msgid "Best Mobile plans"
+msgstr "افضل باقات الهواتف المحمولة"
+
+msgid "Need SIM card only"
+msgstr "تحتاج شريحة المحمول فقط"
+
+msgid "Monthly Usage"
+msgstr "الاستهلاك الشهرى"
+
+msgid "Data"
+msgstr "البيانات"
+
+msgid "Minutes"
+msgstr "الدقائق"
+
+msgid "Messages"
+msgstr "الرسائل"
+
+msgid "Network"
+msgstr "الشبكة"
+
+msgid "Plans Available"
+msgstr "الباقات المتاحة"
+
+msgid "Search All Operators"
+msgstr "البحث فى جميع مقدمي الخدمات"
+
+msgid "Top Smartphones"
+msgstr "احدث الهواتف الذكية"
+
+msgid "Go to the nearest branch"
+msgstr "اذهب إلى أقرب فرع"
+
+msgid "Select Mobile Phone"
+msgstr "اختر الهاتف المحمول"
+
+msgid "Select Internet Device"
+msgstr "اخترجهاز الإنترنت"
+
+msgid "ADSL & Fiber Internet"
+msgstr "باقاتا انترنت الفايبر و ال دى اس ال"
+
+
+
+

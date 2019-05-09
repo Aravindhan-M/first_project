@@ -1,0 +1,14 @@
+
+{% include page_template %}
+
+{% block js %}
+
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/static/el-pagination/js/el-pagination.js"></script>
+    <script>$.endlessPaginate({
+
+            paginateOnScrollMargin: 20,
+
+        });</script>
+
+{% endblock %}
